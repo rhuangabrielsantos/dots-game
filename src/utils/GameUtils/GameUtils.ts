@@ -1,5 +1,7 @@
 import { GameBoard } from '@/interfaces'
 
+import { HandlePlayerClickProps } from './GameUtilsProps'
+
 export function generateGameBoardBySize(
   collumns: number,
   rows: number
@@ -27,6 +29,14 @@ export function generateGameBoardBySize(
     lastRow[index] = undefined
   }
   board.push(lastRow)
+
+  return board
+}
+
+export function handlePlayerClick(props: HandlePlayerClickProps): GameBoard {
+  const { board, collumn, row, color } = props
+
+  board[collumn][row] = color
 
   return board
 }

@@ -24,6 +24,7 @@ export function Home() {
         color: 'red',
       },
       board,
+      turn: 1,
     })
   }, [])
 

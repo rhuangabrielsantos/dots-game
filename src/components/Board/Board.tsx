@@ -6,10 +6,6 @@ import { BoardProps } from './BoardProps'
 import * as S from './BoardStyle'
 
 export function Board({ board }: BoardProps) {
-  // function handleClick(collumn: number, row: number) {
-  //   console.log('clicked', collumn, row)
-  // }
-
   return (
     <S.Container>
       {board?.map((states, stateIndex) => (

@@ -1,8 +1,7 @@
+import renderWithTheme from '@/config/renderWithTheme'
+import { GameBoard } from '@/interfaces'
+import { theme } from '@/styles/theme'
 import { screen } from '@testing-library/react'
-
-import renderWithTheme from '../../config/renderWithTheme'
-import { GameBoard } from '../../interfaces'
-import { theme } from '../../styles/theme'
 
 import { Board } from './Board'
 
