@@ -1,3 +1,5 @@
+import { Color } from '@/interfaces'
+
 export interface VerticalLineProps {
-  color?: 'red' | 'blue' | undefined
+  color?: Color
 }

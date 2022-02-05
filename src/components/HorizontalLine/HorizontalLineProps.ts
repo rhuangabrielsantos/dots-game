@@ -1,3 +1,5 @@
+import { Color } from '@/interfaces'
+
 export interface HorizontalLineProps {
-  color?: 'red' | 'blue' | undefined
+  color?: Color
 }
