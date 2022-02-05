@@ -1,35 +1,22 @@
-import { Game } from '@/interfaces'
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 
 import { Board } from '@/components/Board'
+import { GameContext } from '@/contexts/GameContext'
+import { generateGameBySize } from '@/utils/GameUtils'
 
 import * as S from './HomeStyle'
 
-export default function Home() {
-  const mockGame: Game = {
-    id: '1',
-    firstPlayer: {
-      id: '1',
-      name: 'Rhuanzito',
-      color: 'red',
-    },
-    secondPlayer: {
-      id: '1',
-      name: 'Ana',
-      color: 'blue',
-    },
-    board: [
-      [undefined, undefined, undefined],
-      [undefined, undefined, undefined, undefined],
-      [undefined, undefined, undefined],
-      [undefined, undefined, undefined, undefined],
-      [undefined, undefined, undefined],
-    ],
-  }
+export function Home() {
+  const { game, createNewGame } = useContext(GameContext)
+
+  useEffect(() => {
+    const game = generateGameBySize(3, 3)
+    createNewGame(game)
+  }, [])
 
   return (
     <S.Container>
-      <Board board={mockGame.board} />
+      <Board board={game?.board} />
     </S.Container>
   )
 }

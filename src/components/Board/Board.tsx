@@ -3,19 +3,15 @@ import React from 'react'
 import { HorizontalLine } from '../HorizontalLine'
 import { VerticalLine } from '../VerticalLine'
 
-import { BoardProps } from './BoadProps'
+import { BoardProps } from './BoardProps'
 import * as S from './BoardStyle'
 
 export function Board({ board }: BoardProps) {
-  function isHorizontalLine(index: number) {
-    return index % 2 === 0
-  }
-
   return (
     <S.Container>
-      {board.map((states, index) => (
-        <S.Row key={index} horizontalLine={isHorizontalLine(index)}>
-          {isHorizontalLine(index)
+      {board?.map((states, index) => (
+        <S.Row key={index} horizontalLine={index % 2 === 0}>
+          {index % 2 === 0
             ? states.map((color, index) => (
                 <HorizontalLine
                   color={color}
