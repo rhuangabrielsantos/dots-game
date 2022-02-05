@@ -1,0 +1,1 @@
+export { generateGameBoardBySize } from './GameUtils'
