@@ -1,29 +1,38 @@
 import React from 'react'
 
-import { HorizontalLine } from '../HorizontalLine'
-import { VerticalLine } from '../VerticalLine'
+import { Line } from '../Line'
 
 import { BoardProps } from './BoardProps'
 import * as S from './BoardStyle'
 
 export function Board({ board }: BoardProps) {
+  // function handleClick(collumn: number, row: number) {
+  //   console.log('clicked', collumn, row)
+  // }
+
   return (
     <S.Container>
-      {board?.map((states, index) => (
-        <S.Row key={index} horizontalLine={index % 2 === 0}>
-          {index % 2 === 0
-            ? states.map((color, index) => (
-                <HorizontalLine
+      {board?.map((states, stateIndex) => (
+        <S.Row key={stateIndex} horizontalLine={stateIndex % 2 === 0}>
+          {stateIndex % 2 === 0
+            ? states.map((color, colorIndex) => (
+                <Line
                   color={color}
-                  key={index}
+                  key={colorIndex}
                   aria-label="horizontal-line"
+                  collumn={stateIndex}
+                  row={colorIndex}
+                  isVertical={false}
                 />
               ))
-            : states.map((color, index) => (
-                <VerticalLine
+            : states.map((color, colorIndex) => (
+                <Line
                   color={color}
-                  key={index}
+                  key={colorIndex}
                   aria-label="vertical-line"
+                  collumn={stateIndex}
+                  row={colorIndex}
+                  isVertical
                 />
               ))}
         </S.Row>

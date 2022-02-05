@@ -1,8 +1,16 @@
 import styled from 'styled-components'
 
-export const Line = styled.button<{ color?: string }>`
-  width: 1rem;
-  height: 5rem;
+export const Line = styled.button<{ color?: string; isVertical: boolean }>`
+  ${(props) =>
+    props.isVertical
+      ? `
+    width: 1rem;
+    height: 5rem;
+  `
+      : `
+    width: 5rem;
+    height: 1rem;
+  `}
   border: none;
 
   background-color: ${(props) => {
