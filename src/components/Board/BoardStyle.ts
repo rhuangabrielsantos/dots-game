@@ -5,6 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
 `
 
 export const Row = styled.div<{ horizontalLine: boolean }>`
@@ -23,29 +24,5 @@ export const Row = styled.div<{ horizontalLine: boolean }>`
     :last-child {
       margin-right: 0;
     }
-    ${(props) =>
-      props.horizontalLine &&
-      `
-      ::after {
-        content: '';
-        display: block;
-        width: 1.5rem;
-        height: 1.5rem;
-        border-radius: 50%;
-        background-color: ${props.theme.colors.gray};
-        margin-left: -3.75rem;
-        z-index: 2;
-      }
-      ::before {
-        content: '';
-        display: block;
-        width: 1.5rem;
-        height: 1.5rem;
-        border-radius: 50%;
-        background-color: ${props.theme.colors.gray};
-        margin-right: -3.75rem;
-        z-index: 2;
-      }
-    `}
   }
 `

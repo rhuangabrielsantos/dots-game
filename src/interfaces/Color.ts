@@ -1,1 +1,1 @@
-export type Color = 'red' | 'blue' | undefined
+export type Color = 'red' | 'blue' | 'black' | undefined

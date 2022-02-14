@@ -1,1 +1,1 @@
-export { generateGameBoardBySize } from './GameUtils'
+export { generateGameBySize } from './GameUtils'
