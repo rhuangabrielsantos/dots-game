@@ -1,40 +1,52 @@
-import React, { useContext, useEffect } from 'react'
+import { ImGoogle } from 'react-icons/im'
+import { RiWifiOffLine } from 'react-icons/ri'
+import { useNavigate } from 'react-router-dom'
 
-import { Board } from '@/components/Board'
-import { GameContext } from '@/contexts/GameContext'
-import { generateGameBySize } from '@/utils/GameUtils'
-
-import * as S from './HomeStyle'
+import { buttonsVariants, textVariants, useAnimation } from './HomeAnimations'
+import { Container, Title, Description, BoxButton, Button } from './HomeStyle'
 
 export function Home() {
-  const { game, createNewGame } = useContext(GameContext)
+  const navigate = useNavigate()
 
-  useEffect(() => {
-    const { board, marks } = generateGameBySize(4, 4)
+  const [textAnimation, setTextAnimation] = useAnimation()
+  const [buttonAnimation, setButtonAnimation] = useAnimation()
 
-    createNewGame({
-      id: '15615615',
-      firstPlayer: {
-        id: '1',
-        name: 'Rhuan',
-        color: 'blue',
-        pontuation: 0,
-      },
-      secondPlayer: {
-        id: '2',
-        name: 'Ana',
-        color: 'red',
-        pontuation: 0,
-      },
-      board,
-      marks,
-      turn: 1,
-    })
-  }, [])
+  function handlePlayOffline() {
+    setTextAnimation('initial')
+    setButtonAnimation('initial')
+
+    setTimeout(() => {
+      navigate('/play-offline')
+    }, 900)
+  }
 
   return (
-    <S.Container>
-      <Board board={game.board} marks={game.marks} />
-    </S.Container>
+    <Container>
+      <Title initial="initial" variants={textVariants} animate={textAnimation}>
+        Dots Game
+      </Title>
+      <Description
+        initial="initial"
+        variants={textVariants}
+        animate={textAnimation}
+      >
+        Play with your friends and try to get the highest score.
+      </Description>
+
+      <BoxButton
+        initial="initial"
+        variants={buttonsVariants}
+        animate={buttonAnimation}
+      >
+        <Button color="black" onClick={handlePlayOffline}>
+          <RiWifiOffLine size={20} style={{ marginRight: '10px' }} />
+          Play Offline
+        </Button>
+        <Button color="red">
+          <ImGoogle size={20} style={{ marginRight: '10px' }} />
+          Play Online
+        </Button>
+      </BoxButton>
+    </Container>
   )
 }
