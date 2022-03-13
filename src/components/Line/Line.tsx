@@ -7,7 +7,7 @@ import {
 } from '@/utils/GameUtils/GameUtils'
 
 import { LineProps } from './LineProps'
-import * as S from './LineStyle'
+import { Line as LineStyle } from './LineStyle'
 
 export function Line({ isVertical, collumn, row }: LineProps) {
   const { game, updateGame } = useContext(GameContext)
@@ -35,7 +35,7 @@ export function Line({ isVertical, collumn, row }: LineProps) {
   }
 
   return (
-    <S.Line
+    <LineStyle
       aria-label={isVertical ? 'vertical-line' : 'horizontal-line'}
       value={game.board[collumn][row]}
       color={game.board[collumn][row]}

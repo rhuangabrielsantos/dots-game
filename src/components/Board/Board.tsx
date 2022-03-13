@@ -4,13 +4,13 @@ import { Line } from '@/components/Line'
 import { Square } from '@/components/Square'
 
 import { BoardProps } from './BoardProps'
-import * as S from './BoardStyle'
+import { Container, Row } from './BoardStyle'
 
 export function Board({ board, marks }: BoardProps) {
   return (
-    <S.Container>
+    <Container>
       {board.map((states, stateIndex) => (
-        <S.Row key={stateIndex} horizontalLine={stateIndex % 2 === 0}>
+        <Row key={stateIndex} horizontalLine={stateIndex % 2 === 0}>
           {stateIndex % 2 === 0
             ? states.map((color, colorIndex) => (
                 <Line
@@ -32,7 +32,7 @@ export function Board({ board, marks }: BoardProps) {
                   isVertical
                 />
               ))}
-        </S.Row>
+        </Row>
       ))}
 
       {marks.map((colluns, collunIndex) => {
@@ -45,6 +45,6 @@ export function Board({ board, marks }: BoardProps) {
           />
         ))
       })}
-    </S.Container>
+    </Container>
   )
 }
