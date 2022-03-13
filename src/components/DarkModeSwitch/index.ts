@@ -1,0 +1,1 @@
+export { DarkModeSwitch } from './DarkModeSwitch'

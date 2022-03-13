@@ -2,14 +2,26 @@ import { ThemeProvider } from 'styled-components'
 
 import { GameContextProvider } from '@/contexts/GameContext'
 import GlobalStyle from '@/styles/globalStyle'
-import { theme } from '@/styles/theme'
+import { lightTheme, darkTheme } from '@/styles/theme'
 
+import { DarkModeSwitch } from './components/DarkModeSwitch'
+import { useDarkMode } from './hooks/useDarkMode'
 import Router from './Router'
 
 function App() {
+  const [theme, themeToggler] = useDarkMode()
+
+  const themeMode = theme === 'light' ? lightTheme : darkTheme
+
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={themeMode}>
       <GlobalStyle />
+
+      <DarkModeSwitch
+        onClick={themeToggler}
+        checked={theme === 'dark'}
+        id="togglerTheme"
+      />
 
       <GameContextProvider>
         <Router />
