@@ -1,27 +1,20 @@
 import { ImGoogle } from 'react-icons/im'
 import { RiWifiOffLine } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
-import UIfx from 'uifx'
 
-import enter from '@/assets/sfx/enter.wav'
-import tick from '@/assets/sfx/tick.mp3'
+import { clickSfx, tickSfx } from '@/utils/SfxUtils'
 
-import { buttonsVariants, textVariants, useAnimation } from './HomeAnimations'
+import { buttonsVariants, textVariants, useAnimation } from './HomeAnimation'
 import { Container, Title, Description, BoxButton, Button } from './HomeStyle'
 
 export function Home() {
   const navigate = useNavigate()
-  const tickSfx = new UIfx(tick)
-  tickSfx.setVolume(0.3)
-
-  const enterSfx = new UIfx(enter)
-  enterSfx.setVolume(0.3)
 
   const [textAnimation, setTextAnimation] = useAnimation()
   const [buttonAnimation, setButtonAnimation] = useAnimation()
 
   function handlePlayOffline() {
-    enterSfx.play()
+    clickSfx.play()
 
     setTextAnimation('initial')
     setButtonAnimation('initial')

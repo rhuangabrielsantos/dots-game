@@ -1,5 +1,7 @@
+import { ToastContainer } from 'react-toastify'
 import { ThemeProvider } from 'styled-components'
 
+import 'react-toastify/dist/ReactToastify.css'
 import { GameContextProvider } from '@/contexts/GameContext'
 import GlobalStyle from '@/styles/globalStyle'
 import { lightTheme, darkTheme } from '@/styles/theme'
@@ -29,6 +31,19 @@ function App() {
       </GameContextProvider>
 
       <MusicPlayer />
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme={theme === 'light' ? 'light' : 'dark'}
+      />
     </ThemeProvider>
   )
 }
