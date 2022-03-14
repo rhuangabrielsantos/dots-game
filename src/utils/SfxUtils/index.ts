@@ -1,1 +1,1 @@
-export { selectSfx, tickSfx } from './SfxUtils'
+export { clickSfx, tickSfx } from './SfxUtils'

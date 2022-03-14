@@ -3,7 +3,7 @@ import Lottie from 'react-lottie'
 
 import animationData from '@/assets/animations/music-rhythm.json'
 import { tickSfx } from '@/utils/SfxUtils'
-import { selectSfx } from '@/utils/SfxUtils/SfxUtils'
+import { clickSfx } from '@/utils/SfxUtils/SfxUtils'
 
 import { variantsControls, variantsTitle } from './MusicPlayerAnimation'
 import {
@@ -98,7 +98,7 @@ export function MusicPlayer() {
           <Play
             onClick={() => {
               setIsPlaying(false)
-              selectSfx.play()
+              clickSfx.play()
             }}
             onMouseEnter={() => tickSfx.play()}
             title="Pause the music"
@@ -107,7 +107,7 @@ export function MusicPlayer() {
           <PlayDisabled
             onClick={() => {
               setIsPlaying(true)
-              selectSfx.play()
+              clickSfx.play()
             }}
             onMouseEnter={() => tickSfx.play()}
             title="Play the music"
@@ -121,7 +121,7 @@ export function MusicPlayer() {
           title="Skip this music"
           onClick={() => {
             handleNextMusic()
-            selectSfx.play()
+            clickSfx.play()
           }}
           onMouseEnter={() => tickSfx.play()}
         >

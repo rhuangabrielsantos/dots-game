@@ -14,6 +14,12 @@ export const Container = styled.div`
   gap: 0.5rem;
 `
 
+export const Box = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
 export const LightModeIcon = styled(MdOutlineLightMode)`
   color: ${(props) => props.theme.colors.secondary};
   font-size: 1.5rem;
