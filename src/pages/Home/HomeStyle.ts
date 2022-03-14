@@ -49,8 +49,10 @@ export const Button = styled.button<{ color?: string }>`
   padding: 20px 30px;
   cursor: pointer;
 
+  transition: shadow 0.3s;
+
   &:hover {
-    opacity: 0.8;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   }
 
   display: flex;

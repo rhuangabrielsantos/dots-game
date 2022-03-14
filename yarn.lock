@@ -4903,6 +4903,11 @@ typescript@^4.4.4:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.5.tgz#d8c953832d28924a9e3d37c73d729c846c5896f3"
   integrity sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA==
 
+uifx@^2.0.7:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/uifx/-/uifx-2.0.7.tgz#e4710063bfb2deaa9c4b173172baa6c1211bfd2d"
+  integrity sha512-tnPwdYe1dDmsxWJeU84CjDN/rcWOzOcG6tL1bsi5bUXw5nJaq+c4ThsbShMkedX2dAQ5gq1Q5CxQGsxwa5wxfw==
+
 unbox-primitive@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/unbox-primitive/-/unbox-primitive-1.0.1.tgz#085e215625ec3162574dc8859abee78a59b14471"
