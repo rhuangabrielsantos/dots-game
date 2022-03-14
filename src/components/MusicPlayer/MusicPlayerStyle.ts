@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { MdPlayArrow, MdPlayDisabled } from 'react-icons/md'
+import { MdPlayArrow, MdPlayDisabled, MdSkipNext } from 'react-icons/md'
 import styled from 'styled-components'
 
 export const Container = styled.div`
@@ -29,6 +29,18 @@ export const PlayDisabled = styled(MdPlayDisabled)`
   cursor: pointer;
 `
 
+export const AnimationContainer = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+export const Skip = styled(MdSkipNext)`
+  color: ${(props) => props.theme.colors.secondary};
+  font-size: 2.3rem;
+  cursor: pointer;
+`
+
 export const Title = styled(motion.h1)`
   color: ${(props) => props.theme.colors.secondary};
   font-size: 1rem;
@@ -39,17 +51,14 @@ export const Title = styled(motion.h1)`
   width: 100%;
 `
 
-export const LottieBox = styled.div<{ disabled: boolean }>`
+export const ControlsBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
 
   svg {
     path {
-      stroke: ${(props) =>
-        props.disabled
-          ? props.theme.colors.red
-          : props.theme.colors.secondary} !important;
+      stroke: ${(props) => props.theme.colors.secondary};
     }
   }
 `

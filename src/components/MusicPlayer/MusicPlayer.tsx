@@ -2,14 +2,18 @@ import { useEffect, useRef, useState } from 'react'
 import Lottie from 'react-lottie'
 
 import animationData from '@/assets/animations/music-rhythm.json'
+import { tickSfx } from '@/utils/SfxUtils'
+import { selectSfx } from '@/utils/SfxUtils/SfxUtils'
 
-import { variantsTitle } from './MusicPlayerAnimation'
+import { variantsControls, variantsTitle } from './MusicPlayerAnimation'
 import {
   Container,
   Play,
   PlayDisabled,
   Title,
-  LottieBox,
+  ControlsBox,
+  Skip,
+  AnimationContainer,
 } from './MusicPlayerStyle'
 import { musics } from './Songs'
 
@@ -19,20 +23,16 @@ export function MusicPlayer() {
 
   const randomMusicIndex = Math.floor(Math.random() * musics.length)
 
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [currentMusic, setCurrentMusic] = useState(randomMusicIndex)
-  const [hover, setHover] = useState(false)
+  const [isPlaying, setIsPlaying] = useState<boolean>(false)
+  const [currentMusic, setCurrentMusic] = useState<number>(randomMusicIndex)
+  const [hover, setHover] = useState<boolean>(false)
 
-  async function handleNextMusic() {
+  async function handleNextMusic(): Promise<void> {
     await playPromise?.then(() => {
       playerRef.current?.pause()
     })
 
-    if (currentMusic === musics.length - 1) {
-      setCurrentMusic(0)
-    } else {
-      setCurrentMusic(currentMusic + 1)
-    }
+    setCurrentMusic(randomizeMusic())
 
     const promise = playerRef.current?.play()
     setPlayPromise(promise)
@@ -40,6 +40,16 @@ export function MusicPlayer() {
     if (playerRef.current?.volume) {
       playerRef.current.volume = 0.2
     }
+  }
+
+  function randomizeMusic(): number {
+    const newMusicIndex = Math.floor(Math.random() * musics.length)
+
+    if (newMusicIndex === currentMusic) {
+      return newMusicIndex + 1
+    }
+
+    return newMusicIndex
   }
 
   useEffect(() => {
@@ -59,42 +69,72 @@ export function MusicPlayer() {
 
   return (
     <Container>
-      <LottieBox
-        disabled={!isPlaying}
+      <ControlsBox
         onMouseOver={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
-        <Lottie
-          options={{
-            loop: true,
-            autoplay: false,
-            animationData,
-            rendererSettings: {
-              preserveAspectRatio: 'xMidYMid slice',
-            },
-          }}
-          height={40}
-          width={40}
-          isPaused={!isPlaying}
-          isClickToPauseDisabled
-        />
+        <AnimationContainer
+          initial="hidden"
+          variants={variantsControls}
+          animate={isPlaying ? 'visible' : 'hidden'}
+        >
+          <Lottie
+            options={{
+              loop: true,
+              autoplay: false,
+              animationData,
+              rendererSettings: {
+                preserveAspectRatio: 'xMidYMid slice',
+              },
+            }}
+            height={40}
+            width={40}
+            isPaused={!isPlaying}
+            isClickToPauseDisabled
+          />
+        </AnimationContainer>
 
         {isPlaying ? (
-          <Play onClick={() => setIsPlaying(false)} title="Pause the music" />
+          <Play
+            onClick={() => {
+              setIsPlaying(false)
+              selectSfx.play()
+            }}
+            onMouseEnter={() => tickSfx.play()}
+            title="Pause the music"
+          />
         ) : (
           <PlayDisabled
-            onClick={() => setIsPlaying(true)}
+            onClick={() => {
+              setIsPlaying(true)
+              selectSfx.play()
+            }}
+            onMouseEnter={() => tickSfx.play()}
             title="Play the music"
           />
         )}
-      </LottieBox>
+
+        <AnimationContainer
+          initial="hidden"
+          variants={variantsControls}
+          animate={isPlaying ? 'visible' : 'hidden'}
+          title="Skip this music"
+          onClick={() => {
+            handleNextMusic()
+            selectSfx.play()
+          }}
+          onMouseEnter={() => tickSfx.play()}
+        >
+          <Skip />
+        </AnimationContainer>
+      </ControlsBox>
 
       <Title
         variants={variantsTitle}
         initial="hidden"
         animate={hover ? 'visible' : 'hidden'}
       >
-        {musics[currentMusic].title}
+        {musics[currentMusic].title} by {musics[currentMusic].artist}
       </Title>
 
       <audio
