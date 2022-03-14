@@ -38,6 +38,7 @@ export const SwitchRoot = styled(RadixSwitch.Root)`
   position: relative;
 
   border: none;
+  cursor: pointer;
 `
 
 export const SwitchThumb = styled(RadixSwitch.Thumb)`

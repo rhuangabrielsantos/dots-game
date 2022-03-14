@@ -5,6 +5,7 @@ import GlobalStyle from '@/styles/globalStyle'
 import { lightTheme, darkTheme } from '@/styles/theme'
 
 import { DarkModeSwitch } from './components/DarkModeSwitch'
+import { MusicPlayer } from './components/MusicPlayer'
 import { useDarkMode } from './hooks/useDarkMode'
 import Router from './Router'
 
@@ -26,6 +27,8 @@ function App() {
       <GameContextProvider>
         <Router />
       </GameContextProvider>
+
+      <MusicPlayer />
     </ThemeProvider>
   )
 }
