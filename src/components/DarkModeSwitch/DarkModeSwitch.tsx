@@ -19,10 +19,7 @@ export function DarkModeSwitch(props: RadixSwitch.SwitchProps) {
     <Container>
       <LightModeIcon />
 
-      <Box
-        onMouseEnter={() => tickSfx?.play()}
-        onClick={() => clickSfx?.play()}
-      >
+      <Box onMouseEnter={() => tickSfx()} onClick={() => clickSfx()}>
         <SwitchRoot {...props}>
           <SwitchThumb {...props} />
         </SwitchRoot>

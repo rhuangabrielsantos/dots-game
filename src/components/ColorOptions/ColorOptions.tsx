@@ -21,9 +21,9 @@ export function ColorOptions(props: ColorOptionsProps) {
           disabled={props.unavailableColors.includes(color)}
           onClick={() => {
             props.onChange(color)
-            clickSfx?.play()
+            clickSfx()
           }}
-          onMouseEnter={() => tickSfx?.play()}
+          onMouseEnter={() => tickSfx()}
           title={
             props.unavailableColors.includes(color)
               ? 'Outro jogador já escolheu esta cor'

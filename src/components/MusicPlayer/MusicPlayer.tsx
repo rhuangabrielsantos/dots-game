@@ -99,18 +99,18 @@ export function MusicPlayer() {
           <Play
             onClick={() => {
               setIsPlaying(false)
-              clickSfx?.play()
+              clickSfx()
             }}
-            onMouseEnter={() => tickSfx?.play()}
+            onMouseEnter={() => tickSfx()}
             title="Pause the music"
           />
         ) : (
           <PlayDisabled
             onClick={() => {
               setIsPlaying(true)
-              clickSfx?.play()
+              clickSfx()
             }}
-            onMouseEnter={() => tickSfx?.play()}
+            onMouseEnter={() => tickSfx()}
             title="Play the music"
           />
         )}
@@ -122,9 +122,9 @@ export function MusicPlayer() {
           title="Skip this music"
           onClick={() => {
             handleNextMusic()
-            clickSfx?.play()
+            clickSfx()
           }}
-          onMouseEnter={() => tickSfx?.play()}
+          onMouseEnter={() => tickSfx()}
         >
           <Skip />
         </AnimationContainer>

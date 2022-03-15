@@ -10,7 +10,7 @@ export function BackButton(props: BackButtonProps) {
   const { tickSfx, clickSfx } = useContext(SfxContext)
 
   function handleClick() {
-    clickSfx?.play()
+    clickSfx()
     props.onClick()
   }
 
@@ -19,7 +19,7 @@ export function BackButton(props: BackButtonProps) {
       initial="initial"
       variants={variantsContainer}
       animate="enter"
-      onMouseEnter={() => tickSfx?.play()}
+      onMouseEnter={() => tickSfx()}
     >
       <BackIcon onClick={handleClick} />
     </BackContainer>

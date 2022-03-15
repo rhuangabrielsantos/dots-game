@@ -17,7 +17,7 @@ export function Home() {
   const [buttonAnimation, setButtonAnimation] = useAnimation(300)
 
   function handlePlayOffline() {
-    clickSfx?.play()
+    clickSfx()
 
     setTextAnimation('initial')
     setButtonAnimation('initial')
@@ -48,14 +48,14 @@ export function Home() {
         <Button
           color="black"
           onClick={handlePlayOffline}
-          onMouseEnter={() => tickSfx?.play()}
+          onMouseEnter={() => tickSfx()}
         >
           <RiWifiOffLine size={20} style={{ marginRight: '10px' }} />
           Play Offline
         </Button>
         <Button
           color="red"
-          onMouseEnter={() => tickSfx?.play()}
+          onMouseEnter={() => tickSfx()}
           disabled
           title="Em breve..."
         >

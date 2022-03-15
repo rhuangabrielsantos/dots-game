@@ -73,7 +73,7 @@ export function PlayOffline() {
   }
 
   function handleFirstPlayerReady() {
-    clickSfx?.play()
+    clickSfx()
 
     const errors = []
 
@@ -93,7 +93,7 @@ export function PlayOffline() {
   }
 
   function handleSecondPlayerReady() {
-    clickSfx?.play()
+    clickSfx()
 
     const errors = []
 
@@ -121,7 +121,7 @@ export function PlayOffline() {
   }
 
   function handleStartGame() {
-    clickSfx?.play()
+    clickSfx()
 
     const { board, marks } = generateGameBySize(4, 4)
 
@@ -162,9 +162,9 @@ export function PlayOffline() {
           backfaceVisibility="visible"
         >
           <EditButton
-            onMouseEnter={() => tickSfx?.play()}
+            onMouseEnter={() => tickSfx()}
             onClick={() => {
-              clickSfx?.play()
+              clickSfx()
               setIsFirstPlayerReady(false)
             }}
           />
@@ -212,7 +212,7 @@ export function PlayOffline() {
 
           <Button
             onClick={handleFirstPlayerReady}
-            onMouseEnter={() => tickSfx?.play()}
+            onMouseEnter={() => tickSfx()}
           >
             PRONTO
           </Button>
@@ -227,9 +227,9 @@ export function PlayOffline() {
           backfaceVisibility="visible"
         >
           <EditButton
-            onMouseEnter={() => tickSfx?.play()}
+            onMouseEnter={() => tickSfx()}
             onClick={() => {
-              clickSfx?.play()
+              clickSfx()
               setIsSecondPlayerReady(false)
             }}
           />
@@ -277,7 +277,7 @@ export function PlayOffline() {
 
           <Button
             onClick={handleSecondPlayerReady}
-            onMouseEnter={() => tickSfx?.play()}
+            onMouseEnter={() => tickSfx()}
           >
             PRONTO
           </Button>
@@ -319,7 +319,7 @@ export function PlayOffline() {
           </PlayerDetails>
         </PlayerInfoContainer>
 
-        <Button onClick={handleStartGame} onMouseEnter={() => tickSfx?.play()}>
+        <Button onClick={handleStartGame} onMouseEnter={() => tickSfx()}>
           JOGAR
         </Button>
       </InformationBox>

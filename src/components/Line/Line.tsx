@@ -16,7 +16,7 @@ export function Line({ isVertical, collumn, row }: LineProps) {
   const { game, updateGame } = useContext(GameContext)
 
   function handleClick() {
-    clickSfx?.play()
+    clickSfx()
 
     const newBoardState = handlePlayerClick({
       board: game?.board || [],
@@ -42,7 +42,7 @@ export function Line({ isVertical, collumn, row }: LineProps) {
     )
 
     if (thereIsAWinnerOfTheSquare) {
-      winnerSfx?.play()
+      winnerSfx()
     }
 
     updateGame({ ...newGameState, turn: game.turn + 1 })
@@ -61,7 +61,7 @@ export function Line({ isVertical, collumn, row }: LineProps) {
           : game.secondPlayer.color
       }
       disabled={game.board[collumn][row] !== undefined}
-      onMouseEnter={() => tickSfx?.play()}
+      onMouseEnter={() => tickSfx()}
     />
   )
 }
