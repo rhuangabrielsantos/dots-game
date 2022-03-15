@@ -95,6 +95,17 @@ export const Field = styled.input`
     background-color: ${(props) => props.theme.colors.secondary};
     color: ${(props) => props.theme.colors.background};
   }
+
+  -webkit-text-fill-color: ${(props) => props.theme.colors.secondary};
+  -webkit-box-shadow: 0 0 0px 1000px ${(props) => props.theme.colors.primary}
+    inset;
+
+  &:-webkit-autofill,
+  :-webkit-autofill:hover,
+  :-webkit-autofill:focus,
+  :-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+  }
 `
 
 export const Button = styled.button`
