@@ -867,6 +867,11 @@
     "@types/react" "*"
     hoist-non-react-statics "^3.3.0"
 
+"@types/howler@^2.2.6":
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/@types/howler/-/howler-2.2.6.tgz#84389d2d09c1cdfaa99514cbe9f0363ae091cc5c"
+  integrity sha512-9cLZICB6CFNIbwk0kJGvIvlEVI7D0dbbtcj00Uin81jQSMeKafaLq7r3v0RWQOX8BkM+KqboJaOeH5S/qpNqJg==
+
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0", "@types/istanbul-lib-coverage@^2.0.1":
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.4.tgz#8467d4b3c087805d63580480890791277ce35c44"
