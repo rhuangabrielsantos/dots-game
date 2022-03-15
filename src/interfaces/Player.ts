@@ -8,7 +8,7 @@ export interface Player {
 export type Colors =
   | '#FF2329'
   | '#0030f3'
-  | '#19ce28'
-  | '#f3f300'
+  | '#02c913'
+  | '#ffff28'
   | 'primary'
   | undefined

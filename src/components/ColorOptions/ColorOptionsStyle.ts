@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { Colors } from '@/interfaces/Player'
+
 export const Container = styled.div`
   display: flex;
   align-items: center;
@@ -8,7 +10,7 @@ export const Container = styled.div`
   gap: 0.5rem;
 `
 
-export const ColorButton = styled.button<{ color: string; disabled: boolean }>`
+export const ColorButton = styled.button<{ color: Colors; disabled: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;

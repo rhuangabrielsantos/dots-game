@@ -38,8 +38,6 @@ import {
 } from './PlayOfflineStyle'
 
 export function PlayOffline() {
-  const colors = ['#FF2329', '#0030f3', '#19ce28', '#f3f300']
-
   const { createNewGame } = useContext(GameContext)
   const navigate = useNavigate()
 
@@ -206,7 +204,6 @@ export function PlayOffline() {
 
           <Label htmlFor="firstPlayerColor">COR</Label>
           <ColorOptions
-            colors={colors}
             unavailableColors={unavailableColorsForFirstPlayer}
             selectedColor={selectedColorForFirstPlayer}
             onChange={handleFirstPlayerColorChange}
@@ -272,7 +269,6 @@ export function PlayOffline() {
 
           <Label htmlFor="secondPlayerColor">COR</Label>
           <ColorOptions
-            colors={colors}
             unavailableColors={unavailableColorsForSecondPlayer}
             selectedColor={selectedColorForSecondPlayer}
             onChange={handleSecondPlayerColorChange}
