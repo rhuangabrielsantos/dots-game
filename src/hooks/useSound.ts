@@ -1,0 +1,30 @@
+import { useEffect, useState } from 'react'
+
+interface SoundOptions {
+  volume: number
+  loop: boolean
+}
+
+export function useSound(soundUrl: string, options: SoundOptions) {
+  const [sound, setSound] = useState<HTMLAudioElement | null>(null)
+
+  useEffect(() => {
+    const audio = new Audio(soundUrl)
+    audio.load()
+    audio.volume = options.volume
+    audio.loop = options.loop
+
+    setSound(audio)
+  }, [])
+
+  return () => {
+    if (sound) {
+      sound.play()
+
+      setTimeout(() => {
+        sound.pause()
+        sound.currentTime = 0
+      }, 300)
+    }
+  }
+}

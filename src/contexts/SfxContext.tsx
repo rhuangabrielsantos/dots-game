@@ -1,15 +1,14 @@
 import { createContext } from 'react'
-import useSound from 'use-sound'
-import { PlayFunction } from 'use-sound/dist/types'
 
 import clickWav from '@/assets/sfx/click.wav'
 import tickMp3 from '@/assets/sfx/tick.mp3'
 import winnerWav from '@/assets/sfx/winner.wav'
+import { useSound } from '@/hooks/useSound'
 
 type SfxContextType = {
-  clickSfx: PlayFunction
-  tickSfx: PlayFunction
-  winnerSfx: PlayFunction
+  clickSfx: () => void
+  tickSfx: () => void
+  winnerSfx: () => void
 }
 
 export const SfxContext = createContext({} as SfxContextType)
@@ -19,9 +18,14 @@ type SfxContextProviderType = {
 }
 
 export function SfxContextProvider(props: SfxContextProviderType) {
-  const [clickSfx] = useSound(clickWav, { volume: 0.05 })
-  const [tickSfx] = useSound(tickMp3, { volume: 0.05 })
-  const [winnerSfx] = useSound(winnerWav, { volume: 0.05 })
+  const options = {
+    volume: 0.05,
+    loop: false,
+  }
+
+  const clickSfx = useSound(clickWav, options)
+  const tickSfx = useSound(tickMp3, options)
+  const winnerSfx = useSound(winnerWav, options)
 
   return (
     <SfxContext.Provider
