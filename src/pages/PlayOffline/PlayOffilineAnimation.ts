@@ -48,7 +48,7 @@ export const variantsInformationBox = {
   },
   animate: {
     opacity: 1,
-    y: 0,
+    x: 0,
     width: 300,
     height: 420,
     display: 'flex',
