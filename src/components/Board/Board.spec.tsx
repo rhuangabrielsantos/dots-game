@@ -1,6 +1,6 @@
 import renderWithTheme from '@/config/renderWithTheme'
 import { GameBoard } from '@/interfaces'
-import { theme } from '@/styles/theme'
+import { lightTheme } from '@/styles/theme'
 import { screen } from '@testing-library/react'
 
 import { Board } from './Board'
@@ -25,7 +25,11 @@ describe('Test the board component', () => {
   })
 
   it('given the component rendering, when the board size is 1x1 with first line is blue and second line is red, then it must colors in the lines', async () => {
-    const boardMock: GameBoard = [['blue'], ['red', undefined], [undefined]]
+    const boardMock: GameBoard = [
+      ['#0030f3'],
+      ['#FF2329', undefined],
+      [undefined],
+    ]
 
     renderWithTheme(<Board board={boardMock} />)
 
@@ -36,9 +40,13 @@ describe('Test the board component', () => {
     expect(verticalLines).toHaveLength(2)
 
     const horizontalLine = horizontalLines[0]
-    expect(horizontalLine).toHaveStyle(`background-color: ${theme.colors.blue}`)
+    expect(horizontalLine).toHaveStyle(
+      `background-color: ${lightTheme.colors.blue}`
+    )
 
     const verticalLine = verticalLines[0]
-    expect(verticalLine).toHaveStyle(`background-color: ${theme.colors.red}`)
+    expect(verticalLine).toHaveStyle(
+      `background-color: ${lightTheme.colors.red}`
+    )
   })
 })

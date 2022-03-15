@@ -1,7 +1,7 @@
-import { Color } from '@/interfaces'
+import { Colors } from '@/interfaces/Player'
 
 export interface SquareProps {
-  color?: Color
+  color?: Colors
   left?: number
   top?: number
 }

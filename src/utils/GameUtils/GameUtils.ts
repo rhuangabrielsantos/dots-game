@@ -63,9 +63,10 @@ export function handlePlayerClick(props: HandlePlayerClickProps): GameBoard {
   return board
 }
 
-export function handleSquareWinnerCheck(props: HandleSquareWinnerCheck): Game {
+export function handleSquareWinnerCheck(props: HandleSquareWinnerCheck) {
   const { game, clickCoords, lastPlayer, isTopOrBottom } = props
 
+  let thereIsAWinnerOfTheSquare = false
   let newGameState: Game = game
 
   if (
@@ -91,6 +92,8 @@ export function handleSquareWinnerCheck(props: HandleSquareWinnerCheck): Game {
         right: [clickCoords.collumn + 2, clickCoords.row],
       }
     )
+
+    thereIsAWinnerOfTheSquare = true
   }
 
   if (
@@ -116,6 +119,8 @@ export function handleSquareWinnerCheck(props: HandleSquareWinnerCheck): Game {
         right: [clickCoords.collumn, clickCoords.row],
       }
     )
+
+    thereIsAWinnerOfTheSquare = true
   }
 
   if (
@@ -141,6 +146,8 @@ export function handleSquareWinnerCheck(props: HandleSquareWinnerCheck): Game {
         right: [clickCoords.collumn + 1, clickCoords.row],
       }
     )
+
+    thereIsAWinnerOfTheSquare = true
   }
 
   if (
@@ -166,9 +173,11 @@ export function handleSquareWinnerCheck(props: HandleSquareWinnerCheck): Game {
         right: [clickCoords.collumn + 1, clickCoords.row - 1],
       }
     )
+
+    thereIsAWinnerOfTheSquare = true
   }
 
-  return newGameState
+  return { newGameState, thereIsAWinnerOfTheSquare }
 }
 
 function generateNewPointForPlayer(game: Game, lastPlayer: Player) {
@@ -202,10 +211,10 @@ function markSquareWithTheColorOfTheWinner(
     squareCoords[0] % 2 === 0 ? squareCoords[0] / 2 : squareCoords[0] / 2 - 0.5
   ][squareCoords[1]] = lastPlayer.color
 
-  newBoard[lines.top[0]][lines.top[1]] = 'black'
-  newBoard[lines.bottom[0]][lines.bottom[1]] = 'black'
-  newBoard[lines.left[0]][lines.left[1]] = 'black'
-  newBoard[lines.right[0]][lines.right[1]] = 'black'
+  newBoard[lines.top[0]][lines.top[1]] = 'primary'
+  newBoard[lines.bottom[0]][lines.bottom[1]] = 'primary'
+  newBoard[lines.left[0]][lines.left[1]] = 'primary'
+  newBoard[lines.right[0]][lines.right[1]] = 'primary'
 
   return {
     ...game,

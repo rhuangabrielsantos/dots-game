@@ -1,5 +1,4 @@
-import { Color } from './Color'
-import { Player } from './Player'
+import { Colors, Player } from './Player'
 
 export interface Game {
   id?: string
@@ -11,9 +10,9 @@ export interface Game {
   turn: number
 }
 
-export type GameBoard = Color[][]
+export type GameBoard = Colors[][]
 
-export type GameMarks = Color[][]
+export type GameMarks = Colors[][]
 
 export type GameProps = {
   board: GameBoard

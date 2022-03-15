@@ -1,8 +1,9 @@
-import { Color, Game, GameBoard, Player } from '@/interfaces'
+import { Game, GameBoard, Player } from '@/interfaces'
+import { Colors } from '@/interfaces/Player'
 
 export interface HandlePlayerClickProps {
   board: GameBoard
-  color: Color
+  color: Colors
   collumn: number
   row: number
 }

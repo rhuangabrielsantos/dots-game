@@ -38,7 +38,7 @@ export function MusicPlayer() {
     setPlayPromise(promise)
 
     if (playerRef.current?.volume) {
-      playerRef.current.volume = 0.2
+      playerRef.current.volume = 0.1
     }
   }
 
@@ -58,7 +58,7 @@ export function MusicPlayer() {
       setPlayPromise(promise)
 
       if (playerRef.current?.volume) {
-        playerRef.current.volume = 0.2
+        playerRef.current.volume = 0.1
       }
 
       return

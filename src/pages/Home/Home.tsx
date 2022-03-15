@@ -2,16 +2,17 @@ import { ImGoogle } from 'react-icons/im'
 import { RiWifiOffLine } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
 
+import { useAnimation } from '@/hooks/useAnimation'
 import { clickSfx, tickSfx } from '@/utils/SfxUtils'
 
-import { buttonsVariants, textVariants, useAnimation } from './HomeAnimation'
+import { buttonsVariants, textVariants } from './HomeAnimation'
 import { Container, Title, Description, BoxButton, Button } from './HomeStyle'
 
 export function Home() {
   const navigate = useNavigate()
 
-  const [textAnimation, setTextAnimation] = useAnimation()
-  const [buttonAnimation, setButtonAnimation] = useAnimation()
+  const [textAnimation, setTextAnimation] = useAnimation(300)
+  const [buttonAnimation, setButtonAnimation] = useAnimation(300)
 
   function handlePlayOffline() {
     clickSfx.play()

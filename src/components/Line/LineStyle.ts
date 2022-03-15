@@ -1,6 +1,12 @@
 import styled from 'styled-components'
 
-export const Line = styled.button<{ color?: string; isVertical: boolean }>`
+import { Colors } from '@/interfaces/Player'
+
+export const Line = styled.button<{
+  color?: string
+  isVertical: boolean
+  turn: Colors
+}>`
   ${(props) =>
     props.isVertical
       ? `
@@ -17,7 +23,7 @@ export const Line = styled.button<{ color?: string; isVertical: boolean }>`
         width: 1.5rem;
         height: 1.5rem;
         border-radius: 50%;
-        background-color: ${props.theme.colors.gray};
+        background: ${props.theme.colors.secondary};
         margin-left: -3.75rem;
         z-index: 2;
       }
@@ -27,7 +33,7 @@ export const Line = styled.button<{ color?: string; isVertical: boolean }>`
         width: 1.5rem;
         height: 1.5rem;
         border-radius: 50%;
-        background-color: ${props.theme.colors.gray};
+        background: ${props.theme.colors.secondary};
         margin-right: -3.75rem;
         z-index: 2;
       }
@@ -35,24 +41,18 @@ export const Line = styled.button<{ color?: string; isVertical: boolean }>`
 
   border: none;
 
-  background-color: ${(props) => {
+  background: ${(props) => {
     switch (props.color) {
-      case undefined:
-        return props.theme.colors.default
-      case 'red':
-        return props.theme.colors.red
-      case 'blue':
-        return props.theme.colors.blue
-      case 'black':
-        return props.theme.colors.black
+      case 'primary':
+        return props.theme.colors.tertiary
+      default:
+        return props.color || props.theme.colors.primary
     }
   }};
 
-  transition: opacity 0.2s ease-in-out;
-
-  &:hover {
+  &:hover:enabled {
     cursor: pointer;
-    opacity: 0.8;
+    background-color: ${(props) => props.turn};
   }
 
   &:disabled {

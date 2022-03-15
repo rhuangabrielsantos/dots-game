@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-
 export const textVariants = {
   initial: {
     opacity: 0,
@@ -36,18 +34,4 @@ export const buttonsVariants = {
       ease: [0.6, 0.05, -0.01, 0.9],
     },
   },
-}
-
-export function useAnimation() {
-  const [animation, setAnimation] = useState<'initial' | 'animate'>('initial')
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setAnimation('animate')
-    }, 300)
-
-    return () => clearTimeout(timeout)
-  }, [])
-
-  return [animation, setAnimation] as const
 }

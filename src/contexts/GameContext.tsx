@@ -1,7 +1,6 @@
 import { createContext, useState } from 'react'
 
 import { Game, GameBoard } from '@/interfaces'
-import { generateGameBySize } from '@/utils/GameUtils'
 
 type GameContextType = {
   game: Game
@@ -18,22 +17,20 @@ type GameContextProviderType = {
 }
 
 export function GameContextProvider(props: GameContextProviderType) {
-  const { board, marks } = generateGameBySize(1, 1)
-
   const [game, setGame] = useState<Game>({
-    board,
-    marks,
-    turn: 1,
+    board: [],
+    marks: [],
+    turn: 0,
     firstPlayer: {
       id: '1',
-      name: 'Rhuan',
-      color: 'blue',
+      name: 'Player 1',
+      color: '#0030f3',
       pontuation: 0,
     },
     secondPlayer: {
       id: '2',
-      name: 'Ana',
-      color: 'red',
+      name: 'Player 2',
+      color: '#FF2329',
       pontuation: 0,
     },
   })

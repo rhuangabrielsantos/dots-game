@@ -9,16 +9,7 @@ export const Square = styled.button<{
   height: 5rem;
   border: none;
 
-  background-color: ${(props) => {
-    switch (props.color) {
-      case undefined:
-        return props.theme.colors.undefined
-      case 'red':
-        return props.theme.colors.red
-      case 'blue':
-        return props.theme.colors.blue
-    }
-  }};
+  background-color: ${(props) => props.color || props.theme.colors.primary};
 
   position: absolute;
   top: ${(props) =>
