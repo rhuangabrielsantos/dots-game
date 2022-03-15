@@ -51,7 +51,12 @@ export function Home() {
           <RiWifiOffLine size={20} style={{ marginRight: '10px' }} />
           Play Offline
         </Button>
-        <Button color="red" onMouseEnter={() => tickSfx.play()}>
+        <Button
+          color="red"
+          onMouseEnter={() => tickSfx.play()}
+          disabled
+          title="Em breve..."
+        >
           <ImGoogle size={20} style={{ marginRight: '10px' }} />
           Play Online
         </Button>
