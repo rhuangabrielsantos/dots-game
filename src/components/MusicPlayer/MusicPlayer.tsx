@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import Lottie from 'react-lottie'
 
 import animationData from '@/assets/animations/music-rhythm.json'
-import { tickSfx } from '@/utils/SfxUtils'
-import { clickSfx } from '@/utils/SfxUtils/SfxUtils'
+import { SfxContext } from '@/contexts/SfxContext'
 
 import { variantsControls, variantsTitle } from './MusicPlayerAnimation'
 import {
@@ -18,6 +17,8 @@ import {
 import { musics } from './Songs'
 
 export function MusicPlayer() {
+  const { tickSfx, clickSfx } = useContext(SfxContext)
+
   const playerRef = useRef<HTMLAudioElement>(null)
   const [playPromise, setPlayPromise] = useState<Promise<void>>()
 
@@ -98,18 +99,18 @@ export function MusicPlayer() {
           <Play
             onClick={() => {
               setIsPlaying(false)
-              clickSfx.play()
+              clickSfx?.play()
             }}
-            onMouseEnter={() => tickSfx.play()}
+            onMouseEnter={() => tickSfx?.play()}
             title="Pause the music"
           />
         ) : (
           <PlayDisabled
             onClick={() => {
               setIsPlaying(true)
-              clickSfx.play()
+              clickSfx?.play()
             }}
-            onMouseEnter={() => tickSfx.play()}
+            onMouseEnter={() => tickSfx?.play()}
             title="Play the music"
           />
         )}
@@ -121,9 +122,9 @@ export function MusicPlayer() {
           title="Skip this music"
           onClick={() => {
             handleNextMusic()
-            clickSfx.play()
+            clickSfx?.play()
           }}
-          onMouseEnter={() => tickSfx.play()}
+          onMouseEnter={() => tickSfx?.play()}
         >
           <Skip />
         </AnimationContainer>

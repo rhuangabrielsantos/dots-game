@@ -1,21 +1,23 @@
+import { useContext } from 'react'
 import { ImGoogle } from 'react-icons/im'
 import { RiWifiOffLine } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
 
+import { SfxContext } from '@/contexts/SfxContext'
 import { useAnimation } from '@/hooks/useAnimation'
-import { clickSfx, tickSfx } from '@/utils/SfxUtils'
 
 import { buttonsVariants, textVariants } from './HomeAnimation'
 import { Container, Title, Description, BoxButton, Button } from './HomeStyle'
 
 export function Home() {
+  const { tickSfx, clickSfx } = useContext(SfxContext)
   const navigate = useNavigate()
 
   const [textAnimation, setTextAnimation] = useAnimation(300)
   const [buttonAnimation, setButtonAnimation] = useAnimation(300)
 
   function handlePlayOffline() {
-    clickSfx.play()
+    clickSfx?.play()
 
     setTextAnimation('initial')
     setButtonAnimation('initial')
@@ -46,14 +48,14 @@ export function Home() {
         <Button
           color="black"
           onClick={handlePlayOffline}
-          onMouseEnter={() => tickSfx.play()}
+          onMouseEnter={() => tickSfx?.play()}
         >
           <RiWifiOffLine size={20} style={{ marginRight: '10px' }} />
           Play Offline
         </Button>
         <Button
           color="red"
-          onMouseEnter={() => tickSfx.play()}
+          onMouseEnter={() => tickSfx?.play()}
           disabled
           title="Em breve..."
         >

@@ -7,9 +7,9 @@ import animationData from '@/assets/animations/success.json'
 import { BackButton } from '@/components/BackButton'
 import { ColorOptions } from '@/components/ColorOptions'
 import { GameContext } from '@/contexts/GameContext'
+import { SfxContext } from '@/contexts/SfxContext'
 import { Colors } from '@/interfaces/Player'
 import { generateGameBySize } from '@/utils/GameUtils'
-import { clickSfx, tickSfx } from '@/utils/SfxUtils'
 import { errorToastOptions } from '@/utils/ToastUtils'
 
 import {
@@ -38,6 +38,7 @@ import {
 } from './PlayOfflineStyle'
 
 export function PlayOffline() {
+  const { tickSfx, clickSfx } = useContext(SfxContext)
   const { createNewGame } = useContext(GameContext)
   const navigate = useNavigate()
 
@@ -72,7 +73,7 @@ export function PlayOffline() {
   }
 
   function handleFirstPlayerReady() {
-    clickSfx.play()
+    clickSfx?.play()
 
     const errors = []
 
@@ -92,7 +93,7 @@ export function PlayOffline() {
   }
 
   function handleSecondPlayerReady() {
-    clickSfx.play()
+    clickSfx?.play()
 
     const errors = []
 
@@ -120,7 +121,7 @@ export function PlayOffline() {
   }
 
   function handleStartGame() {
-    clickSfx.play()
+    clickSfx?.play()
 
     const { board, marks } = generateGameBySize(4, 4)
 
@@ -161,9 +162,9 @@ export function PlayOffline() {
           backfaceVisibility="visible"
         >
           <EditButton
-            onMouseEnter={() => tickSfx.play()}
+            onMouseEnter={() => tickSfx?.play()}
             onClick={() => {
-              clickSfx.play()
+              clickSfx?.play()
               setIsFirstPlayerReady(false)
             }}
           />
@@ -211,7 +212,7 @@ export function PlayOffline() {
 
           <Button
             onClick={handleFirstPlayerReady}
-            onMouseEnter={() => tickSfx.play()}
+            onMouseEnter={() => tickSfx?.play()}
           >
             PRONTO
           </Button>
@@ -226,9 +227,9 @@ export function PlayOffline() {
           backfaceVisibility="visible"
         >
           <EditButton
-            onMouseEnter={() => tickSfx.play()}
+            onMouseEnter={() => tickSfx?.play()}
             onClick={() => {
-              clickSfx.play()
+              clickSfx?.play()
               setIsSecondPlayerReady(false)
             }}
           />
@@ -276,7 +277,7 @@ export function PlayOffline() {
 
           <Button
             onClick={handleSecondPlayerReady}
-            onMouseEnter={() => tickSfx.play()}
+            onMouseEnter={() => tickSfx?.play()}
           >
             PRONTO
           </Button>
@@ -318,7 +319,7 @@ export function PlayOffline() {
           </PlayerDetails>
         </PlayerInfoContainer>
 
-        <Button onClick={handleStartGame} onMouseEnter={() => tickSfx.play()}>
+        <Button onClick={handleStartGame} onMouseEnter={() => tickSfx?.play()}>
           JOGAR
         </Button>
       </InformationBox>

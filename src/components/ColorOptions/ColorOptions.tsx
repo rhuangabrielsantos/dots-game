@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { MdDone } from 'react-icons/md'
 
+import { SfxContext } from '@/contexts/SfxContext'
 import { Colors } from '@/interfaces/Player'
-import { clickSfx, tickSfx } from '@/utils/SfxUtils'
 
 import { ColorOptionsProps } from './ColorOptionsProps'
 import { ColorButton, Container } from './ColorOptionsStyle'
 
 export function ColorOptions(props: ColorOptionsProps) {
+  const { tickSfx, clickSfx } = useContext(SfxContext)
+
   const colors: Colors[] = ['#e02130', '#429867', '#482344', '#fab243']
 
   return (
@@ -19,9 +21,9 @@ export function ColorOptions(props: ColorOptionsProps) {
           disabled={props.unavailableColors.includes(color)}
           onClick={() => {
             props.onChange(color)
-            clickSfx.play()
+            clickSfx?.play()
           }}
-          onMouseEnter={() => tickSfx.play()}
+          onMouseEnter={() => tickSfx?.play()}
           title={
             props.unavailableColors.includes(color)
               ? 'Outro jogador já escolheu esta cor'

@@ -24,13 +24,13 @@ export function GameContextProvider(props: GameContextProviderType) {
     firstPlayer: {
       id: '1',
       name: 'Player 1',
-      color: '#0030f3',
+      color: '#429867',
       pontuation: 0,
     },
     secondPlayer: {
       id: '2',
       name: 'Player 2',
-      color: '#FF2329',
+      color: '#482344',
       pontuation: 0,
     },
   })

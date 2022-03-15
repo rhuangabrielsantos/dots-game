@@ -1,21 +1,22 @@
 import React, { useContext } from 'react'
 
 import { GameContext } from '@/contexts/GameContext'
+import { SfxContext } from '@/contexts/SfxContext'
 import {
   handlePlayerClick,
   handleSquareWinnerCheck,
 } from '@/utils/GameUtils/GameUtils'
-import { clickSfx, tickSfx } from '@/utils/SfxUtils'
-import { winnerSfx } from '@/utils/SfxUtils/SfxUtils'
 
 import { LineProps } from './LineProps'
 import { Line as LineStyle } from './LineStyle'
 
 export function Line({ isVertical, collumn, row }: LineProps) {
+  const { tickSfx, clickSfx, winnerSfx } = useContext(SfxContext)
+
   const { game, updateGame } = useContext(GameContext)
 
   function handleClick() {
-    clickSfx.play()
+    clickSfx?.play()
 
     const newBoardState = handlePlayerClick({
       board: game?.board || [],
@@ -41,7 +42,7 @@ export function Line({ isVertical, collumn, row }: LineProps) {
     )
 
     if (thereIsAWinnerOfTheSquare) {
-      winnerSfx.play()
+      winnerSfx?.play()
     }
 
     updateGame({ ...newGameState, turn: game.turn + 1 })
@@ -60,7 +61,7 @@ export function Line({ isVertical, collumn, row }: LineProps) {
           : game.secondPlayer.color
       }
       disabled={game.board[collumn][row] !== undefined}
-      onMouseEnter={() => tickSfx.play()}
+      onMouseEnter={() => tickSfx?.play()}
     />
   )
 }
