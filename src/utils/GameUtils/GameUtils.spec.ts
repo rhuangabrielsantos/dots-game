@@ -58,7 +58,7 @@ describe('Given the function handle player click', () => {
       board,
       collumn: 0,
       row: 0,
-      color: 'red',
+      color: '#FF2329',
     }
 
     const newBoard = handlePlayerClick(props)
@@ -72,7 +72,7 @@ describe('Given the function handle player click', () => {
       board,
       collumn: 3,
       row: 5,
-      color: 'red',
+      color: '#FF2329',
     }
 
     const newBoard = handlePlayerClick(props)
@@ -98,12 +98,12 @@ describe('Given the function handle square winner check', () => {
     const firstPlayer: Player = {
       id: '1',
       name: 'Player 1',
-      color: 'blue',
+      color: '#0030f3',
       pontuation: 0,
     }
     const game: Game = {
       board: [
-        ['red', 'blue'],
+        ['#FF2329', '#0030f3'],
         [undefined, undefined, undefined],
         [undefined, undefined],
         [undefined, undefined, undefined],
@@ -114,7 +114,7 @@ describe('Given the function handle square winner check', () => {
       secondPlayer: {
         id: '2',
         name: 'Player 2',
-        color: 'red',
+        color: '#FF2329',
         pontuation: 0,
       },
       marks: [],
@@ -137,15 +137,15 @@ describe('Given the function handle square winner check', () => {
     const firstPlayer: Player = {
       id: '1',
       name: 'Player 1',
-      color: 'blue',
+      color: '#0030f3',
       pontuation: 0,
     }
 
     const game: Game = {
       board: [
-        ['blue', undefined],
-        ['red', 'red', undefined],
-        ['blue', undefined],
+        ['#0030f3', undefined],
+        ['#FF2329', '#FF2329', undefined],
+        ['#0030f3', undefined],
         [undefined, undefined, undefined],
         [undefined, undefined],
       ],
@@ -153,14 +153,14 @@ describe('Given the function handle square winner check', () => {
       secondPlayer: {
         id: '2',
         name: 'Player 2',
-        color: 'red',
+        color: '#FF2329',
         pontuation: 0,
       },
       turn: 1,
       marks: [],
     }
 
-    const newGame = handleSquareWinnerCheck({
+    const { newGameState } = handleSquareWinnerCheck({
       game,
       clickCoords: {
         collumn: 0,
@@ -170,6 +170,6 @@ describe('Given the function handle square winner check', () => {
       isTopOrBottom: true,
     })
 
-    expect(newGame.firstPlayer?.pontuation).toEqual(1)
+    expect(newGameState.firstPlayer.pontuation).toEqual(1)
   })
 })

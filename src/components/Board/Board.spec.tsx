@@ -15,7 +15,7 @@ describe('Test the board component', () => {
       [undefined, undefined],
     ]
 
-    renderWithTheme(<Board board={boardMock} />)
+    renderWithTheme(<Board board={boardMock} marks={[]} />)
 
     const horizontalLines = await screen.findAllByLabelText('horizontal-line')
     expect(horizontalLines).toHaveLength(6)
@@ -31,7 +31,7 @@ describe('Test the board component', () => {
       [undefined],
     ]
 
-    renderWithTheme(<Board board={boardMock} />)
+    renderWithTheme(<Board board={boardMock} marks={[]} />)
 
     const horizontalLines = await screen.findAllByLabelText('horizontal-line')
     expect(horizontalLines).toHaveLength(2)

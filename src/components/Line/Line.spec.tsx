@@ -1,7 +1,7 @@
 import renderWithTheme, {
   renderWithThemeAndContextProvider,
 } from '@/config/renderWithTheme'
-import { theme } from '@/styles/theme'
+import { lightTheme } from '@/styles/theme'
 import { screen } from '@testing-library/react'
 
 import { Line } from './Line'
@@ -9,21 +9,21 @@ import { Line } from './Line'
 describe('Given the rendering of the component', () => {
   it('When the property color is "red", Then component must have red color', () => {
     const { container } = renderWithTheme(
-      <Line color="red" collumn={0} row={0} isVertical />
+      <Line color="#FF2329" collumn={0} row={0} isVertical />
     )
 
     expect(container.firstChild).toHaveStyle(
-      `background-color: ${theme.colors.red}`
+      `background-color: ${lightTheme.colors.red}`
     )
   })
 
   it('When the property color is "blue", Then component must have blue color', () => {
     const { container } = renderWithTheme(
-      <Line color="blue" collumn={0} row={0} isVertical />
+      <Line color="#0030f3" collumn={0} row={0} isVertical />
     )
 
     expect(container.firstChild).toHaveStyle(
-      `background-color: ${theme.colors.blue}`
+      `background-color: ${lightTheme.colors.blue}`
     )
   })
 
@@ -33,7 +33,7 @@ describe('Given the rendering of the component', () => {
     )
 
     expect(container.firstChild).toHaveStyle(
-      `background-color: ${theme.colors.default}`
+      `background-color: ${lightTheme.colors.default}`
     )
   })
 })
@@ -45,7 +45,7 @@ describe('Given click in the line', () => {
     screen.getByLabelText('vertical-line').click()
 
     expect(screen.getByLabelText('vertical-line')).toHaveStyle(
-      `background-color: ${theme.colors.red}`
+      `background-color: ${lightTheme.colors.red}`
     )
 
     expect(screen.getByLabelText('vertical-line')).toHaveAttribute(
