@@ -8,7 +8,7 @@ import { ColorOptionsProps } from './ColorOptionsProps'
 import { ColorButton, Container } from './ColorOptionsStyle'
 
 export function ColorOptions(props: ColorOptionsProps) {
-  const colors: Colors[] = ['#FF2329', '#0030f3', '#02c913', '#ffff28']
+  const colors: Colors[] = ['#e02130', '#429867', '#482344', '#fab243']
 
   return (
     <Container>
