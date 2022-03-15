@@ -1,5 +1,7 @@
 ![dots-game](https://socialify.git.ci/rhuangabrielsantos/dots-game/image?font=Raleway&issues=1&logo=https%3A%2F%2Fdots-game.vercel.app%2Ffavicon.svg&name=1&owner=1&pattern=Solid&pulls=1&stargazers=1&theme=Dark)
 
+Welcome to dots-game repository, [click to play!](dots-game.vercel.app/)
+
 ## Techs
 
 - [React](https://reactjs.org/)
