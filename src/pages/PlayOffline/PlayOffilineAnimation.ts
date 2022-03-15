@@ -37,7 +37,8 @@ export const variantsFlip = {
 export const variantsInformationBox = {
   initial: {
     opacity: 0,
-    width: 0,
+    x: -270,
+    width: 300,
     height: 420,
     display: 'none',
     transition: {
@@ -47,6 +48,7 @@ export const variantsInformationBox = {
   },
   animate: {
     opacity: 1,
+    y: 0,
     width: 300,
     height: 420,
     display: 'flex',
