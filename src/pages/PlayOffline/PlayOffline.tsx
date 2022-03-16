@@ -35,6 +35,8 @@ import {
   PlayerInfoTitle,
   PlayerDetails,
   PlayerInfoColor,
+  InformationEditButton,
+  PlayerDetailsHeader,
 } from './PlayOfflineStyle'
 
 export function PlayOffline() {
@@ -42,8 +44,8 @@ export function PlayOffline() {
   const { createNewGame } = useContext(GameContext)
   const navigate = useNavigate()
 
-  const [firstPlayerName, setFirstPlayerName] = useState<string>()
-  const [secondPlayerName, setSecondPlayerName] = useState<string>()
+  const [firstPlayerName, setFirstPlayerName] = useState<string>('')
+  const [secondPlayerName, setSecondPlayerName] = useState<string>('')
 
   const [unavailableColorsForFirstPlayer, setUnavailableColorsForFirstPlayer] =
     useState<Colors[]>([])
@@ -61,6 +63,8 @@ export function PlayOffline() {
   const [isSecondPlayerReady, setIsSecondPlayerReady] = useState<boolean>(false)
 
   const [containerAnimation, setContainerAnimation] = useState<boolean>(true)
+
+  const [mobileScreen, setMobileScreen] = useState<string>('first')
 
   function handleFirstPlayerColorChange(color: Colors) {
     setUnavailableColorsForSecondPlayer([color])
@@ -90,6 +94,12 @@ export function PlayOffline() {
     if (errors.length === 0) {
       setIsFirstPlayerReady(true)
     }
+
+    if (isSecondPlayerReady) {
+      setMobileScreen('information')
+    } else {
+      setMobileScreen('second')
+    }
   }
 
   function handleSecondPlayerReady() {
@@ -109,6 +119,7 @@ export function PlayOffline() {
 
     if (errors.length === 0) {
       setIsSecondPlayerReady(true)
+      setMobileScreen('information')
     }
   }
 
@@ -118,6 +129,19 @@ export function PlayOffline() {
     setTimeout(() => {
       window.history.back()
     }, 900)
+  }
+
+  function handleEditButton(screen: string) {
+    clickSfx()
+    setMobileScreen(screen)
+
+    if (screen === 'first') {
+      setIsFirstPlayerReady(false)
+    }
+
+    if (screen === 'second') {
+      setIsSecondPlayerReady(false)
+    }
   }
 
   function handleStartGame() {
@@ -154,7 +178,7 @@ export function PlayOffline() {
     >
       <BackButton onClick={handleBackButton} />
 
-      <FlipContainer>
+      <FlipContainer mobileEnabled={mobileScreen === 'first'}>
         <FormContainer
           initial={{ rotateY: 0 }}
           variants={variantsFlip}
@@ -219,7 +243,7 @@ export function PlayOffline() {
         </FormContainer>
       </FlipContainer>
 
-      <FlipContainer>
+      <FlipContainer mobileEnabled={mobileScreen === 'second'}>
         <FormContainer
           initial={{ rotateY: 0 }}
           variants={variantsFlip}
@@ -285,6 +309,7 @@ export function PlayOffline() {
       </FlipContainer>
 
       <InformationBox
+        mobileEnabled={mobileScreen === 'information'}
         initial="initial"
         variants={variantsInformationBox}
         animate={
@@ -294,7 +319,13 @@ export function PlayOffline() {
         <InformationTitle>Informações dos Jogadores</InformationTitle>
 
         <PlayerInfoContainer>
-          <PlayerInfoTitle>Primeiro Jogador</PlayerInfoTitle>
+          <PlayerDetailsHeader>
+            <PlayerInfoTitle>Primeiro Jogador</PlayerInfoTitle>
+            <InformationEditButton
+              onMouseEnter={() => tickSfx()}
+              onClick={() => handleEditButton('first')}
+            />
+          </PlayerDetailsHeader>
 
           <PlayerDetails>
             <PlayerInfoLabel>NOME:</PlayerInfoLabel>
@@ -307,7 +338,13 @@ export function PlayOffline() {
         </PlayerInfoContainer>
 
         <PlayerInfoContainer>
-          <PlayerInfoTitle>Segundo Jogador</PlayerInfoTitle>
+          <PlayerDetailsHeader>
+            <PlayerInfoTitle>Segundo Jogador</PlayerInfoTitle>
+            <InformationEditButton
+              onMouseEnter={() => tickSfx()}
+              onClick={() => handleEditButton('second')}
+            />
+          </PlayerDetailsHeader>
 
           <PlayerDetails>
             <PlayerInfoLabel>NOME:</PlayerInfoLabel>

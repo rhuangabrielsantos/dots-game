@@ -21,11 +21,12 @@ export function SfxContextProvider(props: SfxContextProviderType) {
   const options = {
     volume: 0.05,
     loop: false,
+    timeout: 300,
   }
 
   const clickSfx = useSound(clickWav, options)
   const tickSfx = useSound(tickMp3, options)
-  const winnerSfx = useSound(winnerWav, options)
+  const winnerSfx = useSound(winnerWav, { ...options, timeout: 550 })
 
   return (
     <SfxContext.Provider

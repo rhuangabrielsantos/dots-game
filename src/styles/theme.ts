@@ -14,6 +14,9 @@ export const lightTheme = {
 
     text: '#202124',
   },
+  media: {
+    mobile: '@media (max-width: 1000px)',
+  },
 }
 
 export const darkTheme = {
@@ -31,6 +34,9 @@ export const darkTheme = {
     black: '#00000099',
 
     text: '#F6F1EB',
+  },
+  media: {
+    mobile: '@media (max-width: 1000px)',
   },
 }
 

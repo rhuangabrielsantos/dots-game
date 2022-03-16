@@ -11,13 +11,17 @@ export const Container = styled(motion.div)`
   height: 100vh;
 `
 
-export const FlipContainer = styled(motion.div)`
+export const FlipContainer = styled(motion.div)<{ mobileEnabled: boolean }>`
   position: relative;
   float: left;
   margin: 5px;
 
   width: 300px;
   height: 420px;
+
+  ${(props) => props.theme.media.mobile} {
+    display: ${(props) => (props.mobileEnabled ? 'flex' : 'none')};
+  }
 `
 
 export const FormContainer = styled(motion.div)<{ backfaceVisibility: string }>`
@@ -164,7 +168,7 @@ export const EditButton = styled(FiEdit)`
   transform: scaleX(-1);
 `
 
-export const InformationBox = styled(motion.div)`
+export const InformationBox = styled(motion.div)<{ mobileEnabled: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -181,6 +185,10 @@ export const InformationBox = styled(motion.div)`
   background-color: ${({ theme }) => theme.colors.secondary};
 
   position: relative;
+
+  ${(props) => props.theme.media.mobile} {
+    display: ${(props) => (props.mobileEnabled ? 'none' : 'none')};
+  }
 `
 
 export const InformationTitle = styled.h1`
@@ -226,6 +234,17 @@ export const PlayerDetails = styled.div`
   gap: 0.3rem;
 `
 
+export const PlayerDetailsHeader = styled.div`
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 100%;
+
+  gap: 0.3rem;
+`
+
 export const PlayerInfoLabel = styled.h1`
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
@@ -249,4 +268,23 @@ export const PlayerInfoColor = styled.div<{ playerColor: string }>`
   border-radius: 5px;
 
   background-color: ${({ playerColor }) => playerColor};
+`
+
+export const InformationEditButton = styled(FiEdit)`
+  font-size: 1.5rem;
+  color: ${(props) => props.theme.colors.primary};
+
+  cursor: pointer;
+
+  transition: opacity 0.3s ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  display: none;
+
+  ${(props) => props.theme.media.mobile} {
+    display: flex;
+  }
 `

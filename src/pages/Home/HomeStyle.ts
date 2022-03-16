@@ -36,6 +36,14 @@ export const BoxButton = styled(motion.div)`
 
   width: 100%;
   max-width: 460px;
+
+  ${(props) => props.theme.media.mobile} {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 20px;
+  }
 `
 
 export const Button = styled.button<{ color?: string }>`

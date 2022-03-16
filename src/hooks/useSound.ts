@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 interface SoundOptions {
   volume: number
   loop: boolean
+  timeout: number
 }
 
 export function useSound(soundUrl: string, options: SoundOptions) {
@@ -24,7 +25,7 @@ export function useSound(soundUrl: string, options: SoundOptions) {
       setTimeout(() => {
         sound.pause()
         sound.currentTime = 0
-      }, 300)
+      }, options.timeout)
     }
   }
 }

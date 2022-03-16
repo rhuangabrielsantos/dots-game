@@ -19,7 +19,7 @@ export const Row = styled.div<{ horizontalLine: boolean }>`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-right: ${({ horizontalLine }) => (horizontalLine ? '1rem' : '5rem')};
+    margin-right: ${({ horizontalLine }) => (horizontalLine ? '15px' : '70px')};
 
     :last-child {
       margin-right: 0;

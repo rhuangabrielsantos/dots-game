@@ -7,34 +7,39 @@ export const Line = styled.button<{
   isVertical: boolean
   turn: Colors
 }>`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
   ${(props) =>
     props.isVertical
       ? `
-      width: 1rem;
-      height: 5rem;
+      width: 15px;
+      height: 70px;
     `
       : `
-      width: 5rem;
-      height: 1rem;
+      width: 70px;
+      height: 15px;
 
       ::after {
         content: '';
         display: block;
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 25px;
+        height: 25px;
         border-radius: 50%;
         background: ${props.theme.colors.secondary};
-        margin-left: -3.75rem;
+        margin-left: -55px;
         z-index: 2;
       }
       ::before {
         content: '';
         display: block;
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 25px;
+        height: 25px;
         border-radius: 50%;
         background: ${props.theme.colors.secondary};
-        margin-right: -3.75rem;
+        margin-right: -55px;
         z-index: 2;
       }
     `}
