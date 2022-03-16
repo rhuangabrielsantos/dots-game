@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 
-import { SfxContext } from '@/contexts/SfxContext'
+import { SfxContext } from '../../contexts/SfxContext'
 
 import { ButtonProps } from './ButtonProps'
 import { ButtonStyle } from './ButtonStyle'

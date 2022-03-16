@@ -1,5 +1,5 @@
-import { Game, GameBoard, Player } from '@/interfaces'
-import { Colors } from '@/interfaces/Player'
+import { Game, GameBoard, Player } from '../../interfaces'
+import { Colors } from '../../interfaces/Player'
 
 export interface HandlePlayerClickProps {
   board: GameBoard

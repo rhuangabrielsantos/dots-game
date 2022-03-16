@@ -4,15 +4,15 @@ import Avatar, { AvatarFullConfig, genConfig } from 'react-nice-avatar'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-import animationData from '@/assets/animations/success.json'
-import { BackButton } from '@/components/BackButton'
-import { ColorOptions } from '@/components/ColorOptions'
-import { NiceAvatar } from '@/components/NiceAvatar'
-import { GameContext } from '@/contexts/GameContext'
-import { SfxContext } from '@/contexts/SfxContext'
-import { Colors } from '@/interfaces/Player'
-import { generateGameBySize } from '@/utils/GameUtils'
-import { errorToastOptions } from '@/utils/ToastUtils'
+import animationData from '../../assets/animations/success.json'
+import { BackButton } from '../../components/BackButton'
+import { ColorOptions } from '../../components/ColorOptions'
+import { NiceAvatar } from '../../components/NiceAvatar'
+import { GameContext } from '../../contexts/GameContext'
+import { SfxContext } from '../../contexts/SfxContext'
+import { Colors } from '../../interfaces/Player'
+import { generateGameBySize } from '../../utils/GameUtils'
+import { errorToastOptions } from '../../utils/ToastUtils'
 
 import {
   variantsFlip,
@@ -239,12 +239,12 @@ export function PlayOffline() {
     >
       <BackButton onClick={handleBackButton} />
 
-      <FlipContainer mobileEnabled={mobileScreen === 'first'}>
+      <FlipContainer mobileenabled={mobileScreen === 'first'}>
         <FormContainer
           initial={{ rotateY: 0 }}
           variants={variantsFlip}
           animate={isFirstPlayerReady ? 'closed' : 'open'}
-          backfaceVisibility="visible"
+          backfacevisibility="visible"
         >
           <EditButton
             onMouseEnter={() => tickSfx()}
@@ -275,7 +275,7 @@ export function PlayOffline() {
           initial={{ rotateY: 0 }}
           variants={variantsFlip}
           animate={isFirstPlayerReady ? 'closed' : 'open'}
-          backfaceVisibility="hidden"
+          backfacevisibility="hidden"
         >
           <PlayerInfo>First Player</PlayerInfo>
 
@@ -313,12 +313,12 @@ export function PlayOffline() {
         </FormContainer>
       </FlipContainer>
 
-      <FlipContainer mobileEnabled={mobileScreen === 'second'}>
+      <FlipContainer mobileenabled={mobileScreen === 'second'}>
         <FormContainer
           initial={{ rotateY: 0 }}
           variants={variantsFlip}
           animate={isSecondPlayerReady ? 'closed' : 'open'}
-          backfaceVisibility="visible"
+          backfacevisibility="visible"
         >
           <EditButton
             onMouseEnter={() => tickSfx()}
@@ -349,7 +349,7 @@ export function PlayOffline() {
           initial={{ rotateY: 0 }}
           variants={variantsFlip}
           animate={isSecondPlayerReady ? 'closed' : 'open'}
-          backfaceVisibility="hidden"
+          backfacevisibility="hidden"
         >
           <PlayerInfo>Second Player</PlayerInfo>
 
@@ -388,7 +388,7 @@ export function PlayOffline() {
       </FlipContainer>
 
       <InformationBox
-        mobileEnabled={mobileScreen === 'information'}
+        mobileenabled={mobileScreen === 'information'}
         initial="initial"
         variants={variantsInformationBox}
         animate={

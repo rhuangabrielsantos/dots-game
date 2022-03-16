@@ -1,5 +1,5 @@
-import { Game, GameBoard, Player } from '@/interfaces'
-import { GameMarks, GameProps } from '@/interfaces/Game'
+import { Game, GameBoard, Player } from '../../interfaces'
+import { GameMarks, GameProps } from '../../interfaces/Game'
 
 import {
   HandlePlayerClickProps,

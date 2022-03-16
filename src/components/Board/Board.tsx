@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { Line } from '@/components/Line'
-import { Square } from '@/components/Square'
+import { Line } from '../../components/Line'
+import { Square } from '../../components/Square'
 
 import { BoardProps } from './BoardProps'
 import { Container, Row } from './BoardStyle'

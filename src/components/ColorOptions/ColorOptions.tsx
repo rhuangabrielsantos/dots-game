@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import { MdDone } from 'react-icons/md'
 
-import { SfxContext } from '@/contexts/SfxContext'
-import { Colors } from '@/interfaces/Player'
+import { SfxContext } from '../../contexts/SfxContext'
+import { Colors } from '../../interfaces/Player'
 
 import { ColorOptionsProps } from './ColorOptionsProps'
 import { ColorButton, Container } from './ColorOptionsStyle'

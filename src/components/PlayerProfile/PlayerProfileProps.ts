@@ -1,4 +1,4 @@
-import { Player } from '@/interfaces'
+import { Player } from '../../interfaces'
 
 export interface PlayerProfileProps {
   size?: 'small' | 'large' | undefined

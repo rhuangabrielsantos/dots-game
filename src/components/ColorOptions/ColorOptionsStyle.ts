@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { Colors } from '@/interfaces/Player'
+import { Colors } from '../../interfaces/Player'
 
 export const Container = styled.div`
   display: flex;

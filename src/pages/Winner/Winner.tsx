@@ -1,10 +1,10 @@
 import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { Button } from '@/components/Button'
-import { NiceAvatar } from '@/components/NiceAvatar'
-import { GameContext } from '@/contexts/GameContext'
-import { SfxContext } from '@/contexts/SfxContext'
+import { Button } from '../../components/Button'
+import { NiceAvatar } from '../../components/NiceAvatar'
+import { GameContext } from '../../contexts/GameContext'
+import { SfxContext } from '../../contexts/SfxContext'
 
 import {
   Box,

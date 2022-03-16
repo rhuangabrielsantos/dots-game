@@ -1,6 +1,6 @@
 import { AvatarFullConfig } from 'react-nice-avatar'
 
-import { Colors, Player } from '@/interfaces/Player'
+import { Colors, Player } from '../../interfaces/Player'
 
 export interface NiceAvatarProps {
   size?: 'small' | 'large' | undefined
