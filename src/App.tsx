@@ -18,32 +18,32 @@ function App() {
 
   return (
     <ThemeProvider theme={themeMode}>
-      <GlobalStyle />
-
-      <DarkModeSwitch
-        onClick={themeToggler}
-        checked={theme === 'dark'}
-        id="togglerTheme"
-      />
-
       <Provider>
+        <GlobalStyle />
+
+        <DarkModeSwitch
+          onClick={themeToggler}
+          checked={theme === 'dark'}
+          id="togglerTheme"
+        />
+
         <Router />
+
+        <MusicPlayer />
+
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme={theme === 'light' ? 'light' : 'dark'}
+        />
       </Provider>
-
-      <MusicPlayer />
-
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme={theme === 'light' ? 'light' : 'dark'}
-      />
     </ThemeProvider>
   )
 }

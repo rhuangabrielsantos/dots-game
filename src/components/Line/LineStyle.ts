@@ -15,32 +15,54 @@ export const Line = styled.button<{
   ${(props) =>
     props.isVertical
       ? `
-      width: 15px;
-      height: 70px;
+      width: ${props.theme.size.web.thickness};
+      height: ${props.theme.size.web.breadth};
+
+    ${props.theme.media.mobile} {
+      width: ${props.theme.size.mobile.thickness};
+      height: ${props.theme.size.mobile.breadth};
+    }
     `
       : `
-      width: 70px;
-      height: 15px;
+      width: ${props.theme.size.web.breadth};
+      height: ${props.theme.size.web.thickness};
+
+      ${props.theme.media.mobile} {
+        width: ${props.theme.size.mobile.breadth};
+        height: ${props.theme.size.mobile.thickness};
+      }
 
       ::after {
         content: '';
         display: block;
-        width: 25px;
-        height: 25px;
+        width: ${props.theme.size.web.circle};
+        height: ${props.theme.size.web.circle};
         border-radius: 50%;
         background: ${props.theme.colors.secondary};
-        margin-left: -55px;
+        margin-left: calc(${props.theme.size.web.thickness} - ${props.theme.size.web.breadth});
         z-index: 2;
+
+        ${props.theme.media.mobile} {
+          width: ${props.theme.size.mobile.circle};
+          height: ${props.theme.size.mobile.circle};
+          margin-left: calc(${props.theme.size.mobile.thickness} - ${props.theme.size.mobile.breadth});
+        }
       }
       ::before {
         content: '';
         display: block;
-        width: 25px;
-        height: 25px;
+        width: ${props.theme.size.web.circle};
+        height: ${props.theme.size.web.circle};
         border-radius: 50%;
         background: ${props.theme.colors.secondary};
-        margin-right: -55px;
+        margin-right: calc(${props.theme.size.web.thickness} - ${props.theme.size.web.breadth});
         z-index: 2;
+
+        ${props.theme.media.mobile} {
+          width: ${props.theme.size.mobile.circle};
+          height: ${props.theme.size.mobile.circle};
+          margin-right: calc(${props.theme.size.mobile.thickness} - ${props.theme.size.mobile.breadth});
+        }
       }
     `}
 
