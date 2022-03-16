@@ -3,11 +3,12 @@ import { ImGoogle } from 'react-icons/im'
 import { RiWifiOffLine } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
 
+import { Button } from '@/components/Button'
 import { SfxContext } from '@/contexts/SfxContext'
 import { useAnimation } from '@/hooks/useAnimation'
 
 import { buttonsVariants, textVariants } from './HomeAnimation'
-import { Container, Title, Description, BoxButton, Button } from './HomeStyle'
+import { Container, Title, Description, BoxButton } from './HomeStyle'
 
 export function Home() {
   const { tickSfx, clickSfx } = useContext(SfxContext)
