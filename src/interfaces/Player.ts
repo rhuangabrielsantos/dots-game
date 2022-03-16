@@ -1,11 +1,11 @@
-import { AvatarFullConfig } from 'react-nice-avatar'
+import { AvatarConfig } from '@/components/NiceAvatar/NiceAvatarProps'
 
 export interface Player {
   id: string
   name: string
   color: Colors
   pontuation: number
-  avatar: AvatarFullConfig
+  avatar: AvatarConfig
 }
 
 export type Colors =

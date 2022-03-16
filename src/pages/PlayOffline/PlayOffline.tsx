@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import Lottie from 'react-lottie'
-import { AvatarFullConfig, genConfig } from 'react-nice-avatar'
+import { genConfig } from 'react-nice-avatar'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
@@ -8,6 +8,7 @@ import animationData from '@/assets/animations/success.json'
 import { BackButton } from '@/components/BackButton'
 import { ColorOptions } from '@/components/ColorOptions'
 import { NiceAvatar } from '@/components/NiceAvatar'
+import { AvatarConfig } from '@/components/NiceAvatar/NiceAvatarProps'
 import { GameContext } from '@/contexts/GameContext'
 import { SfxContext } from '@/contexts/SfxContext'
 import { Colors } from '@/interfaces/Player'
@@ -49,10 +50,10 @@ export function PlayOffline() {
   const navigate = useNavigate()
 
   const [firstPlayerAvatar, setFirstPlayerAvatar] = useState<
-    AvatarFullConfig | undefined
+    AvatarConfig | undefined
   >({})
   const [secondPlayerAvatar, setSecondPlayerAvatar] = useState<
-    AvatarFullConfig | undefined
+    AvatarConfig | undefined
   >({})
 
   const [firstPlayerName, setFirstPlayerName] = useState<string>('')
