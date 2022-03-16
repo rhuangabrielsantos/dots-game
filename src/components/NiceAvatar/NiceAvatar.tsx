@@ -5,12 +5,7 @@ import { NiceAvatarStyle } from './NiceAvatarStyle'
 
 export function NiceAvatar(props: NiceAvatarProps) {
   return (
-    <NiceAvatarStyle
-      size={props.size}
-      isSecondPlayer={props.isSecondPlayer}
-      isMyTurn={props.isMyTurn ?? false}
-      myColor={props.player?.color}
-    >
+    <NiceAvatarStyle>
       <Avatar {...props.avatarConfig} />
     </NiceAvatarStyle>
   )
