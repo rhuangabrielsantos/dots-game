@@ -4,9 +4,9 @@ import { Colors } from '@/interfaces/Player'
 
 interface NiceAvatarStyleProps {
   isSecondPlayer?: boolean
-  size?: 'small' | 'large'
-  isMyTurn: boolean
-  myColor: Colors
+  size?: 'small' | 'large' | undefined
+  isMyTurn?: boolean
+  myColor?: Colors
 }
 
 export const NiceAvatarStyle = styled.div<NiceAvatarStyleProps>`

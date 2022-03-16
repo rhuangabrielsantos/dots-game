@@ -48,11 +48,12 @@ export function PlayOffline() {
   const { createNewGame } = useContext(GameContext)
   const navigate = useNavigate()
 
-  const [firstPlayerAvatar, setFirstPlayerAvatar] = useState<AvatarFullConfig>(
-    {}
-  )
-  const [secondPlayerAvatar, setSecondPlayerAvatar] =
-    useState<AvatarFullConfig>({})
+  const [firstPlayerAvatar, setFirstPlayerAvatar] = useState<
+    AvatarFullConfig | undefined
+  >({})
+  const [secondPlayerAvatar, setSecondPlayerAvatar] = useState<
+    AvatarFullConfig | undefined
+  >({})
 
   const [firstPlayerName, setFirstPlayerName] = useState<string>('')
   const [secondPlayerName, setSecondPlayerName] = useState<string>('')
@@ -179,14 +180,14 @@ export function PlayOffline() {
         name: firstPlayerName ?? '',
         color: selectedColorForFirstPlayer,
         pontuation: 0,
-        avatar: firstPlayerAvatar,
+        avatar: firstPlayerAvatar ?? {},
       },
       secondPlayer: {
         id: '2',
         name: secondPlayerName ?? '',
         color: selectedColorForSecondPlayer,
         pontuation: 0,
-        avatar: secondPlayerAvatar,
+        avatar: secondPlayerAvatar ?? {},
       },
       board,
       marks,
