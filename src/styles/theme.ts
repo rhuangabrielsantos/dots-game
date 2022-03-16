@@ -21,9 +21,9 @@ export const lightTheme = {
       circle: '25px',
     },
     mobile: {
-      thickness: '15px',
-      breadth: '70px',
-      circle: '25px',
+      thickness: '13px',
+      breadth: '56px',
+      circle: '18px',
     },
   },
   media: {
