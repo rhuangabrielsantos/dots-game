@@ -11,7 +11,7 @@ export function NiceAvatar(props: NiceAvatarProps) {
       isMyTurn={props.isMyTurn ?? false}
       myColor={props.player?.color}
     >
-      <Avatar {...props.avatarConfig} />
+      <Avatar bgColor={props.avatarConfig?.bgColor} />
     </NiceAvatarStyle>
   )
 }
