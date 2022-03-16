@@ -279,11 +279,11 @@ export function PlayOffline() {
           <PlayerInfo>Primeiro Jogador</PlayerInfo>
 
           <NiceAvatarBox>
-            <NiceAvatar
+            {/* <NiceAvatar
               avatarConfig={firstPlayerAvatar}
               isMyTurn
               size="small"
-            />
+            /> */}
 
             <RandomIcon onClick={() => randomAvatar('first')} />
           </NiceAvatarBox>
@@ -354,11 +354,11 @@ export function PlayOffline() {
           <PlayerInfo>Segundo Jogador</PlayerInfo>
 
           <NiceAvatarBox>
-            <NiceAvatar
+            {/* <NiceAvatar
               avatarConfig={secondPlayerAvatar}
               isMyTurn
               size="small"
-            />
+            /> */}
 
             <RandomIcon onClick={() => randomAvatar('second')} />
           </NiceAvatarBox>
