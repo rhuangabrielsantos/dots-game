@@ -1,12 +1,14 @@
 import { createContext } from 'react'
 
 import clickWav from '@/assets/sfx/click.wav'
+import completedWav from '@/assets/sfx/completed.wav'
 import tickMp3 from '@/assets/sfx/tick.mp3'
 import winnerWav from '@/assets/sfx/winner.wav'
 import { useSound } from '@/hooks/useSound'
 
 type SfxContextType = {
   clickSfx: () => void
+  completedSfx: () => void
   tickSfx: () => void
   winnerSfx: () => void
 }
@@ -25,6 +27,7 @@ export function SfxContextProvider(props: SfxContextProviderType) {
   }
 
   const clickSfx = useSound(clickWav, options)
+  const completedSfx = useSound(completedWav, { ...options, timeout: 4000 })
   const tickSfx = useSound(tickMp3, options)
   const winnerSfx = useSound(winnerWav, { ...options, timeout: 550 })
 
@@ -32,6 +35,7 @@ export function SfxContextProvider(props: SfxContextProviderType) {
     <SfxContext.Provider
       value={{
         clickSfx,
+        completedSfx,
         tickSfx,
         winnerSfx,
       }}

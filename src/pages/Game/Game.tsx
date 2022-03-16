@@ -29,6 +29,17 @@ export function Game() {
     }
   }, [game])
 
+  useEffect(() => {
+    if (game.winner || game.isDraw) {
+      setContainerAnimation(false)
+      const timeout = setTimeout(() => {
+        navigate('/winner')
+      }, 900)
+
+      return () => clearTimeout(timeout)
+    }
+  }, [game.winner, game.isDraw])
+
   return (
     <Container
       initial="initial"

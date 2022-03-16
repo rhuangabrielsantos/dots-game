@@ -5,6 +5,7 @@ export interface Game {
   firstPlayer: Player
   secondPlayer: Player
   winner?: Player
+  isDraw?: boolean
   board: GameBoard
   marks: GameMarks
   turn: number

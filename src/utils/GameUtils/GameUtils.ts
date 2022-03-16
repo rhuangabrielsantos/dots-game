@@ -177,7 +177,43 @@ export function handleSquareWinnerCheck(props: HandleSquareWinnerCheck) {
     thereIsAWinnerOfTheSquare = true
   }
 
-  return { newGameState, thereIsAWinnerOfTheSquare }
+  const endGameChecked = checkEndGame(newGameState)
+  return { newGameState: endGameChecked, thereIsAWinnerOfTheSquare }
+}
+
+function checkEndGame(game: Game): Game {
+  const { firstPlayer, secondPlayer, marks } = game
+
+  let newGameState = game
+
+  const allSquaresAreFilled = marks.every((row) =>
+    row.every((square) => square)
+  )
+
+  if (allSquaresAreFilled) {
+    const isDraw = firstPlayer.pontuation === secondPlayer.pontuation
+
+    if (isDraw) {
+      newGameState = {
+        ...newGameState,
+        isDraw: true,
+      }
+
+      return newGameState
+    }
+
+    const playerWinner =
+      firstPlayer.pontuation > secondPlayer.pontuation
+        ? game.firstPlayer
+        : game.secondPlayer
+
+    newGameState = {
+      ...game,
+      winner: playerWinner,
+    }
+  }
+
+  return newGameState
 }
 
 function generateNewPointForPlayer(game: Game, lastPlayer: Player) {
