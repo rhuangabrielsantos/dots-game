@@ -1,7 +1,6 @@
+import * as RadixSwitch from '@radix-ui/react-switch'
 import { MdOutlineLightMode, MdOutlineNightlight } from 'react-icons/md'
 import styled from 'styled-components'
-
-import * as RadixSwitch from '@radix-ui/react-switch'
 
 export const Container = styled.div`
   position: fixed;
