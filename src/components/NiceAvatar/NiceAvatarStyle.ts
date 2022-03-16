@@ -3,11 +3,13 @@ import styled from 'styled-components'
 
 import { Colors } from '@/interfaces/Player'
 
-export const NiceAvatarStyle = styled(Avatar)<{
+interface NiceAvatarStyleProps {
   isSecondPlayer?: boolean
   isMyTurn: boolean
   myColor: Colors
-}>`
+}
+
+export const NiceAvatarStyle = styled(Avatar)<NiceAvatarStyleProps>`
   width: 10rem;
   height: 10rem;
 
