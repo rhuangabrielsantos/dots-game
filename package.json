@@ -11,13 +11,14 @@
   "dependencies": {
     "@radix-ui/react-switch": "^0.1.5",
     "framer-motion": "^6.2.6",
+    "nth-check": "^2.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
     "react-lottie": "^1.2.3",
     "react-nice-avatar": "^1.2.4",
     "react-router-dom": "^6.2.1",
-    "react-scripts": "^5.0.0",
+    "react-scripts": "5.0.0",
     "react-toastify": "^8.2.0",
     "styled-components": "^5.3.3"
   },
