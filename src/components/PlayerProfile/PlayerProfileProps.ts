@@ -1,7 +1,7 @@
 import { Player } from '@/interfaces'
 
 export interface PlayerProfileProps {
-  player: Player
+  player?: Player
   isSecondPlayer?: boolean
   isMyTurn?: boolean
 }
