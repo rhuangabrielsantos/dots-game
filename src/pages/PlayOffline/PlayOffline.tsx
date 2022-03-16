@@ -282,11 +282,7 @@ export function PlayOffline() {
             <NiceAvatar
               avatarConfig={firstPlayerAvatar}
               isMyTurn
-              style={{
-                width: '7rem',
-                height: '7rem',
-                marginBottom: '1.5rem',
-              }}
+              size="small"
             />
 
             <RandomIcon onClick={() => randomAvatar('first')} />
@@ -361,11 +357,7 @@ export function PlayOffline() {
             <NiceAvatar
               avatarConfig={secondPlayerAvatar}
               isMyTurn
-              style={{
-                width: '7rem',
-                height: '7rem',
-                marginBottom: '1.5rem',
-              }}
+              size="small"
             />
 
             <RandomIcon onClick={() => randomAvatar('second')} />

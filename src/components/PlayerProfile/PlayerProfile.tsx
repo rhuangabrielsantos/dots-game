@@ -7,6 +7,7 @@ export function PlayerProfile(props: PlayerProfileProps) {
   return (
     <Container>
       <NiceAvatar
+        size={props.size}
         player={props.player}
         avatarConfig={props.player?.avatar}
         isSecondPlayer={props.isSecondPlayer}
