@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { BackButton } from '@/components/BackButton'
 import { Board } from '@/components/Board'
+import { PlayerProfile } from '@/components/PlayerProfile'
 import { GameContext } from '@/contexts/GameContext'
 
 import { variantsContainer } from './GameAnimations'
@@ -35,7 +36,10 @@ export function Game() {
       variants={variantsContainer}
     >
       <BackButton onClick={handleBackButton} />
+
+      <PlayerProfile player={game.firstPlayer} />
       <Board board={game?.board} marks={game?.marks} />
+      <PlayerProfile player={game.secondPlayer} isSecondPlayer />
     </Container>
   )
 }
