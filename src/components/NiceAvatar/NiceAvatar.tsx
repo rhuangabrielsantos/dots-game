@@ -1,4 +1,4 @@
-import Avatar from 'react-nice-avatar'
+import ReactNiceAvatar from 'react-nice-avatar/dist/index'
 
 import { NiceAvatarProps } from './NiceAvatarProps'
 import { NiceAvatarStyle } from './NiceAvatarStyle'
@@ -11,7 +11,7 @@ export function NiceAvatar(props: NiceAvatarProps) {
       isMyTurn={props.isMyTurn ?? false}
       myColor={props.player?.color}
     >
-      {/* <Avatar bgColor={props.avatarConfig?.bgColor} /> */}
+      <ReactNiceAvatar {...props.avatarConfig} />
     </NiceAvatarStyle>
   )
 }
