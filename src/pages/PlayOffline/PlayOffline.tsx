@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import Lottie from 'react-lottie'
-import { genConfig } from 'react-nice-avatar'
-import Avatar, { AvatarFullConfig } from 'react-nice-avatar'
+import Avatar, { AvatarFullConfig, genConfig } from 'react-nice-avatar'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
@@ -49,9 +48,9 @@ export function PlayOffline() {
   const { createNewGame } = useContext(GameContext)
   const navigate = useNavigate()
 
-  const [firstPlayerAvatar, setFirstPlayerAvatar] = useState<
-    AvatarFullConfig | undefined
-  >({})
+  const [firstPlayerAvatar, setFirstPlayerAvatar] = useState<AvatarFullConfig>(
+    {}
+  )
   const [secondPlayerAvatar, setSecondPlayerAvatar] = useState<
     AvatarFullConfig | undefined
   >({})
@@ -108,12 +107,12 @@ export function PlayOffline() {
     const errors = []
 
     if (!firstPlayerName) {
-      toast.error('Insira o nome do primeiro jogador', errorToastOptions)
+      toast.error('Enter the name of the first player', errorToastOptions)
       errors.push('name')
     }
 
     if (!selectedColorForFirstPlayer) {
-      toast.error('Escolha uma cor para o primeiro jogador', errorToastOptions)
+      toast.error('Choose a color for the first player', errorToastOptions)
       errors.push('color')
     }
 
@@ -134,12 +133,12 @@ export function PlayOffline() {
     const errors = []
 
     if (!secondPlayerName) {
-      toast.error('Insira o nome do segundo jogador', errorToastOptions)
+      toast.error('Enter the name of the second player', errorToastOptions)
       errors.push('name')
     }
 
     if (!selectedColorForSecondPlayer) {
-      toast.error('Escolha uma cor para o segundo jogador', errorToastOptions)
+      toast.error('Choose a color for the second player', errorToastOptions)
       errors.push('color')
     }
 
@@ -269,7 +268,7 @@ export function PlayOffline() {
             width={200}
             style={{ transform: 'scaleX(-1)' }}
           />
-          <WaitingTitle>Primeiro Jogador está pronto!</WaitingTitle>
+          <WaitingTitle>First Player is ready!</WaitingTitle>
         </FormContainer>
 
         <FormContainer
@@ -278,7 +277,7 @@ export function PlayOffline() {
           animate={isFirstPlayerReady ? 'closed' : 'open'}
           backfaceVisibility="hidden"
         >
-          <PlayerInfo>Primeiro Jogador</PlayerInfo>
+          <PlayerInfo>First Player</PlayerInfo>
 
           <NiceAvatarBox>
             <Avatar
@@ -289,16 +288,16 @@ export function PlayOffline() {
             <RandomIcon onClick={() => randomAvatar('first')} />
           </NiceAvatarBox>
 
-          <Label htmlFor="firstPlayer">NOME</Label>
+          <Label htmlFor="firstPlayer">NAME</Label>
           <Field
             type="text"
             name="firstPlayer"
-            placeholder="NOME"
+            placeholder="NAME"
             onChange={(event) => setFirstPlayerName(event.target.value)}
             value={firstPlayerName}
           />
 
-          <Label htmlFor="firstPlayerColor">COR</Label>
+          <Label htmlFor="firstPlayerColor">COLOR</Label>
           <ColorOptions
             unavailableColors={unavailableColorsForFirstPlayer}
             selectedColor={selectedColorForFirstPlayer}
@@ -309,7 +308,7 @@ export function PlayOffline() {
             onClick={handleFirstPlayerReady}
             onMouseEnter={() => tickSfx()}
           >
-            PRONTO
+            READY
           </Button>
         </FormContainer>
       </FlipContainer>
@@ -343,7 +342,7 @@ export function PlayOffline() {
             width={200}
             style={{ transform: 'scaleX(-1)' }}
           />
-          <WaitingTitle>Segundo Jogador está pronto!</WaitingTitle>
+          <WaitingTitle>Second Player is ready!</WaitingTitle>
         </FormContainer>
 
         <FormContainer
@@ -352,7 +351,7 @@ export function PlayOffline() {
           animate={isSecondPlayerReady ? 'closed' : 'open'}
           backfaceVisibility="hidden"
         >
-          <PlayerInfo>Segundo Jogador</PlayerInfo>
+          <PlayerInfo>Second Player</PlayerInfo>
 
           <NiceAvatarBox>
             <Avatar
@@ -363,16 +362,16 @@ export function PlayOffline() {
             <RandomIcon onClick={() => randomAvatar('second')} />
           </NiceAvatarBox>
 
-          <Label htmlFor="secondPlayer">NOME</Label>
+          <Label htmlFor="secondPlayer">NAME</Label>
           <Field
             type="text"
             name="secondPlayer"
-            placeholder="NOME"
+            placeholder="NAME"
             onChange={(event) => setSecondPlayerName(event.target.value)}
             value={secondPlayerName}
           />
 
-          <Label htmlFor="secondPlayerColor">COR</Label>
+          <Label htmlFor="secondPlayerColor">COLOR</Label>
           <ColorOptions
             unavailableColors={unavailableColorsForSecondPlayer}
             selectedColor={selectedColorForSecondPlayer}
@@ -383,7 +382,7 @@ export function PlayOffline() {
             onClick={handleSecondPlayerReady}
             onMouseEnter={() => tickSfx()}
           >
-            PRONTO
+            READY
           </Button>
         </FormContainer>
       </FlipContainer>
@@ -400,7 +399,7 @@ export function PlayOffline() {
 
         <PlayerInfoContainer>
           <PlayerDetailsHeader>
-            <PlayerInfoTitle>Primeiro Jogador</PlayerInfoTitle>
+            <PlayerInfoTitle>First Player</PlayerInfoTitle>
             <InformationEditButton
               onMouseEnter={() => tickSfx()}
               onClick={() => handleEditButton('first')}
@@ -408,18 +407,18 @@ export function PlayOffline() {
           </PlayerDetailsHeader>
 
           <PlayerDetails>
-            <PlayerInfoLabel>NOME:</PlayerInfoLabel>
+            <PlayerInfoLabel>NAME:</PlayerInfoLabel>
             <PlayerInfoValue>{firstPlayerName}</PlayerInfoValue>
           </PlayerDetails>
           <PlayerDetails>
-            <PlayerInfoLabel>COR:</PlayerInfoLabel>
+            <PlayerInfoLabel>COLOR:</PlayerInfoLabel>
             <PlayerInfoColor playerColor={selectedColorForFirstPlayer ?? ''} />
           </PlayerDetails>
         </PlayerInfoContainer>
 
         <PlayerInfoContainer>
           <PlayerDetailsHeader>
-            <PlayerInfoTitle>Segundo Jogador</PlayerInfoTitle>
+            <PlayerInfoTitle>Second Player</PlayerInfoTitle>
             <InformationEditButton
               onMouseEnter={() => tickSfx()}
               onClick={() => handleEditButton('second')}
@@ -427,17 +426,17 @@ export function PlayOffline() {
           </PlayerDetailsHeader>
 
           <PlayerDetails>
-            <PlayerInfoLabel>NOME:</PlayerInfoLabel>
+            <PlayerInfoLabel>NAME:</PlayerInfoLabel>
             <PlayerInfoValue>{secondPlayerName}</PlayerInfoValue>
           </PlayerDetails>
           <PlayerDetails>
-            <PlayerInfoLabel>COR:</PlayerInfoLabel>
+            <PlayerInfoLabel>COLOR:</PlayerInfoLabel>
             <PlayerInfoColor playerColor={selectedColorForSecondPlayer ?? ''} />
           </PlayerDetails>
         </PlayerInfoContainer>
 
         <Button onClick={handleStartGame} onMouseEnter={() => tickSfx()}>
-          JOGAR
+          PLAY
         </Button>
       </InformationBox>
     </Container>
