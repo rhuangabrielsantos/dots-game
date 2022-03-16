@@ -37,9 +37,13 @@ export function Game() {
     >
       <BackButton onClick={handleBackButton} />
 
-      <PlayerProfile player={game.firstPlayer} />
+      <PlayerProfile player={game.firstPlayer} isMyTurn={game.turn % 2 === 1} />
       <Board board={game?.board} marks={game?.marks} />
-      <PlayerProfile player={game.secondPlayer} isSecondPlayer />
+      <PlayerProfile
+        player={game.secondPlayer}
+        isSecondPlayer
+        isMyTurn={game.turn % 2 === 0}
+      />
     </Container>
   )
 }

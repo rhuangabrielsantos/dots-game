@@ -19,8 +19,9 @@ export function PlayerProfile(props: PlayerProfileProps) {
     <Container>
       <NiceAvatar
         {...avatarConfig}
-        style={{ width: '8rem', height: '8rem' }}
         isSecondPlayer={props.isSecondPlayer}
+        isMyTurn={props.isMyTurn ?? false}
+        myColor={props.player.color}
       />
 
       <PlayerName>{props.player.name}</PlayerName>

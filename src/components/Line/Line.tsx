@@ -45,7 +45,9 @@ export function Line({ isVertical, collumn, row }: LineProps) {
       winnerSfx()
     }
 
-    updateGame({ ...newGameState, turn: game.turn + 1 })
+    const turn = thereIsAWinnerOfTheSquare ? game.turn : game.turn + 1
+
+    updateGame({ ...newGameState, turn })
   }
 
   return (
