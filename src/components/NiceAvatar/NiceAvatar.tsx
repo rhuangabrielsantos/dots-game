@@ -6,9 +6,9 @@ export function NiceAvatar(props: NiceAvatarProps) {
     <NiceAvatarStyle
       {...props.avatarConfig}
       style={props.style}
-      isSecondPlayer={props.isSecondPlayer}
-      isMyTurn={props.isMyTurn ?? false}
-      myColor={props.player?.color}
+      // isSecondPlayer={props.isSecondPlayer}
+      // isMyTurn={props.isMyTurn ?? false}
+      // myColor={props.player?.color}
     />
   )
 }
