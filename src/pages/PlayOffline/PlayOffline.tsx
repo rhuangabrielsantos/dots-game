@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import Lottie from 'react-lottie'
 import { genConfig } from 'react-nice-avatar'
-import { AvatarFullConfig } from 'react-nice-avatar'
+import Avatar, { AvatarFullConfig } from 'react-nice-avatar'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
@@ -281,10 +281,9 @@ export function PlayOffline() {
           <PlayerInfo>Primeiro Jogador</PlayerInfo>
 
           <NiceAvatarBox>
-            <NiceAvatar
-              avatarConfig={firstPlayerAvatar}
-              isMyTurn
-              size="small"
+            <Avatar
+              {...firstPlayerAvatar}
+              style={{ width: '7rem', height: '7rem' }}
             />
 
             <RandomIcon onClick={() => randomAvatar('first')} />
@@ -356,10 +355,9 @@ export function PlayOffline() {
           <PlayerInfo>Segundo Jogador</PlayerInfo>
 
           <NiceAvatarBox>
-            <NiceAvatar
-              avatarConfig={secondPlayerAvatar}
-              isMyTurn
-              size="small"
+            <Avatar
+              {...secondPlayerAvatar}
+              style={{ width: '7rem', height: '7rem' }}
             />
 
             <RandomIcon onClick={() => randomAvatar('second')} />
