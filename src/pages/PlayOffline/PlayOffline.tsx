@@ -1,11 +1,13 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Lottie from 'react-lottie'
+import { AvatarFullConfig, genConfig } from 'react-nice-avatar'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import animationData from '@/assets/animations/success.json'
 import { BackButton } from '@/components/BackButton'
 import { ColorOptions } from '@/components/ColorOptions'
+import { NiceAvatar } from '@/components/NiceAvatar'
 import { GameContext } from '@/contexts/GameContext'
 import { SfxContext } from '@/contexts/SfxContext'
 import { Colors } from '@/interfaces/Player'
@@ -37,12 +39,20 @@ import {
   PlayerInfoColor,
   InformationEditButton,
   PlayerDetailsHeader,
+  NiceAvatarBox,
+  RandomIcon,
 } from './PlayOfflineStyle'
 
 export function PlayOffline() {
   const { tickSfx, clickSfx } = useContext(SfxContext)
   const { createNewGame } = useContext(GameContext)
   const navigate = useNavigate()
+
+  const [firstPlayerAvatar, setFirstPlayerAvatar] = useState<AvatarFullConfig>(
+    {}
+  )
+  const [secondPlayerAvatar, setSecondPlayerAvatar] =
+    useState<AvatarFullConfig>({})
 
   const [firstPlayerName, setFirstPlayerName] = useState<string>('')
   const [secondPlayerName, setSecondPlayerName] = useState<string>('')
@@ -69,11 +79,25 @@ export function PlayOffline() {
   function handleFirstPlayerColorChange(color: Colors) {
     setUnavailableColorsForSecondPlayer([color])
     setSelectedColorForFirstPlayer(color)
+
+    setFirstPlayerAvatar((prevState) => {
+      return genConfig({
+        ...prevState,
+        bgColor: color,
+      })
+    })
   }
 
   function handleSecondPlayerColorChange(color: Colors) {
     setUnavailableColorsForFirstPlayer([color])
     setSelectedColorForSecondPlayer(color)
+
+    setSecondPlayerAvatar((prevState) => {
+      return genConfig({
+        ...prevState,
+        bgColor: color,
+      })
+    })
   }
 
   function handleFirstPlayerReady() {
@@ -155,12 +179,14 @@ export function PlayOffline() {
         name: firstPlayerName ?? '',
         color: selectedColorForFirstPlayer,
         pontuation: 0,
+        avatar: firstPlayerAvatar,
       },
       secondPlayer: {
         id: '2',
         name: secondPlayerName ?? '',
         color: selectedColorForSecondPlayer,
         pontuation: 0,
+        avatar: secondPlayerAvatar,
       },
       board,
       marks,
@@ -169,6 +195,40 @@ export function PlayOffline() {
 
     navigate('/game')
   }
+
+  function randomAvatar(player: 'first' | 'second') {
+    clickSfx()
+
+    if (player === 'first') {
+      const newAvatar = genConfig({})
+
+      setFirstPlayerAvatar({
+        ...newAvatar,
+        bgColor: selectedColorForFirstPlayer ?? 'transparent',
+      })
+      return
+    }
+
+    const newAvatar = genConfig({})
+
+    setSecondPlayerAvatar({
+      ...newAvatar,
+      bgColor: selectedColorForSecondPlayer ?? 'transparent',
+    })
+  }
+
+  useEffect(() => {
+    setFirstPlayerAvatar(
+      genConfig({
+        bgColor: 'transparent',
+      })
+    )
+    setSecondPlayerAvatar(
+      genConfig({
+        bgColor: 'transparent',
+      })
+    )
+  }, [])
 
   return (
     <Container
@@ -217,6 +277,20 @@ export function PlayOffline() {
           backfaceVisibility="hidden"
         >
           <PlayerInfo>Primeiro Jogador</PlayerInfo>
+
+          <NiceAvatarBox>
+            <NiceAvatar
+              avatarConfig={firstPlayerAvatar}
+              isMyTurn
+              style={{
+                width: '7rem',
+                height: '7rem',
+                marginBottom: '1.5rem',
+              }}
+            />
+
+            <RandomIcon onClick={() => randomAvatar('first')} />
+          </NiceAvatarBox>
 
           <Label htmlFor="firstPlayer">NOME</Label>
           <Field
@@ -282,6 +356,20 @@ export function PlayOffline() {
           backfaceVisibility="hidden"
         >
           <PlayerInfo>Segundo Jogador</PlayerInfo>
+
+          <NiceAvatarBox>
+            <NiceAvatar
+              avatarConfig={secondPlayerAvatar}
+              isMyTurn
+              style={{
+                width: '7rem',
+                height: '7rem',
+                marginBottom: '1.5rem',
+              }}
+            />
+
+            <RandomIcon onClick={() => randomAvatar('second')} />
+          </NiceAvatarBox>
 
           <Label htmlFor="secondPlayer">NOME</Label>
           <Field

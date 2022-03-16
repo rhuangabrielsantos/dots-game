@@ -39,7 +39,7 @@ export const variantsInformationBox = {
     opacity: 0,
     x: -270,
     width: 300,
-    height: 420,
+    height: 600,
     display: 'none',
     transition: {
       duration: 1,
@@ -50,7 +50,7 @@ export const variantsInformationBox = {
     opacity: 1,
     x: 0,
     width: 300,
-    height: 420,
+    height: 600,
     display: 'flex',
     transition: {
       duration: 1,

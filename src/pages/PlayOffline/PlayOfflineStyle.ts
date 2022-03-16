@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { FiEdit } from 'react-icons/fi'
+import { IoDiceOutline } from 'react-icons/io5'
 import styled from 'styled-components'
 
 export const Container = styled(motion.div)`
@@ -17,7 +18,7 @@ export const FlipContainer = styled(motion.div)<{ mobileEnabled: boolean }>`
   margin: 5px;
 
   width: 300px;
-  height: 420px;
+  height: 600px;
 
   ${(props) => props.theme.media.mobile} {
     display: ${(props) => (props.mobileEnabled ? 'flex' : 'none')};
@@ -31,7 +32,7 @@ export const FormContainer = styled(motion.div)<{ backfaceVisibility: string }>`
   justify-content: center;
 
   width: 300px;
-  height: 420px;
+  height: 600px;
 
   border-radius: 10px;
   position: relative;
@@ -177,7 +178,7 @@ export const InformationBox = styled(motion.div)<{ mobileEnabled: boolean }>`
   margin: 5px;
 
   width: 300px;
-  height: 420px;
+  height: 600px;
 
   border-radius: 10px;
   position: relative;
@@ -287,4 +288,17 @@ export const InformationEditButton = styled(FiEdit)`
   ${(props) => props.theme.media.mobile} {
     display: flex;
   }
+`
+
+export const NiceAvatarBox = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+`
+
+export const RandomIcon = styled(IoDiceOutline)`
+  font-size: 1.5rem;
+  color: ${(props) => props.theme.colors.primary};
+
+  cursor: pointer;
 `
