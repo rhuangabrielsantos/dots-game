@@ -1,4 +1,4 @@
-import { Colors } from '@/interfaces/Player'
+import { Colors } from '../../interfaces/Player'
 
 export interface LineProps {
   color?: Colors

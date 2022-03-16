@@ -7,7 +7,6 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:cypress/recommended"
   ],
@@ -20,7 +19,6 @@
     "sourceType": "module"
   },
   "plugins": [
-    "react",
     "@typescript-eslint",
     "prettier",
     "cypress",
@@ -42,7 +40,7 @@
       "warn",
       {
         "newlinesBetween": "always",
-        "groups": ["module", "/@/", "parent", ["sibling", "index"]],
+        "groups": ["module", "parent", ["sibling", "index"]],
         "alphabetize": { "order": "asc", "ignoreCase": true }
       }
     ]

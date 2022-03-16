@@ -1,8 +1,8 @@
 import { useContext, useEffect, useRef, useState } from 'react'
 import Lottie from 'react-lottie'
 
-import animationData from '@/assets/animations/music-rhythm.json'
-import { SfxContext } from '@/contexts/SfxContext'
+import animationData from '../../assets/animations/music-rhythm.json'
+import { SfxContext } from '../../contexts/SfxContext'
 
 import { variantsControls, variantsTitle } from './MusicPlayerAnimation'
 import {

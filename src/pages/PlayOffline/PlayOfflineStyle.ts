@@ -12,7 +12,7 @@ export const Container = styled(motion.div)`
   height: 100vh;
 `
 
-export const FlipContainer = styled(motion.div)<{ mobileEnabled: boolean }>`
+export const FlipContainer = styled(motion.div)<{ mobileenabled: boolean }>`
   position: relative;
   float: left;
   margin: 5px;
@@ -21,11 +21,11 @@ export const FlipContainer = styled(motion.div)<{ mobileEnabled: boolean }>`
   height: 600px;
 
   ${(props) => props.theme.media.mobile} {
-    display: ${(props) => (props.mobileEnabled ? 'flex' : 'none')};
+    display: ${(props) => (props.mobileenabled ? 'flex' : 'none')};
   }
 `
 
-export const FormContainer = styled(motion.div)<{ backfaceVisibility: string }>`
+export const FormContainer = styled(motion.div)<{ backfacevisibility: string }>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,7 +40,7 @@ export const FormContainer = styled(motion.div)<{ backfaceVisibility: string }>`
   background-color: ${({ theme }) => theme.colors.secondary};
 
   position: absolute;
-  backface-visibility: ${({ backfaceVisibility }) => backfaceVisibility};
+  backface-visibility: ${({ backfacevisibility }) => backfacevisibility};
 `
 
 export const PlayerInfo = styled.h1`
@@ -169,7 +169,7 @@ export const EditButton = styled(FiEdit)`
   transform: scaleX(-1);
 `
 
-export const InformationBox = styled(motion.div)<{ mobileEnabled: boolean }>`
+export const InformationBox = styled(motion.div)<{ mobileenabled: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -188,7 +188,7 @@ export const InformationBox = styled(motion.div)<{ mobileEnabled: boolean }>`
   position: relative;
 
   ${(props) => props.theme.media.mobile} {
-    display: ${(props) => (props.mobileEnabled ? 'none' : 'none')};
+    display: ${(props) => (props.mobileenabled ? 'none' : 'none')};
   }
 `
 

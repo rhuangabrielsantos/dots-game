@@ -1,10 +1,6 @@
 import { createContext } from 'react'
 
-import clickWav from '@/assets/sfx/click.wav'
-import completedWav from '@/assets/sfx/completed.wav'
-import tickMp3 from '@/assets/sfx/tick.mp3'
-import winnerWav from '@/assets/sfx/winner.wav'
-import { useSound } from '@/hooks/useSound'
+import { useSound } from '../hooks/useSound'
 
 type SfxContextType = {
   clickSfx: () => void
@@ -26,10 +22,15 @@ export function SfxContextProvider(props: SfxContextProviderType) {
     timeout: 300,
   }
 
-  const clickSfx = useSound(clickWav, options)
-  const completedSfx = useSound(completedWav, { ...options, timeout: 4000 })
-  const tickSfx = useSound(tickMp3, options)
-  const winnerSfx = useSound(winnerWav, { ...options, timeout: 550 })
+  const clickPath = process.env.PUBLIC_URL + '/sfx/click.wav'
+  const completedPath = process.env.PUBLIC_URL + '/sfx/completed.wav'
+  const tickPath = process.env.PUBLIC_URL + '/sfx/tick.mp3'
+  const winnerPath = process.env.PUBLIC_URL + '/sfx/winner.wav'
+
+  const clickSfx = useSound(clickPath, options)
+  const completedSfx = useSound(completedPath, { ...options, timeout: 4000 })
+  const tickSfx = useSound(tickPath, options)
+  const winnerSfx = useSound(winnerPath, { ...options, timeout: 550 })
 
   return (
     <SfxContext.Provider

@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react'
 
-import { Game, GameBoard } from '@/interfaces'
+import { Game, GameBoard } from '../interfaces'
 
 type GameContextType = {
   game: Game

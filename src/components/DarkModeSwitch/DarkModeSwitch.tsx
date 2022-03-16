@@ -1,7 +1,7 @@
+import * as RadixSwitch from '@radix-ui/react-switch'
 import React, { useContext } from 'react'
 
-import { SfxContext } from '@/contexts/SfxContext'
-import * as RadixSwitch from '@radix-ui/react-switch'
+import { SfxContext } from '../../contexts/SfxContext'
 
 import {
   Container,

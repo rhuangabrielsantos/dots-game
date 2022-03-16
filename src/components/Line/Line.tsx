@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 
-import { GameContext } from '@/contexts/GameContext'
-import { SfxContext } from '@/contexts/SfxContext'
+import { GameContext } from '../../contexts/GameContext'
+import { SfxContext } from '../../contexts/SfxContext'
 import {
   handlePlayerClick,
   handleSquareWinnerCheck,
-} from '@/utils/GameUtils/GameUtils'
+} from '../../utils/GameUtils/GameUtils'
 
 import { LineProps } from './LineProps'
 import { Line as LineStyle } from './LineStyle'

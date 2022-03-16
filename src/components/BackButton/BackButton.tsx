@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 
-import { SfxContext } from '@/contexts/SfxContext'
+import { SfxContext } from '../../contexts/SfxContext'
 
 import { variantsContainer } from './BackButtonAnimation'
 import { BackButtonProps } from './BackButtonProps'

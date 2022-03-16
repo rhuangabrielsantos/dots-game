@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { BackButton } from '@/components/BackButton'
-import { Board } from '@/components/Board'
-import { PlayerProfile } from '@/components/PlayerProfile'
-import { GameContext } from '@/contexts/GameContext'
+import { BackButton } from '../../components/BackButton'
+import { Board } from '../../components/Board'
+import { PlayerProfile } from '../../components/PlayerProfile'
+import { GameContext } from '../../contexts/GameContext'
 
 import { variantsContainer } from './GameAnimations'
 import { Container } from './GameStyle'

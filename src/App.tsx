@@ -2,14 +2,14 @@ import { ToastContainer } from 'react-toastify'
 import { ThemeProvider } from 'styled-components'
 
 import 'react-toastify/dist/ReactToastify.css'
-import GlobalStyle from '@/styles/globalStyle'
-import { lightTheme, darkTheme } from '@/styles/theme'
 
 import { DarkModeSwitch } from './components/DarkModeSwitch'
 import { MusicPlayer } from './components/MusicPlayer'
 import { Provider } from './contexts'
 import { useDarkMode } from './hooks/useDarkMode'
 import Router from './Router'
+import GlobalStyle from './styles/globalStyle'
+import { lightTheme, darkTheme } from './styles/theme'
 
 function App() {
   const [theme, themeToggler] = useDarkMode()
