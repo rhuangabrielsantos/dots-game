@@ -1,8 +1,10 @@
 import { useContext, useState } from 'react'
 import { useEffect } from 'react'
+import Lottie from 'react-lottie'
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
+import animationData from '../../assets/animations/loading.json'
 import { CardPlayer } from '../../components/CardPlayer'
 import { InformationBox } from '../../components/InformationBox'
 import { SfxContext } from '../../contexts/SfxContext'
@@ -267,7 +269,16 @@ export function Lobby() {
     </Container>
   ) : (
     <Container>
-      <h1>Loading...</h1>
+      <Lottie
+        options={{
+          loop: true,
+          autoplay: true,
+          animationData,
+        }}
+        height={200}
+        width={200}
+        isClickToPauseDisabled
+      />
     </Container>
   )
 }

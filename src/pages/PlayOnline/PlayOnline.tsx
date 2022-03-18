@@ -1,7 +1,9 @@
 import { useContext } from 'react'
 import { useState, useEffect } from 'react'
+import Lottie from 'react-lottie'
 import { useNavigate, useParams } from 'react-router-dom'
 
+import animationData from '../../assets/animations/loading.json'
 import { Board } from '../../components/Board'
 import { PlayerProfile } from '../../components/PlayerProfile'
 import { GameContext } from '../../contexts/GameContext'
@@ -66,6 +68,17 @@ export function PlayOnline() {
       />
     </Container>
   ) : (
-    <div>Loading...</div>
+    <Container>
+      <Lottie
+        options={{
+          loop: true,
+          autoplay: true,
+          animationData,
+        }}
+        height={200}
+        width={200}
+        isClickToPauseDisabled
+      />
+    </Container>
   )
 }
