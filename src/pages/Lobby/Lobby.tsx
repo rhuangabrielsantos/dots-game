@@ -89,7 +89,15 @@ export function Lobby() {
       return
     }
 
-    if (game?.firstPlayer.color === game?.secondPlayer.color) {
+    if (!game?.secondPlayer) {
+      toast.error(
+        'Wait for the second player to enter the lobby',
+        errorToastOptions
+      )
+      return
+    }
+
+    if (game?.firstPlayer?.color === game?.secondPlayer?.color) {
       toast.error('Choose different colors to play', errorToastOptions)
       return
     }
