@@ -29,8 +29,8 @@ yarn start
 
 ## Next steps
 
-- [ ] Multiplayer game
-- [ ] Profile
+- [x] Multiplayer game
+- [ ] Profile Editor
 - [ ] Friendship invites
 
 ## Contributing
