@@ -41,7 +41,8 @@ export const BoxSize = styled(motion.button)<{ enabled?: boolean }>`
 
   background-color: ${(props) =>
     props.enabled ? props.theme.colors.red : props.theme.colors.secondary};
-  color: ${(props) => props.theme.colors.primary};
+  color: ${(props) =>
+    props.enabled ? props.theme.colors.white : props.theme.colors.primary};
 
   font-family: 'Poppins', sans-serif;
   font-size: 3rem;

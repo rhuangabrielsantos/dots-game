@@ -10,6 +10,10 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  ${(props) => props.theme.media.mobile} {
+    display: none;
+  }
 `
 
 export const Button = styled.button`

@@ -14,13 +14,13 @@ import { Colors } from '../../interfaces/Player'
 import { database } from '../../services/firebase'
 import { errorToastOptions } from '../../utils/ToastUtils'
 
-import { Container, EnterButton } from './LobbyStyle'
+import { Container, ContainerCopy, CopyIcon, EnterButton } from './LobbyStyle'
 
 export function Lobby() {
   const navigate = useNavigate()
   const { user } = useAuth()
   const { id } = useParams()
-  const { clickSfx } = useContext(SfxContext)
+  const { clickSfx, tickSfx } = useContext(SfxContext)
   const gameRef = database.ref(`games/${id}`)
 
   const [game, setGame] = useState<Game | undefined>(undefined)
@@ -200,6 +200,12 @@ export function Lobby() {
     navigate(`/${id}/game`)
   }
 
+  function handleCopyLink() {
+    clickSfx()
+    navigator.clipboard.writeText(`${window.location.href}`)
+    toast.info('Link copied to clipboard', errorToastOptions)
+  }
+
   useEffect(() => {
     if (game?.isStarted) {
       navigate(`/${id}/game`)
@@ -274,6 +280,14 @@ export function Lobby() {
           />
         </>
       )}
+
+      <ContainerCopy
+        title="Copy the link to invite second player"
+        onClick={handleCopyLink}
+        onMouseEnter={() => tickSfx()}
+      >
+        <CopyIcon />
+      </ContainerCopy>
     </Container>
   ) : (
     <Container>
