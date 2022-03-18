@@ -1,27 +1,41 @@
 import { useContext, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import { Button } from '../../components/Button'
 import { NiceAvatar } from '../../components/NiceAvatar'
 import { GameContext } from '../../contexts/GameContext'
 import { SfxContext } from '../../contexts/SfxContext'
+import { database } from '../../services/firebase'
 
-import { Box, BoxButton, Container, RestartIcon, Title } from './WinnerStyle'
+import {
+  Box,
+  BoxButton,
+  Container,
+  RestartIcon,
+  Title,
+} from './WinnerOnlineStyle'
 
-export function Winner() {
+export function WinnerOnline() {
   const navigate = useNavigate()
 
+  const { id } = useParams()
   const { game } = useContext(GameContext)
   const { completedSfx } = useContext(SfxContext)
   const [firstName, setFirstName] = useState<string>()
 
   function handlePlayAgain() {
-    navigate('/')
+    navigate('/home')
   }
 
   useEffect(() => {
     setFirstName(game?.winner?.name?.split(' ')[0])
+
     completedSfx()
+
+    if (id) {
+      const gameRef = database.ref(`games/${id}`)
+      gameRef.remove()
+    }
   }, [])
 
   return (

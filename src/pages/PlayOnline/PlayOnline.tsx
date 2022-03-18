@@ -32,7 +32,7 @@ export function PlayOnline() {
 
       setContainerAnimation(false)
       const timeout = setTimeout(() => {
-        navigate('/winner')
+        navigate(`/${id}/winner`)
       }, 900)
 
       return () => clearTimeout(timeout)

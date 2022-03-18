@@ -10,6 +10,7 @@ import { PlayOffline } from './pages/PlayOffline'
 import { PlayOnline } from './pages/PlayOnline'
 import { Profile } from './pages/Profile'
 import { Winner } from './pages/Winner'
+import { WinnerOnline } from './pages/WinnerOnline'
 
 export default function Router() {
   return (
@@ -27,6 +28,7 @@ export default function Router() {
 
         <Route path="/:id/lobby" element={<Lobby />} />
         <Route path="/:id/game" element={<PlayOnline />} />
+        <Route path="/:id/winner" element={<WinnerOnline />} />
       </Routes>
     </BrowserRouter>
   )
