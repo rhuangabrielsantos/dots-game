@@ -130,7 +130,7 @@ export const Button = styled.button`
 `
 
 export const GoogleIcon = styled(ImGoogle)`
-  color: ${(props) => props.theme.colors.text};
+  color: ${(props) => props.theme.colors.white};
   font-size: 15px;
 
   margin-right: 10px;

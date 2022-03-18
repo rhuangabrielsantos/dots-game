@@ -3,7 +3,7 @@ import { MdOutlineLightMode, MdOutlineNightlight } from 'react-icons/md'
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  position: absolute;
+  position: fixed;
   top: 2rem;
   right: 2rem;
 
