@@ -18,15 +18,15 @@ export function ColorOptions(props: ColorOptionsProps) {
         <ColorButton
           key={index}
           color={color}
-          disabled={props.unavailableColors.includes(color)}
+          disabled={props.unavailableColors?.includes(color)}
           onClick={() => {
             props.onChange(color)
             clickSfx()
           }}
           onMouseEnter={() => tickSfx()}
           title={
-            props.unavailableColors.includes(color)
-              ? 'Outro jogador já escolheu esta cor'
+            props.unavailableColors?.includes(color)
+              ? 'Another player has already chosen this color'
               : ''
           }
         >

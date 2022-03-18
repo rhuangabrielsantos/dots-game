@@ -6,11 +6,13 @@ import { useNavigate } from 'react-router-dom'
 import { Button } from '../../components/Button'
 import { SfxContext } from '../../contexts/SfxContext'
 import { useAnimation } from '../../hooks/useAnimation'
+import { useAuth } from '../../hooks/useAuth'
 
 import { buttonsVariants, textVariants } from './HomeAnimation'
 import { Container, Title, Description, BoxButton } from './HomeStyle'
 
 export function Home() {
+  const { user, signInWithGoogle } = useAuth()
   const { tickSfx, clickSfx } = useContext(SfxContext)
   const navigate = useNavigate()
 
@@ -26,6 +28,14 @@ export function Home() {
     setTimeout(() => {
       navigate('/play-offline')
     }, 900)
+  }
+
+  async function handleLogin() {
+    if (!user) {
+      await signInWithGoogle()
+    }
+
+    navigate('/home')
   }
 
   return (
@@ -57,8 +67,7 @@ export function Home() {
         <Button
           color="red"
           onMouseEnter={() => tickSfx()}
-          disabled
-          title="Em breve..."
+          onClick={handleLogin}
         >
           <ImGoogle size={20} style={{ marginRight: '10px' }} />
           Play Online

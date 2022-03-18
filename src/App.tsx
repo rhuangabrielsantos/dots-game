@@ -26,11 +26,7 @@ function App() {
           checked={theme === 'dark'}
           id="togglerTheme"
         />
-
-        <Router />
-
         <MusicPlayer />
-
         <ToastContainer
           position="top-right"
           autoClose={5000}
@@ -43,6 +39,8 @@ function App() {
           pauseOnHover
           theme={theme === 'light' ? 'light' : 'dark'}
         />
+
+        <Router />
       </Provider>
     </ThemeProvider>
   )

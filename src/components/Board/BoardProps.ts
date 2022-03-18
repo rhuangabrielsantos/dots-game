@@ -1,7 +1,6 @@
-import { GameBoard } from '../../interfaces'
-import { GameMarks } from '../../interfaces/Game'
+import { Game } from '../../interfaces'
 
 export interface BoardProps {
-  board: GameBoard
-  marks: GameMarks
+  game: Game
+  updateGame: (game: Game) => void
 }

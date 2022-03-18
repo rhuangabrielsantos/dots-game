@@ -1,0 +1,65 @@
+import { useContext, useEffect, useState } from 'react'
+import Avatar from 'react-nice-avatar'
+import { useNavigate } from 'react-router-dom'
+
+import { AuthContext } from '../../contexts/AuthContext'
+
+import {
+  Button,
+  ContainerLeft,
+  GoogleIcon,
+  HomeIcon,
+  LoggOffIcon,
+  MenuContainer,
+  MenuItem,
+  Name,
+  ProfileIcon,
+} from './MenuStyle'
+
+export function Menu() {
+  const { user, signOut, signInWithGoogle } = useContext(AuthContext)
+  const navigate = useNavigate()
+  const [path, setPath] = useState('/home')
+
+  async function handleLogOff() {
+    await signOut()
+
+    navigate('/')
+  }
+
+  async function handleSignInGoogle() {
+    await signInWithGoogle()
+  }
+
+  useEffect(() => {
+    setPath(window.location.pathname)
+  }, [window.location.pathname])
+
+  return user ? (
+    <>
+      <ContainerLeft onClick={() => navigate('/profile')}>
+        <Avatar {...user?.avatar} style={{ width: '2rem', height: '2rem' }} />
+        <Name>{user?.name}</Name>
+      </ContainerLeft>
+
+      <MenuContainer>
+        <MenuItem onClick={() => navigate('/home')}>
+          <HomeIcon selected={path === '/home'} />
+        </MenuItem>
+
+        <MenuItem onClick={() => navigate('/profile')}>
+          <ProfileIcon selected={path === '/profile'} />
+        </MenuItem>
+        <MenuItem onClick={handleLogOff}>
+          <LoggOffIcon />
+        </MenuItem>
+      </MenuContainer>
+    </>
+  ) : (
+    <ContainerLeft>
+      <Button color="red" onClick={handleSignInGoogle}>
+        <GoogleIcon /> Sign In
+      </Button>
+    </ContainerLeft>
+  )
+}

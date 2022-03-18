@@ -9,6 +9,8 @@ export interface Game {
   board: GameBoard
   marks: GameMarks
   turn: number
+
+  isStarted?: boolean
 }
 
 export type GameBoard = Colors[][]

@@ -1,5 +1,6 @@
 import { Game, GameBoard, Player } from '../../interfaces'
 import { GameMarks, GameProps } from '../../interfaces/Game'
+import { Colors } from '../../interfaces/Player'
 
 import {
   HandlePlayerClickProps,
@@ -18,23 +19,23 @@ function generateGameBoardBySize(collumns: number, rows: number): GameBoard {
   const board: GameBoard = []
   for (let index = 0; index < rows * 2; index++) {
     if (index % 2 === 0) {
-      const row: undefined[] = []
+      const row: Colors[] = []
       for (let index = 0; index < collumns; index++) {
-        row[index] = undefined
+        row[index] = 'empty'
       }
       board.push(row)
     } else {
-      const row: undefined[] = []
+      const row: Colors[] = []
       for (let index = 0; index < collumns + 1; index++) {
-        row[index] = undefined
+        row[index] = 'empty'
       }
       board.push(row)
     }
   }
 
-  const lastRow: undefined[] = []
+  const lastRow: Colors[] = []
   for (let index = 0; index < collumns; index++) {
-    lastRow[index] = undefined
+    lastRow[index] = 'empty'
   }
   board.push(lastRow)
 
@@ -45,9 +46,9 @@ function generateGameMarksBySize(collumns: number, rows: number): GameMarks {
   const marks: GameMarks = []
 
   for (let index = 0; index < rows; index++) {
-    const row: undefined[] = []
+    const row: Colors[] = []
     for (let index = 0; index < collumns; index++) {
-      row[index] = undefined
+      row[index] = 'primary'
     }
     marks.push(row)
   }
@@ -69,16 +70,28 @@ export function handleSquareWinnerCheck(props: HandleSquareWinnerCheck) {
   let thereIsAWinnerOfTheSquare = false
   let newGameState: Game = game
 
+  const colorsOptions: Colors[] = [
+    '#429867',
+    '#482344',
+    '#e02130',
+    '#fab243',
+    'tertiary',
+  ]
+
   if (
     isTopOrBottom &&
     game.board[clickCoords.collumn] &&
-    game.board[clickCoords.collumn][clickCoords.row] &&
+    colorsOptions.includes(game.board[clickCoords.collumn][clickCoords.row]) &&
     game.board[clickCoords.collumn + 1] &&
-    game.board[clickCoords.collumn + 1][clickCoords.row] &&
+    colorsOptions.includes(
+      game.board[clickCoords.collumn + 1][clickCoords.row]
+    ) &&
     game.board[clickCoords.collumn + 1] &&
-    game.board[clickCoords.collumn + 1][clickCoords.row + 1] &&
+    colorsOptions.includes(
+      game.board[clickCoords.collumn + 1][clickCoords.row + 1]
+    ) &&
     game.board[clickCoords.collumn + 2] &&
-    game.board[clickCoords.collumn + 2][clickCoords.row]
+    colorsOptions.includes(game.board[clickCoords.collumn + 2][clickCoords.row])
   ) {
     newGameState = generateNewPointForPlayer(newGameState, lastPlayer)
     newGameState = markSquareWithTheColorOfTheWinner(
@@ -99,13 +112,19 @@ export function handleSquareWinnerCheck(props: HandleSquareWinnerCheck) {
   if (
     isTopOrBottom &&
     game.board[clickCoords.collumn] &&
-    game.board[clickCoords.collumn][clickCoords.row] &&
+    colorsOptions.includes(game.board[clickCoords.collumn][clickCoords.row]) &&
     game.board[clickCoords.collumn - 2] &&
-    game.board[clickCoords.collumn - 2][clickCoords.row] &&
+    colorsOptions.includes(
+      game.board[clickCoords.collumn - 2][clickCoords.row]
+    ) &&
     game.board[clickCoords.collumn - 1] &&
-    game.board[clickCoords.collumn - 1][clickCoords.row] &&
+    colorsOptions.includes(
+      game.board[clickCoords.collumn - 1][clickCoords.row]
+    ) &&
     game.board[clickCoords.collumn - 1] &&
-    game.board[clickCoords.collumn - 1][clickCoords.row + 1]
+    colorsOptions.includes(
+      game.board[clickCoords.collumn - 1][clickCoords.row + 1]
+    )
   ) {
     newGameState = generateNewPointForPlayer(newGameState, lastPlayer)
     newGameState = markSquareWithTheColorOfTheWinner(
@@ -126,13 +145,17 @@ export function handleSquareWinnerCheck(props: HandleSquareWinnerCheck) {
   if (
     !isTopOrBottom &&
     game.board[clickCoords.collumn] &&
-    game.board[clickCoords.collumn][clickCoords.row] &&
+    colorsOptions.includes(game.board[clickCoords.collumn][clickCoords.row]) &&
     game.board[clickCoords.collumn - 1] &&
-    game.board[clickCoords.collumn - 1][clickCoords.row] &&
+    colorsOptions.includes(
+      game.board[clickCoords.collumn - 1][clickCoords.row]
+    ) &&
     game.board[clickCoords.collumn] &&
-    game.board[clickCoords.collumn][clickCoords.row + 1] &&
+    colorsOptions.includes(
+      game.board[clickCoords.collumn][clickCoords.row + 1]
+    ) &&
     game.board[clickCoords.collumn + 1] &&
-    game.board[clickCoords.collumn + 1][clickCoords.row]
+    colorsOptions.includes(game.board[clickCoords.collumn + 1][clickCoords.row])
   ) {
     newGameState = generateNewPointForPlayer(newGameState, lastPlayer)
     newGameState = markSquareWithTheColorOfTheWinner(
@@ -153,13 +176,19 @@ export function handleSquareWinnerCheck(props: HandleSquareWinnerCheck) {
   if (
     !isTopOrBottom &&
     game.board[clickCoords.collumn] &&
-    game.board[clickCoords.collumn][clickCoords.row] &&
+    colorsOptions.includes(game.board[clickCoords.collumn][clickCoords.row]) &&
     game.board[clickCoords.collumn - 1] &&
-    game.board[clickCoords.collumn - 1][clickCoords.row - 1] &&
+    colorsOptions.includes(
+      game.board[clickCoords.collumn - 1][clickCoords.row - 1]
+    ) &&
     game.board[clickCoords.collumn] &&
-    game.board[clickCoords.collumn][clickCoords.row - 1] &&
+    colorsOptions.includes(
+      game.board[clickCoords.collumn][clickCoords.row - 1]
+    ) &&
     game.board[clickCoords.collumn + 1] &&
-    game.board[clickCoords.collumn + 1][clickCoords.row - 1]
+    colorsOptions.includes(
+      game.board[clickCoords.collumn + 1][clickCoords.row - 1]
+    )
   ) {
     newGameState = generateNewPointForPlayer(newGameState, lastPlayer)
     newGameState = markSquareWithTheColorOfTheWinner(
@@ -182,13 +211,12 @@ export function handleSquareWinnerCheck(props: HandleSquareWinnerCheck) {
 }
 
 function checkEndGame(game: Game): Game {
-  const { firstPlayer, secondPlayer, marks } = game
+  const { firstPlayer, secondPlayer } = game
 
   let newGameState = game
 
-  const allSquaresAreFilled = marks.every((row) =>
-    row.every((square) => square)
-  )
+  const allSquaresAreFilled =
+    firstPlayer.pontuation + secondPlayer.pontuation === 16
 
   if (allSquaresAreFilled) {
     const isDraw = firstPlayer.pontuation === secondPlayer.pontuation
@@ -247,10 +275,10 @@ function markSquareWithTheColorOfTheWinner(
     squareCoords[0] % 2 === 0 ? squareCoords[0] / 2 : squareCoords[0] / 2 - 0.5
   ][squareCoords[1]] = lastPlayer.color
 
-  newBoard[lines.top[0]][lines.top[1]] = 'primary'
-  newBoard[lines.bottom[0]][lines.bottom[1]] = 'primary'
-  newBoard[lines.left[0]][lines.left[1]] = 'primary'
-  newBoard[lines.right[0]][lines.right[1]] = 'primary'
+  newBoard[lines.top[0]][lines.top[1]] = 'tertiary'
+  newBoard[lines.bottom[0]][lines.bottom[1]] = 'tertiary'
+  newBoard[lines.left[0]][lines.left[1]] = 'tertiary'
+  newBoard[lines.right[0]][lines.right[1]] = 'tertiary'
 
   return {
     ...game,

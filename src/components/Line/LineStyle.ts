@@ -70,7 +70,9 @@ export const Line = styled.button<{
 
   background: ${(props) => {
     switch (props.color) {
-      case 'primary':
+      case 'empty':
+        return props.theme.colors.primary
+      case 'tertiary':
         return props.theme.colors.tertiary
       default:
         return props.color || props.theme.colors.primary

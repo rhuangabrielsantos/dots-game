@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@radix-ui/react-switch": "^0.1.5",
+    "firebase": "^9.6.8",
     "framer-motion": "^6.2.6",
     "nth-check": "^2.0.1",
     "react": "^17.0.2",

@@ -6,15 +6,17 @@ import { Square } from '../../components/Square'
 import { BoardProps } from './BoardProps'
 import { Container, Row } from './BoardStyle'
 
-export function Board({ board, marks }: BoardProps) {
+export function Board({ game, updateGame }: BoardProps) {
   return (
     <Container>
-      {board.map((states, stateIndex) => (
+      {game.board.map((states, stateIndex) => (
         <Row key={stateIndex} horizontalLine={stateIndex % 2 === 0}>
           {stateIndex % 2 === 0
             ? states.map((color, colorIndex) => (
                 <Line
                   key={colorIndex}
+                  game={game}
+                  updateGame={updateGame}
                   color={color}
                   aria-label="horizontal-line"
                   collumn={stateIndex}
@@ -25,6 +27,8 @@ export function Board({ board, marks }: BoardProps) {
             : states.map((color, colorIndex) => (
                 <Line
                   key={colorIndex}
+                  game={game}
+                  updateGame={updateGame}
                   color={color}
                   aria-label="vertical-line"
                   collumn={stateIndex}
@@ -35,11 +39,11 @@ export function Board({ board, marks }: BoardProps) {
         </Row>
       ))}
 
-      {marks.map((colluns, collunIndex) => {
+      {game.marks.map((colluns, collunIndex) => {
         return colluns.map((rows, rowIndex) => (
           <Square
             key={rowIndex}
-            color={marks[collunIndex][rowIndex]}
+            color={game.marks[collunIndex][rowIndex]}
             top={collunIndex}
             left={rowIndex}
           />

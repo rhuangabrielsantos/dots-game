@@ -1,7 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
+import { useEffect } from 'react'
 
-import { GameContext } from '../../contexts/GameContext'
 import { SfxContext } from '../../contexts/SfxContext'
+import { useAuth } from '../../hooks/useAuth'
 import {
   handlePlayerClick,
   handleSquareWinnerCheck,
@@ -10,34 +11,37 @@ import {
 import { LineProps } from './LineProps'
 import { Line as LineStyle } from './LineStyle'
 
-export function Line({ isVertical, collumn, row }: LineProps) {
+export function Line(props: LineProps) {
   const { tickSfx, clickSfx, winnerSfx } = useContext(SfxContext)
+  const { user } = useAuth()
 
-  const { game, updateGame } = useContext(GameContext)
+  const [turnIsFirstPlayer, setTurnIsFirstPlayer] = useState(true)
 
   function handleClick() {
     clickSfx()
 
     const newBoardState = handlePlayerClick({
-      board: game?.board || [],
+      board: props.game?.board || [],
       color:
-        (game?.turn || 0) % 2 === 1
-          ? game.firstPlayer.color
-          : game.secondPlayer.color,
-      collumn,
-      row,
+        (props.game?.turn || 0) % 2 === 1
+          ? props.game.firstPlayer?.color
+          : props.game.secondPlayer?.color,
+      collumn: props.collumn,
+      row: props.row,
     })
 
     const { newGameState, thereIsAWinnerOfTheSquare } = handleSquareWinnerCheck(
       {
-        game: { ...game, board: newBoardState },
+        game: { ...props.game, board: newBoardState },
         clickCoords: {
-          collumn,
-          row,
+          collumn: props.collumn,
+          row: props.row,
         },
         lastPlayer:
-          (game?.turn || 0) % 2 === 1 ? game.firstPlayer : game.secondPlayer,
-        isTopOrBottom: !isVertical,
+          (props.game?.turn || 0) % 2 === 1
+            ? props.game.firstPlayer
+            : props.game.secondPlayer,
+        isTopOrBottom: !props.isVertical,
       }
     )
 
@@ -45,24 +49,34 @@ export function Line({ isVertical, collumn, row }: LineProps) {
       winnerSfx()
     }
 
-    const turn = thereIsAWinnerOfTheSquare ? game.turn : game.turn + 1
+    const turn = thereIsAWinnerOfTheSquare
+      ? props.game.turn
+      : props.game.turn + 1
 
-    updateGame({ ...newGameState, turn })
+    props.updateGame({ ...newGameState, turn })
   }
+
+  useEffect(() => {
+    setTurnIsFirstPlayer(props.game.turn % 2 === 1)
+  }, [props.game.turn])
 
   return (
     <LineStyle
-      aria-label={isVertical ? 'vertical-line' : 'horizontal-line'}
-      value={game.board[collumn][row]}
-      color={game.board[collumn][row]}
+      aria-label={props.isVertical ? 'vertical-line' : 'horizontal-line'}
+      value={props.game.board[props.collumn][props.row]}
+      color={props.game.board[props.collumn][props.row]}
       onClick={handleClick}
-      isVertical={isVertical}
+      isVertical={props.isVertical}
       turn={
-        (game?.turn || 0) % 2 === 1
-          ? game.firstPlayer.color
-          : game.secondPlayer.color
+        (props.game?.turn || 0) % 2 === 1
+          ? props.game.firstPlayer.color
+          : props.game.secondPlayer.color
       }
-      disabled={game.board[collumn][row] !== undefined}
+      disabled={
+        props.game.board[props.collumn][props.row] !== 'empty' ||
+        (user?.id === props.game.firstPlayer.id && !turnIsFirstPlayer) ||
+        (user?.id === props.game.secondPlayer.id && turnIsFirstPlayer)
+      }
       onMouseEnter={() => tickSfx()}
     />
   )

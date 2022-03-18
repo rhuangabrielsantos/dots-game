@@ -6,6 +6,9 @@ export interface Player {
   color: Colors
   pontuation: number
   avatar: AvatarFullConfig
+
+  isReady?: boolean
+  unavailableColors?: Colors[]
 }
 
 export type Colors =
@@ -14,4 +17,5 @@ export type Colors =
   | '#482344'
   | '#fab243'
   | 'primary'
-  | undefined
+  | 'tertiary'
+  | 'empty'
