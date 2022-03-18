@@ -20,4 +20,8 @@ export const EnterButton = styled(BsPlusSquare)`
   &:hover {
     opacity: 0.8;
   }
+
+  ${(props) => props.theme.media.mobile} {
+    margin-left: 0;
+  }
 `

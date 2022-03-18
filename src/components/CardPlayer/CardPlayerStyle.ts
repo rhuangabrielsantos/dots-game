@@ -171,6 +171,27 @@ export const WaitingTitle = styled.h1`
   transform: scaleX(-1);
 `
 
+export const WaitingDescription = styled.h2`
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
+  font-size: 1rem;
+
+  align-self: center;
+  text-align: center;
+
+  margin-top: 0.5rem;
+
+  color: ${(props) => props.theme.colors.primary};
+
+  transform: scaleX(-1);
+
+  display: none;
+
+  ${(props) => props.theme.media.mobile} {
+    display: block;
+  }
+`
+
 export const EditButton = styled(FiEdit)`
   font-size: 1.5rem;
   color: ${(props) => props.theme.colors.primary};

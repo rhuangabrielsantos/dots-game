@@ -21,6 +21,7 @@ import {
   PlayerInfo,
   PlayerName,
   RandomIcon,
+  WaitingDescription,
   WaitingTitle,
 } from './CardPlayerStyle'
 
@@ -68,6 +69,11 @@ export function CardPlayer(props: CardPlayerProps) {
           style={{ transform: 'scaleX(-1)' }}
         />
         <WaitingTitle>{props.title} is ready!</WaitingTitle>
+        <WaitingDescription>
+          Waiting{' '}
+          {props.title === 'First Player' ? 'Second player' : 'First player'}
+          ...
+        </WaitingDescription>
       </FormContainer>
 
       <FormContainer

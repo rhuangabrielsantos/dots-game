@@ -19,6 +19,18 @@ export const ContainerLeft = styled.div`
   }
 `
 
+export const SignInContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+
+  cursor: pointer;
+`
+
 export const Name = styled.h3`
   font-family: 'Poppins', sans-serif;
   font-size: 1.3rem;

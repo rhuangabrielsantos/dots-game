@@ -214,6 +214,10 @@ export function Lobby() {
     <Container>
       <CardPlayer
         title="First Player"
+        mobileScreen={
+          user?.id === game?.firstPlayer.id &&
+          (!game?.firstPlayer.isReady || !game?.secondPlayer.isReady)
+        }
         playerName={game.firstPlayer.name}
         playerIsReady={game.firstPlayer.isReady}
         playerAvatar={game.firstPlayer.avatar}
@@ -233,6 +237,10 @@ export function Lobby() {
         <>
           <CardPlayer
             title="Second Player"
+            mobileScreen={
+              user?.id === game?.secondPlayer.id &&
+              (!game?.firstPlayer.isReady || !game?.secondPlayer.isReady)
+            }
             playerName={game.secondPlayer.name}
             playerIsReady={game.secondPlayer.isReady}
             playerAvatar={game.secondPlayer.avatar}

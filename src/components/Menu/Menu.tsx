@@ -14,6 +14,7 @@ import {
   MenuItem,
   Name,
   ProfileIcon,
+  SignInContainer,
 } from './MenuStyle'
 
 export function Menu() {
@@ -44,7 +45,7 @@ export function Menu() {
 
       <MenuContainer>
         <MenuItem onClick={() => navigate('/home')}>
-          <HomeIcon selected={path === '/home'} />
+          <HomeIcon selected={path === '/home' || path === '/'} />
         </MenuItem>
 
         <MenuItem onClick={() => navigate('/profile')}>
@@ -56,10 +57,10 @@ export function Menu() {
       </MenuContainer>
     </>
   ) : (
-    <ContainerLeft>
+    <SignInContainer>
       <Button color="red" onClick={handleSignInGoogle}>
         <GoogleIcon /> Sign In
       </Button>
-    </ContainerLeft>
+    </SignInContainer>
   )
 }
