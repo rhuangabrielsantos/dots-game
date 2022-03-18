@@ -5,13 +5,14 @@ import { BackButton } from '../../components/BackButton'
 import { Board } from '../../components/Board'
 import { PlayerProfile } from '../../components/PlayerProfile'
 import { GameContext } from '../../contexts/GameContext'
+import { Game as GameProps } from '../../interfaces'
 
 import { variantsContainer } from './GameAnimations'
 import { Container } from './GameStyle'
 
 export function Game() {
   const navigate = useNavigate()
-  const { game } = useContext(GameContext)
+  const { game, updateGame } = useContext(GameContext)
 
   const [containerAnimation, setContainerAnimation] = useState(true)
 
@@ -21,6 +22,10 @@ export function Game() {
     setTimeout(() => {
       window.history.back()
     }, 900)
+  }
+
+  function handleUpdateGame(newGame: GameProps) {
+    updateGame(newGame)
   }
 
   useEffect(() => {
@@ -49,7 +54,7 @@ export function Game() {
       <BackButton onClick={handleBackButton} />
 
       <PlayerProfile player={game.firstPlayer} isMyTurn={game.turn % 2 === 1} />
-      <Board board={game?.board} marks={game?.marks} />
+      <Board game={game} updateGame={handleUpdateGame} />
       <PlayerProfile
         player={game.secondPlayer}
         isSecondPlayer

@@ -10,7 +10,7 @@ export const Container = styled.div`
   gap: 0.5rem;
 `
 
-export const ColorButton = styled.button<{ color: Colors; disabled: boolean }>`
+export const ColorButton = styled.button<{ color: Colors; disabled?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;

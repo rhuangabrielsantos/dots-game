@@ -1,0 +1,1 @@
+export { CardPlayer } from './CardPlayer'

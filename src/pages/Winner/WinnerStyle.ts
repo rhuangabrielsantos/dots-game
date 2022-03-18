@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import { ImGoogle } from 'react-icons/im'
 import { VscDebugRestart } from 'react-icons/vsc'
 import styled from 'styled-components'
 
@@ -33,15 +32,8 @@ export const BoxButton = styled(motion.div)`
 `
 
 export const RestartIcon = styled(VscDebugRestart)`
-  color: ${(props) => props.theme.colors.secondary};
+  color: ${(props) => props.theme.colors.primary};
   font-size: 27px;
-
-  margin-right: 10px;
-`
-
-export const GoogleIcon = styled(ImGoogle)`
-  color: ${(props) => props.theme.colors.secondary};
-  font-size: 22px;
 
   margin-right: 10px;
 `

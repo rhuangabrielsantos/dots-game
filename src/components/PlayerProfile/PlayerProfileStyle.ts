@@ -17,6 +17,11 @@ export const PlayerName = styled.h1`
   font-size: 1.5rem;
   font-weight: 200;
 
+  max-width: 15ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
   color: ${(props) => props.theme.colors.text};
 
   padding-top: 1rem;

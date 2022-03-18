@@ -1,3 +1,4 @@
+import { AuthContextProvider } from './AuthContext'
 import { GameContextProvider } from './GameContext'
 import { SfxContextProvider } from './SfxContext'
 
@@ -7,8 +8,10 @@ interface ProviderProps {
 
 export function Provider(props: ProviderProps) {
   return (
-    <GameContextProvider>
-      <SfxContextProvider>{props.children}</SfxContextProvider>
-    </GameContextProvider>
+    <AuthContextProvider>
+      <GameContextProvider>
+        <SfxContextProvider>{props.children}</SfxContextProvider>
+      </GameContextProvider>
+    </AuthContextProvider>
   )
 }

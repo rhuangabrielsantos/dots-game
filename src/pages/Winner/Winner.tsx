@@ -6,14 +6,7 @@ import { NiceAvatar } from '../../components/NiceAvatar'
 import { GameContext } from '../../contexts/GameContext'
 import { SfxContext } from '../../contexts/SfxContext'
 
-import {
-  Box,
-  BoxButton,
-  Container,
-  GoogleIcon,
-  RestartIcon,
-  Title,
-} from './WinnerStyle'
+import { Box, BoxButton, Container, RestartIcon, Title } from './WinnerStyle'
 
 export function Winner() {
   const navigate = useNavigate()
@@ -22,7 +15,7 @@ export function Winner() {
   const { completedSfx } = useContext(SfxContext)
 
   function handlePlayAgain() {
-    navigate('/play-offline')
+    navigate('/')
   }
 
   useEffect(() => {
@@ -66,10 +59,6 @@ export function Winner() {
         <Button color="black" onClick={handlePlayAgain}>
           <RestartIcon />
           Play again
-        </Button>
-        <Button color="red" disabled title="Coming soon...">
-          <GoogleIcon />
-          Play Online
         </Button>
       </BoxButton>
     </Container>

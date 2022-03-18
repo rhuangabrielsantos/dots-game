@@ -1,9 +1,19 @@
+import { useEffect, useState } from 'react'
+
 import { NiceAvatar } from '../NiceAvatar'
 
 import { PlayerProfileProps } from './PlayerProfileProps'
 import { Container, PlayerName } from './PlayerProfileStyle'
 
 export function PlayerProfile(props: PlayerProfileProps) {
+  const [firstName, setFirstName] = useState('')
+
+  useEffect(() => {
+    if (props.player?.name) {
+      setFirstName(props.player?.name.split(' ')[0])
+    }
+  }, [props.player?.name])
+
   return (
     <Container>
       <NiceAvatar
@@ -15,7 +25,7 @@ export function PlayerProfile(props: PlayerProfileProps) {
         myColor={props.player?.color}
       />
 
-      <PlayerName>{props.player?.name}</PlayerName>
+      <PlayerName>{firstName}</PlayerName>
 
       <PlayerName>{props.player?.pontuation}</PlayerName>
     </Container>

@@ -9,7 +9,8 @@ export const Square = styled.button<{
   height: ${(props) => props.theme.size.web.breadth};
   border: none;
 
-  background-color: ${(props) => props.color || props.theme.colors.primary};
+  background-color: ${(props) =>
+    props.color === 'primary' ? props.theme.colors.primary : props.color};
 
   position: absolute;
   top: ${(props) =>

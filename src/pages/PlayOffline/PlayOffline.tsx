@@ -1,49 +1,21 @@
 import { useContext, useEffect, useState } from 'react'
-import Lottie from 'react-lottie'
-import Avatar, { AvatarFullConfig, genConfig } from 'react-nice-avatar'
+import { AvatarFullConfig, genConfig } from 'react-nice-avatar'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-import animationData from '../../assets/animations/success.json'
-import { BackButton } from '../../components/BackButton'
-import { ColorOptions } from '../../components/ColorOptions'
+import { CardPlayer } from '../../components/CardPlayer'
+import { InformationBox } from '../../components/InformationBox'
 import { GameContext } from '../../contexts/GameContext'
 import { SfxContext } from '../../contexts/SfxContext'
 import { Colors } from '../../interfaces/Player'
 import { generateGameBySize } from '../../utils/GameUtils'
 import { errorToastOptions } from '../../utils/ToastUtils'
 
-import {
-  variantsFlip,
-  variantsContainer,
-  variantsInformationBox,
-} from './PlayOffilineAnimation'
-import {
-  Container,
-  FormContainer,
-  PlayerInfo,
-  Label,
-  Field,
-  Button,
-  WaitingTitle,
-  EditButton,
-  FlipContainer,
-  InformationBox,
-  InformationTitle,
-  PlayerInfoContainer,
-  PlayerInfoLabel,
-  PlayerInfoValue,
-  PlayerInfoTitle,
-  PlayerDetails,
-  PlayerInfoColor,
-  InformationEditButton,
-  PlayerDetailsHeader,
-  NiceAvatarBox,
-  RandomIcon,
-} from './PlayOfflineStyle'
+import { variantsContainer } from './PlayOffilineAnimation'
+import { Container } from './PlayOfflineStyle'
 
 export function PlayOffline() {
-  const { tickSfx, clickSfx } = useContext(SfxContext)
+  const { clickSfx } = useContext(SfxContext)
   const { createNewGame } = useContext(GameContext)
   const navigate = useNavigate()
 
@@ -65,14 +37,12 @@ export function PlayOffline() {
   ] = useState<Colors[]>([])
 
   const [selectedColorForFirstPlayer, setSelectedColorForFirstPlayer] =
-    useState<Colors>()
+    useState<Colors>('empty')
   const [selectedColorForSecondPlayer, setSelectedColorForSecondPlayer] =
-    useState<Colors>()
+    useState<Colors>('empty')
 
   const [isFirstPlayerReady, setIsFirstPlayerReady] = useState<boolean>(false)
   const [isSecondPlayerReady, setIsSecondPlayerReady] = useState<boolean>(false)
-
-  const [containerAnimation, setContainerAnimation] = useState<boolean>(true)
 
   const [mobileScreen, setMobileScreen] = useState<string>('first')
 
@@ -100,7 +70,7 @@ export function PlayOffline() {
     })
   }
 
-  function handleFirstPlayerReady() {
+  function handleFirstPlayerReady(status: boolean) {
     clickSfx()
 
     const errors = []
@@ -116,7 +86,7 @@ export function PlayOffline() {
     }
 
     if (errors.length === 0) {
-      setIsFirstPlayerReady(true)
+      setIsFirstPlayerReady(status)
     }
 
     if (isSecondPlayerReady) {
@@ -126,7 +96,7 @@ export function PlayOffline() {
     }
   }
 
-  function handleSecondPlayerReady() {
+  function handleSecondPlayerReady(status: boolean) {
     clickSfx()
 
     const errors = []
@@ -142,17 +112,9 @@ export function PlayOffline() {
     }
 
     if (errors.length === 0) {
-      setIsSecondPlayerReady(true)
+      setIsSecondPlayerReady(status)
       setMobileScreen('information')
     }
-  }
-
-  function handleBackButton() {
-    setContainerAnimation(false)
-
-    setTimeout(() => {
-      window.history.back()
-    }, 900)
   }
 
   function handleEditButton(screen: string) {
@@ -231,213 +193,48 @@ export function PlayOffline() {
   }, [])
 
   return (
-    <Container
-      initial="initial"
-      animate={containerAnimation ? 'animate' : 'initial'}
-      variants={variantsContainer}
-    >
-      <BackButton onClick={handleBackButton} />
+    <Container initial="initial" animate="animate" variants={variantsContainer}>
+      <CardPlayer
+        title="First Player"
+        mobileScreen={mobileScreen === 'first'}
+        playerIsReady={isFirstPlayerReady}
+        playerName={firstPlayerName}
+        setPlayerName={setFirstPlayerName}
+        playerAvatar={firstPlayerAvatar}
+        selectedColor={selectedColorForFirstPlayer}
+        unavailableColors={unavailableColorsForFirstPlayer}
+        onRandomAvatar={() => randomAvatar('first')}
+        onColorSelected={handleFirstPlayerColorChange}
+        onPlayerReady={handleFirstPlayerReady}
+        isMyCard
+      />
 
-      <FlipContainer mobileenabled={mobileScreen === 'first'}>
-        <FormContainer
-          initial={{ rotateY: 0 }}
-          variants={variantsFlip}
-          animate={isFirstPlayerReady ? 'closed' : 'open'}
-          backfacevisibility="visible"
-        >
-          <EditButton
-            onMouseEnter={() => tickSfx()}
-            onClick={() => {
-              clickSfx()
-              setIsFirstPlayerReady(false)
-            }}
-          />
-          <Lottie
-            options={{
-              loop: false,
-              autoplay: true,
-              animationData,
-              rendererSettings: {
-                preserveAspectRatio: 'xMidYMid slice',
-              },
-            }}
-            isPaused={!isFirstPlayerReady}
-            isStopped={!isFirstPlayerReady}
-            height={200}
-            width={200}
-            style={{ transform: 'scaleX(-1)' }}
-          />
-          <WaitingTitle>First Player is ready!</WaitingTitle>
-        </FormContainer>
-
-        <FormContainer
-          initial={{ rotateY: 0 }}
-          variants={variantsFlip}
-          animate={isFirstPlayerReady ? 'closed' : 'open'}
-          backfacevisibility="hidden"
-        >
-          <PlayerInfo>First Player</PlayerInfo>
-
-          <NiceAvatarBox>
-            <Avatar
-              {...firstPlayerAvatar}
-              style={{ width: '7rem', height: '7rem' }}
-            />
-
-            <RandomIcon onClick={() => randomAvatar('first')} />
-          </NiceAvatarBox>
-
-          <Label htmlFor="firstPlayer">NAME</Label>
-          <Field
-            type="text"
-            name="firstPlayer"
-            placeholder="NAME"
-            onChange={(event) => setFirstPlayerName(event.target.value)}
-            value={firstPlayerName}
-          />
-
-          <Label htmlFor="firstPlayerColor">COLOR</Label>
-          <ColorOptions
-            unavailableColors={unavailableColorsForFirstPlayer}
-            selectedColor={selectedColorForFirstPlayer}
-            onChange={handleFirstPlayerColorChange}
-          />
-
-          <Button
-            onClick={handleFirstPlayerReady}
-            onMouseEnter={() => tickSfx()}
-          >
-            READY
-          </Button>
-        </FormContainer>
-      </FlipContainer>
-
-      <FlipContainer mobileenabled={mobileScreen === 'second'}>
-        <FormContainer
-          initial={{ rotateY: 0 }}
-          variants={variantsFlip}
-          animate={isSecondPlayerReady ? 'closed' : 'open'}
-          backfacevisibility="visible"
-        >
-          <EditButton
-            onMouseEnter={() => tickSfx()}
-            onClick={() => {
-              clickSfx()
-              setIsSecondPlayerReady(false)
-            }}
-          />
-          <Lottie
-            options={{
-              loop: false,
-              autoplay: true,
-              animationData,
-              rendererSettings: {
-                preserveAspectRatio: 'xMidYMid slice',
-              },
-            }}
-            isPaused={!isSecondPlayerReady}
-            isStopped={!isSecondPlayerReady}
-            height={200}
-            width={200}
-            style={{ transform: 'scaleX(-1)' }}
-          />
-          <WaitingTitle>Second Player is ready!</WaitingTitle>
-        </FormContainer>
-
-        <FormContainer
-          initial={{ rotateY: 0 }}
-          variants={variantsFlip}
-          animate={isSecondPlayerReady ? 'closed' : 'open'}
-          backfacevisibility="hidden"
-        >
-          <PlayerInfo>Second Player</PlayerInfo>
-
-          <NiceAvatarBox>
-            <Avatar
-              {...secondPlayerAvatar}
-              style={{ width: '7rem', height: '7rem' }}
-            />
-
-            <RandomIcon onClick={() => randomAvatar('second')} />
-          </NiceAvatarBox>
-
-          <Label htmlFor="secondPlayer">NAME</Label>
-          <Field
-            type="text"
-            name="secondPlayer"
-            placeholder="NAME"
-            onChange={(event) => setSecondPlayerName(event.target.value)}
-            value={secondPlayerName}
-          />
-
-          <Label htmlFor="secondPlayerColor">COLOR</Label>
-          <ColorOptions
-            unavailableColors={unavailableColorsForSecondPlayer}
-            selectedColor={selectedColorForSecondPlayer}
-            onChange={handleSecondPlayerColorChange}
-          />
-
-          <Button
-            onClick={handleSecondPlayerReady}
-            onMouseEnter={() => tickSfx()}
-          >
-            READY
-          </Button>
-        </FormContainer>
-      </FlipContainer>
+      <CardPlayer
+        title="Second Player"
+        mobileScreen={mobileScreen === 'second'}
+        playerIsReady={isSecondPlayerReady}
+        playerName={secondPlayerName}
+        setPlayerName={setSecondPlayerName}
+        playerAvatar={secondPlayerAvatar}
+        selectedColor={selectedColorForSecondPlayer}
+        unavailableColors={unavailableColorsForSecondPlayer}
+        onRandomAvatar={() => randomAvatar('second')}
+        onColorSelected={handleSecondPlayerColorChange}
+        onPlayerReady={handleSecondPlayerReady}
+        isMyCard
+      />
 
       <InformationBox
-        mobileenabled={mobileScreen === 'information'}
-        initial="initial"
-        variants={variantsInformationBox}
-        animate={
-          isFirstPlayerReady && isSecondPlayerReady ? 'animate' : 'initial'
-        }
-      >
-        <InformationTitle>Informações dos Jogadores</InformationTitle>
-
-        <PlayerInfoContainer>
-          <PlayerDetailsHeader>
-            <PlayerInfoTitle>First Player</PlayerInfoTitle>
-            <InformationEditButton
-              onMouseEnter={() => tickSfx()}
-              onClick={() => handleEditButton('first')}
-            />
-          </PlayerDetailsHeader>
-
-          <PlayerDetails>
-            <PlayerInfoLabel>NAME:</PlayerInfoLabel>
-            <PlayerInfoValue>{firstPlayerName}</PlayerInfoValue>
-          </PlayerDetails>
-          <PlayerDetails>
-            <PlayerInfoLabel>COLOR:</PlayerInfoLabel>
-            <PlayerInfoColor playerColor={selectedColorForFirstPlayer ?? ''} />
-          </PlayerDetails>
-        </PlayerInfoContainer>
-
-        <PlayerInfoContainer>
-          <PlayerDetailsHeader>
-            <PlayerInfoTitle>Second Player</PlayerInfoTitle>
-            <InformationEditButton
-              onMouseEnter={() => tickSfx()}
-              onClick={() => handleEditButton('second')}
-            />
-          </PlayerDetailsHeader>
-
-          <PlayerDetails>
-            <PlayerInfoLabel>NAME:</PlayerInfoLabel>
-            <PlayerInfoValue>{secondPlayerName}</PlayerInfoValue>
-          </PlayerDetails>
-          <PlayerDetails>
-            <PlayerInfoLabel>COLOR:</PlayerInfoLabel>
-            <PlayerInfoColor playerColor={selectedColorForSecondPlayer ?? ''} />
-          </PlayerDetails>
-        </PlayerInfoContainer>
-
-        <Button onClick={handleStartGame} onMouseEnter={() => tickSfx()}>
-          PLAY
-        </Button>
-      </InformationBox>
+        mobileScreen={mobileScreen === 'information'}
+        firstPlayerName={firstPlayerName}
+        firstPlayerColor={selectedColorForFirstPlayer}
+        isFirstPlayerReady={isFirstPlayerReady}
+        secondPlayerName={secondPlayerName}
+        secondPlayerColor={selectedColorForSecondPlayer}
+        isSecondPlayerReady={isSecondPlayerReady}
+        onEditPlayer={handleEditButton}
+        onStartGame={handleStartGame}
+      />
     </Container>
   )
 }
