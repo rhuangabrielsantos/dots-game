@@ -216,6 +216,10 @@ export function Lobby() {
     gameRef.on('value', (snapshot) => {
       const game = snapshot.val() as Game
 
+      if (!game) {
+        navigate('/')
+      }
+
       if (game) {
         setGame(game)
       }
