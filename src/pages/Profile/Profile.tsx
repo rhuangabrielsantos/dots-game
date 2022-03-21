@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { genConfig } from 'react-nice-avatar'
 import Avatar from 'react-nice-avatar'
 
+import { HowToPlay } from '../../components/HowToPlay'
 import { UserProps } from '../../contexts/AuthContext'
 import { useAuth } from '../../hooks/useAuth'
 
@@ -47,6 +48,8 @@ export function Profile() {
       <Name>{user?.name}</Name>
 
       <Description>Click icon to change your profile icon</Description>
+
+      <HowToPlay />
     </Container>
   ) : (
     <></>

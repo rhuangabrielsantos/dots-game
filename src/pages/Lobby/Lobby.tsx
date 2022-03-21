@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 
 import animationData from '../../assets/animations/loading.json'
 import { CardPlayer } from '../../components/CardPlayer'
+import { HowToPlay } from '../../components/HowToPlay'
 import { InformationBox } from '../../components/InformationBox'
 import { SfxContext } from '../../contexts/SfxContext'
 import { useAuth } from '../../hooks/useAuth'
@@ -292,6 +293,8 @@ export function Lobby() {
       >
         <CopyIcon />
       </ContainerCopy>
+
+      <HowToPlay />
     </Container>
   ) : (
     <Container>

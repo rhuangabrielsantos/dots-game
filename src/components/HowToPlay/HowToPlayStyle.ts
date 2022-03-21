@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
+import { IoMdHelpCircle } from 'react-icons/io'
 import Modal from 'react-modal'
 import styled from 'styled-components'
 
@@ -8,7 +9,6 @@ export const Button = styled.button`
   bottom: 2rem;
   right: 2rem;
 
-  font-size: 24px;
   color: ${(props) => props.theme.colors.primary};
   background-color: ${(props) => props.theme.colors.secondary};
   border: none;
@@ -25,6 +25,11 @@ export const Button = styled.button`
   &:hover:enabled {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   }
+`
+
+export const HelpIcon = styled(IoMdHelpCircle)`
+  font-size: 2rem;
+  color: ${(props) => props.theme.colors.primary};
 `
 
 export const ModalStyle = styled(Modal)`

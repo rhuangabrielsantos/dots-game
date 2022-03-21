@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import { CardPlayer } from '../../components/CardPlayer'
+import { HowToPlay } from '../../components/HowToPlay'
 import { InformationBox } from '../../components/InformationBox'
 import { GameContext } from '../../contexts/GameContext'
 import { SfxContext } from '../../contexts/SfxContext'
@@ -235,6 +236,8 @@ export function PlayOffline() {
         onEditPlayer={handleEditButton}
         onStartGame={handleStartGame}
       />
+
+      <HowToPlay />
     </Container>
   )
 }

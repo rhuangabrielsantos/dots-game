@@ -2,6 +2,7 @@ import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { Button } from '../../components/Button'
+import { HowToPlay } from '../../components/HowToPlay'
 import { SfxContext } from '../../contexts/SfxContext'
 import { useAuth } from '../../hooks/useAuth'
 import { database } from '../../services/firebase'
@@ -90,6 +91,8 @@ export function LoggedHome() {
       <Button color="red" onClick={handleCreateGame}>
         CREATE GAME
       </Button>
+
+      <HowToPlay />
     </Container>
   )
 }

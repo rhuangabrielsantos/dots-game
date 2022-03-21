@@ -4,7 +4,6 @@ import { ThemeProvider } from 'styled-components'
 import 'react-toastify/dist/ReactToastify.css'
 
 import { DarkModeSwitch } from './components/DarkModeSwitch'
-import { HowToPlay } from './components/HowToPlay'
 import { MusicPlayer } from './components/MusicPlayer'
 import { Provider } from './contexts'
 import { useDarkMode } from './hooks/useDarkMode'
@@ -22,7 +21,6 @@ function App() {
       <Provider>
         <GlobalStyle />
 
-        <HowToPlay />
         <DarkModeSwitch
           onClick={themeToggler}
           checked={theme === 'dark'}

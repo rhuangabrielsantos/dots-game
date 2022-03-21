@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from 'react'
-import { IoMdHelpCircle } from 'react-icons/io'
 
 import { SfxContext } from '../../contexts/SfxContext'
 import { Button as ButtonComponent } from '../Button'
@@ -7,6 +6,7 @@ import { Button as ButtonComponent } from '../Button'
 import { variantsDescription } from './HowToPlayAnimation'
 import {
   Button,
+  HelpIcon,
   CloseButton,
   Description,
   ModalStyle,
@@ -74,10 +74,9 @@ export function HowToPlay() {
         color="black"
         onMouseEnter={() => tickSfx()}
         onClick={handleButtonClick}
-        style={{ marginLeft: '10px' }}
         title="How To Play"
       >
-        <IoMdHelpCircle size={30} />
+        <HelpIcon />
       </Button>
 
       <ModalStyle
