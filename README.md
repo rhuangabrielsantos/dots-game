@@ -8,6 +8,7 @@ Welcome to dots-game repository, [click to play!](dots-game.vercel.app/)
 - [Framer Motion](https://framer.com/motion)
 - [Styled Components](https://styled-components.com/)
 - [React Lottie](https://www.npmjs.com/package/react-lottie)
+- [Firebase](https://firebase.google.com/)
 
 ## Run the game
 
@@ -19,13 +20,15 @@ Welcome to dots-game repository, [click to play!](dots-game.vercel.app/)
 yarn install
 ```
 
-4. Run the following command to run the game:
+4. Create project in Firebase with google authentication and realtime database
+5. Copy que .env.copy to .env and add environment variables
+6. Run the following command to run the game:
 
 ```
 yarn start
 ```
 
-5. Enjoy!
+7. Enjoy!
 
 ## Next steps
 
