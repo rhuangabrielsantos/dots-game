@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { BackButton } from '../../components/BackButton'
 import { Board } from '../../components/Board'
 import { PlayerProfile } from '../../components/PlayerProfile'
 import { GameContext } from '../../contexts/GameContext'
@@ -15,14 +14,6 @@ export function Game() {
   const { game, updateGame } = useContext(GameContext)
 
   const [containerAnimation, setContainerAnimation] = useState(true)
-
-  function handleBackButton() {
-    setContainerAnimation(false)
-
-    setTimeout(() => {
-      window.history.back()
-    }, 900)
-  }
 
   function handleUpdateGame(newGame: GameProps) {
     updateGame(newGame)
@@ -51,8 +42,6 @@ export function Game() {
       animate={containerAnimation ? 'animate' : 'initial'}
       variants={variantsContainer}
     >
-      <BackButton onClick={handleBackButton} />
-
       <PlayerProfile player={game.firstPlayer} isMyTurn={game.turn % 2 === 1} />
       <Board game={game} updateGame={handleUpdateGame} />
       <PlayerProfile

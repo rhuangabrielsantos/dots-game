@@ -46,9 +46,8 @@ export const ContainerCopy = styled.div`
 
   background-color: ${(props) => props.theme.colors.red};
 
-  transition: opacity 0.2s;
   &:hover {
-    opacity: 0.8;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   }
 `
 
