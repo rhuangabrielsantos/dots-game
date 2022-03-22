@@ -1,0 +1,1 @@
+export { HomeLogged } from './HomeLogged'

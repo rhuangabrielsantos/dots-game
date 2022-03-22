@@ -3,17 +3,17 @@ import { useState, useEffect } from 'react'
 import Lottie from 'react-lottie'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import animationData from '../../assets/animations/loading.json'
-import { Board } from '../../components/Board'
-import { PlayerProfile } from '../../components/PlayerProfile'
-import { GameContext } from '../../contexts/GameContext'
-import { Game } from '../../interfaces'
-import { database } from '../../services/firebase'
+import animationData from '../../../assets/animations/loading.json'
+import { Board } from '../../../components/Board'
+import { PlayerProfile } from '../../../components/PlayerProfile'
+import { GameContext } from '../../../contexts/GameContext'
+import { Game } from '../../../interfaces'
+import { database } from '../../../services/firebase'
 
-import { variantsContainer } from './PlayOnlineAnimation'
-import { Container } from './PlayOnlineStyle'
+import { variantsContainer } from './PlayAnimation'
+import { Container } from './PlayStyle'
 
-export function PlayOnline() {
+export function Play() {
   const navigate = useNavigate()
   const { id } = useParams()
   const gameRef = database.ref(`games/${id}`)

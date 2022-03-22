@@ -1,21 +1,15 @@
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { Button } from '../../components/Button'
-import { NiceAvatar } from '../../components/NiceAvatar'
-import { GameContext } from '../../contexts/GameContext'
-import { SfxContext } from '../../contexts/SfxContext'
-import { database } from '../../services/firebase'
+import { Button } from '../../../components/Button'
+import { NiceAvatar } from '../../../components/NiceAvatar'
+import { GameContext } from '../../../contexts/GameContext'
+import { SfxContext } from '../../../contexts/SfxContext'
+import { database } from '../../../services/firebase'
 
-import {
-  Box,
-  BoxButton,
-  Container,
-  RestartIcon,
-  Title,
-} from './WinnerOnlineStyle'
+import { Box, BoxButton, Container, RestartIcon, Title } from './WinnerStyle'
 
-export function WinnerOnline() {
+export function Winner() {
   const navigate = useNavigate()
 
   const { id } = useParams()

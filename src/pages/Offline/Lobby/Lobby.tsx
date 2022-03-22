@@ -3,19 +3,19 @@ import { AvatarFullConfig, genConfig } from 'react-nice-avatar'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-import { CardPlayer } from '../../components/CardPlayer'
-import { HowToPlay } from '../../components/HowToPlay'
-import { InformationBox } from '../../components/InformationBox'
-import { GameContext } from '../../contexts/GameContext'
-import { SfxContext } from '../../contexts/SfxContext'
-import { Colors } from '../../interfaces/Player'
-import { generateGameBySize } from '../../utils/GameUtils'
-import { errorToastOptions } from '../../utils/ToastUtils'
+import { CardPlayer } from '../../../components/CardPlayer'
+import { HowToPlay } from '../../../components/HowToPlay'
+import { InformationBox } from '../../../components/InformationBox'
+import { GameContext } from '../../../contexts/GameContext'
+import { SfxContext } from '../../../contexts/SfxContext'
+import { Colors } from '../../../interfaces/Player'
+import { generateGameBySize } from '../../../utils/GameUtils'
+import { errorToastOptions } from '../../../utils/ToastUtils'
 
-import { variantsContainer } from './PlayOffilineAnimation'
-import { Container } from './PlayOfflineStyle'
+import { variantsContainer } from './LobbyAnimation'
+import { Container } from './LobbyStyle'
 
-export function PlayOffline() {
+export function Lobby() {
   const { clickSfx } = useContext(SfxContext)
   const { createNewGame } = useContext(GameContext)
   const navigate = useNavigate()

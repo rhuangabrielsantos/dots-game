@@ -8,9 +8,9 @@ import { useAuth } from '../../hooks/useAuth'
 import { database } from '../../services/firebase'
 import { generateGameBySize } from '../../utils/GameUtils'
 
-import { BoxSize, Container, ContainerBox } from './LoggedHomeStyle'
+import { BoxSize, Container, ContainerBox } from './HomeLoggedStyle'
 
-export function LoggedHome() {
+export function HomeLogged() {
   const { user } = useAuth()
   const navigate = useNavigate()
 

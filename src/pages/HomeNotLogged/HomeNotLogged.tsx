@@ -9,10 +9,10 @@ import { SfxContext } from '../../contexts/SfxContext'
 import { useAnimation } from '../../hooks/useAnimation'
 import { useAuth } from '../../hooks/useAuth'
 
-import { buttonsVariants, textVariants } from './HomeAnimation'
-import { Container, Title, Description, BoxButton } from './HomeStyle'
+import { buttonsVariants, textVariants } from './HomeNotLoggedAnimation'
+import { Container, Title, Description, BoxButton } from './HomeNotLoggedStyle'
 
-export function Home() {
+export function HomeNotLogged() {
   const { user, signInWithGoogle } = useAuth()
   const { tickSfx, clickSfx } = useContext(SfxContext)
   const navigate = useNavigate()
@@ -27,7 +27,7 @@ export function Home() {
     setButtonAnimation('initial')
 
     setTimeout(() => {
-      navigate('/play-offline')
+      navigate('/lobby')
     }, 900)
   }
 

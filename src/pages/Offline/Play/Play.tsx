@@ -1,15 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { Board } from '../../components/Board'
-import { PlayerProfile } from '../../components/PlayerProfile'
-import { GameContext } from '../../contexts/GameContext'
-import { Game as GameProps } from '../../interfaces'
+import { Board } from '../../../components/Board'
+import { PlayerProfile } from '../../../components/PlayerProfile'
+import { GameContext } from '../../../contexts/GameContext'
+import { Game as GameProps } from '../../../interfaces'
 
-import { variantsContainer } from './GameAnimations'
-import { Container } from './GameStyle'
+import { variantsContainer } from './PlayAnimations'
+import { Container } from './PlayStyle'
 
-export function Game() {
+export function Play() {
   const navigate = useNavigate()
   const { game, updateGame } = useContext(GameContext)
 

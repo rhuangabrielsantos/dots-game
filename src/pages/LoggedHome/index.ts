@@ -1,1 +1,0 @@
-export { LoggedHome } from './LoggedHome'
