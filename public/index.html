@@ -17,5 +17,20 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('svcWorker.js').then(function(registration) {
+            console.log('Worker registration is successful', registration.scope);
+          }, function(err) {
+            console.log('Worker registration has failed', err);
+          }).catch(function(err) {
+            console.log(err);
+          });
+        });
+      } else {
+        console.log('Service Worker is not supported by your browser.');
+      }
+    </script>
   </body>
 </html>
