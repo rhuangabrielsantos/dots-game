@@ -1,6 +1,5 @@
-import React, { useContext, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
-import { GameContext } from '../../../contexts/GameContext'
 import { Game } from '../../../interfaces'
 import { generateGameBySize } from '../../../utils/GameUtils'
 import { Board } from '../../Board'
@@ -9,8 +8,6 @@ import { ScenarioEnum, ScenarioProps } from './ScenarioProps'
 
 export function Scenario(props: ScenarioProps) {
   const customGame = generateGameBySize(2, 2)
-  const { game, updateGame } = useContext(GameContext)
-
   const firstScenarioGame: Game = {
     ...customGame,
     firstPlayer: {
@@ -30,8 +27,10 @@ export function Scenario(props: ScenarioProps) {
     turn: 1,
   }
 
+  const [game, setGame] = useState<Game>(firstScenarioGame)
+
   function handleUpdateGame(game: Game) {
-    updateGame(game)
+    setGame(game)
 
     const colorOptions = ['#429867', '#482344']
 
@@ -61,7 +60,7 @@ export function Scenario(props: ScenarioProps) {
   }
 
   useEffect(() => {
-    updateGame(firstScenarioGame)
+    setGame(firstScenarioGame)
   }, [])
 
   return <Board game={game} updateGame={handleUpdateGame} />

@@ -4,7 +4,6 @@ import { RiWifiOffLine } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
 
 import { Button } from '../../components/Button'
-import { HowToPlay } from '../../components/HowToPlay'
 import { SfxContext } from '../../contexts/SfxContext'
 import { useAnimation } from '../../hooks/useAnimation'
 import { useAuth } from '../../hooks/useAuth'
@@ -74,8 +73,6 @@ export function HomeNotLogged() {
           Play Online
         </Button>
       </BoxButton>
-
-      <HowToPlay />
     </Container>
   )
 }

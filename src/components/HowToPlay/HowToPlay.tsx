@@ -19,6 +19,7 @@ ModalStyle.setAppElement('#root')
 
 if (ModalStyle.defaultStyles.overlay) {
   ModalStyle.defaultStyles.overlay.backgroundColor = 'rgba(0, 0, 0, 0.5)'
+  ModalStyle.defaultStyles.overlay.zIndex = 100
 }
 
 export function HowToPlay() {
