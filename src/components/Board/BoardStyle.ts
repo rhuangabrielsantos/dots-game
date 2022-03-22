@@ -1,11 +1,24 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.div<{ size: string }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
+
+  zoom: ${(props) => {
+    switch (props.size) {
+      case '4x4':
+        return '100%'
+      case '6x6':
+        return '80%'
+      case '8x8':
+        return '65%'
+      case '10x10':
+        return '50%'
+    }
+  }};
 `
 
 export const Row = styled.div<{ horizontalLine: boolean }>`

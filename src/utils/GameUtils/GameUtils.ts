@@ -216,7 +216,8 @@ function checkEndGame(game: Game): Game {
   let newGameState = game
 
   const allSquaresAreFilled =
-    firstPlayer.pontuation + secondPlayer.pontuation === 16
+    firstPlayer.pontuation + secondPlayer.pontuation ===
+    game.marks.length * game.marks.length
 
   if (allSquaresAreFilled) {
     const isDraw = firstPlayer.pontuation === secondPlayer.pontuation

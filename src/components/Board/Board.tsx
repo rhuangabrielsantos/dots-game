@@ -7,8 +7,10 @@ import { BoardProps } from './BoardProps'
 import { Container, Row } from './BoardStyle'
 
 export function Board({ game, updateGame }: BoardProps) {
+  const gameSize = game.marks.length
+
   return (
-    <Container>
+    <Container size={`${gameSize}x${gameSize}`}>
       {game.board.map((states, stateIndex) => (
         <Row key={stateIndex} horizontalLine={stateIndex % 2 === 0}>
           {stateIndex % 2 === 0

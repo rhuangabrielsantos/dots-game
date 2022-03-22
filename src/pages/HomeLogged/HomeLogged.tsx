@@ -62,8 +62,6 @@ export function HomeLogged() {
           enabled={gameSize === '6x6'}
           onClick={() => handleClick('6x6')}
           onMouseEnter={() => tickSfx()}
-          title="Comming soon"
-          disabled
         >
           6x6
         </BoxSize>
@@ -71,8 +69,6 @@ export function HomeLogged() {
           enabled={gameSize === '8x8'}
           onClick={() => handleClick('8x8')}
           onMouseEnter={() => tickSfx()}
-          title="Comming soon"
-          disabled
         >
           8x8
         </BoxSize>
@@ -80,8 +76,6 @@ export function HomeLogged() {
           enabled={gameSize === '10x10'}
           onClick={() => handleClick('10x10')}
           onMouseEnter={() => tickSfx()}
-          title="Comming soon"
-          disabled
         >
           10x10
         </BoxSize>
