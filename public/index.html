@@ -12,19 +12,11 @@
       rel="stylesheet"
     />
 
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
     <title>Dots Game</title>
   </head>
   <body>
     <div id="root"></div>
-    <script> 
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('sw-cached-site.js', function() {
-          navigator.serviceWorker.register('service-worker.js', {
-            scope: '/',
-          });
-        });
-      } 
-      window.process = { env: { NODE_ENV: 'production' } };
-    </script>
   </body>
 </html>
