@@ -5,7 +5,7 @@ import Modal from 'react-modal'
 import styled from 'styled-components'
 
 export const Button = styled.button`
-  position: absolute;
+  position: fixed;
   bottom: 2rem;
   right: 2rem;
 
