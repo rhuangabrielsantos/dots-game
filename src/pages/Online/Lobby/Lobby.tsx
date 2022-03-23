@@ -104,7 +104,7 @@ export function Lobby() {
 
     clickSfx()
 
-    if (!game?.firstPlayer.color) {
+    if (game?.firstPlayer.color === 'empty') {
       toast.error('Choose your color to play', errorToastOptions)
       return
     }
@@ -130,7 +130,7 @@ export function Lobby() {
 
     clickSfx()
 
-    if (!game?.secondPlayer.color) {
+    if (game?.secondPlayer.color === 'empty') {
       toast.error('Choose your color to play', errorToastOptions)
       return
     }

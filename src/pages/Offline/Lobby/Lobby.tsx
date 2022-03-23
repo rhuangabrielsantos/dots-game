@@ -80,7 +80,7 @@ export function Lobby() {
       errors.push('name')
     }
 
-    if (!selectedColorForFirstPlayer) {
+    if (selectedColorForFirstPlayer === 'empty') {
       toast.error('Choose a color for the first player', errorToastOptions)
       errors.push('color')
     }
@@ -106,7 +106,7 @@ export function Lobby() {
       errors.push('name')
     }
 
-    if (!selectedColorForSecondPlayer) {
+    if (selectedColorForSecondPlayer === 'empty') {
       toast.error('Choose a color for the second player', errorToastOptions)
       errors.push('color')
     }
