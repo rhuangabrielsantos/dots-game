@@ -1,3 +1,4 @@
+import { getAnalytics, logEvent } from 'firebase/analytics'
 import firebase from 'firebase/compat/app'
 
 import 'firebase/compat/auth'
@@ -14,9 +15,12 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 }
 
-firebase.initializeApp(firebaseConfig)
+const app = firebase.initializeApp(firebaseConfig)
 
 const auth = firebase.auth()
 const database = firebase.database()
 
-export { firebase, auth, database }
+const analytics = getAnalytics(app)
+logEvent(analytics, 'notification_received')
+
+export { firebase, auth, database, analytics }
