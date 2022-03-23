@@ -16,20 +16,15 @@
   </head>
   <body>
     <div id="root"></div>
-    <script>
+    <script> 
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('svcWorker.js').then(function(registration) {
-            console.log('Worker registration is successful', registration.scope);
-          }, function(err) {
-            console.log('Worker registration has failed', err);
-          }).catch(function(err) {
-            console.log(err);
+        window.addEventListener('sw-cached-site.js', function() {
+          navigator.serviceWorker.register('service-worker.js', {
+            scope: '/',
           });
         });
-      } else {
-        console.log('Service Worker is not supported by your browser.');
-      }
+      } 
+      window.process = { env: { NODE_ENV: 'production' } };
     </script>
   </body>
 </html>
