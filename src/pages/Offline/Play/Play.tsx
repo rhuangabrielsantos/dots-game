@@ -5,6 +5,7 @@ import { Board } from '../../../components/Board'
 import { PlayerProfile } from '../../../components/PlayerProfile'
 import { GameContext } from '../../../contexts/GameContext'
 import { Game as GameProps } from '../../../interfaces'
+import { registerLog } from '../../../utils/LogUtils'
 
 import { variantsContainer } from './PlayAnimations'
 import { Container } from './PlayStyle'
@@ -27,6 +28,8 @@ export function Play() {
 
   useEffect(() => {
     if (game.winner || game.isDraw) {
+      registerLog('end_offline_game')
+
       setContainerAnimation(false)
       const timeout = setTimeout(() => {
         navigate('/winner')
@@ -35,6 +38,10 @@ export function Play() {
       return () => clearTimeout(timeout)
     }
   }, [game.winner, game.isDraw])
+
+  useEffect(() => {
+    registerLog('play_offline_game')
+  }, [])
 
   return (
     <Container

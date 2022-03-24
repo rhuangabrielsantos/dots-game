@@ -9,6 +9,7 @@ import { PlayerProfile } from '../../../components/PlayerProfile'
 import { GameContext } from '../../../contexts/GameContext'
 import { Game } from '../../../interfaces'
 import { database } from '../../../services/firebase'
+import { registerLog } from '../../../utils/LogUtils'
 
 import { variantsContainer } from './PlayAnimation'
 import { Container } from './PlayStyle'
@@ -28,6 +29,7 @@ export function Play() {
 
   useEffect(() => {
     if (game?.winner || game?.isDraw) {
+      registerLog('end_online_game')
       updateGame(game)
 
       setContainerAnimation(false)
@@ -51,6 +53,10 @@ export function Play() {
     return () => {
       gameRef.off()
     }
+  }, [])
+
+  useEffect(() => {
+    registerLog('play_online_game')
   }, [])
 
   return game ? (
