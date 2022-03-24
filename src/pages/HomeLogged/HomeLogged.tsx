@@ -41,6 +41,7 @@ export function HomeLogged() {
       board,
       marks,
       isStarted: false,
+      date: new Date().toISOString(),
     }
 
     const firebaseGame = await gameRef.push(game)
