@@ -9,6 +9,7 @@ import { GameContext } from '../../../contexts/GameContext'
 import { SfxContext } from '../../../contexts/SfxContext'
 import { Colors } from '../../../interfaces/Player'
 import { generateGameBySize } from '../../../utils/GameUtils'
+import { registerLog } from '../../../utils/LogUtils'
 import { errorToastOptions } from '../../../utils/ToastUtils'
 
 import { variantsContainer } from './LobbyAnimation'
@@ -155,6 +156,7 @@ export function Lobby() {
       turn: 1,
     })
 
+    registerLog('create_offline_game')
     navigate('/game')
   }
 

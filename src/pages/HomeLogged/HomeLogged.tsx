@@ -6,6 +6,7 @@ import { SfxContext } from '../../contexts/SfxContext'
 import { useAuth } from '../../hooks/useAuth'
 import { database } from '../../services/firebase'
 import { generateGameBySize } from '../../utils/GameUtils'
+import { registerLog } from '../../utils/LogUtils'
 
 import { BoxSize, Container, ContainerBox } from './HomeLoggedStyle'
 
@@ -46,6 +47,7 @@ export function HomeLogged() {
 
     const firebaseGame = await gameRef.push(game)
 
+    registerLog('create_online_game')
     navigate(`/${firebaseGame.key}/lobby`)
   }
 
