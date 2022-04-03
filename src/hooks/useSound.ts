@@ -21,11 +21,6 @@ export function useSound(soundUrl: string, options: SoundOptions) {
   return () => {
     if (sound) {
       sound.play()
-
-      setTimeout(() => {
-        sound.pause()
-        sound.currentTime = 0
-      }, options.timeout)
     }
   }
 }

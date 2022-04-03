@@ -63,6 +63,7 @@ export function Line(props: LineProps) {
   return (
     <LineStyle
       aria-label={props.isVertical ? 'vertical-line' : 'horizontal-line'}
+      data-lines-coordinates={`${props.collumn}x${props.row}`}
       value={props.game.board[props.collumn][props.row]}
       color={props.game.board[props.collumn][props.row]}
       onClick={handleClick}

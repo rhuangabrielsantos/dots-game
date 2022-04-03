@@ -3,6 +3,13 @@ import React from 'react'
 import { SquareProps } from './SquareProps'
 import { Square as SquareStyle } from './SquareStyle'
 
-export function Square({ color, top, left }: SquareProps) {
-  return <SquareStyle color={color} top={top} left={left} />
+export function Square(props: SquareProps) {
+  return (
+    <SquareStyle
+      color={props.color}
+      top={props.top}
+      left={props.left}
+      data-square-coordinates={`${props.top}x${props.left}`}
+    />
+  )
 }
