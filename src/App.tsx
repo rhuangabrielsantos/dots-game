@@ -25,7 +25,7 @@ function App() {
         <DarkModeSwitch
           onClick={themeToggler}
           checked={theme === 'dark'}
-          id="togglerTheme"
+          id="dark-mode-button"
         />
         <MusicPlayer />
         <HowToPlay />

@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
     transition: color 0.5s, background-color 0.5s, stroke 0.5s;
   }
 
-  body {
+  #root {
     background-color: ${({ theme }) => theme.colors.primary};
   }
 `
