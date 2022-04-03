@@ -6,7 +6,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "check-types": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "cy:open": "cypress open"
   },
   "dependencies": {
     "@radix-ui/react-switch": "^0.1.5",
@@ -40,7 +41,7 @@
     "@typescript-eslint/eslint-plugin": "^5.10.1",
     "@typescript-eslint/parser": "^5.10.1",
     "@vitejs/plugin-react": "^1.0.7",
-    "cypress": "^9.4.1",
+    "cypress": "^9.5.3",
     "eslint": "^8.8.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-typescript": "^2.5.0",
