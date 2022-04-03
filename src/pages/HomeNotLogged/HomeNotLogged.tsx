@@ -60,6 +60,7 @@ export function HomeNotLogged() {
           color="black"
           onClick={handlePlayOffline}
           onMouseEnter={() => tickSfx()}
+          id="offline-game-button"
         >
           <RiWifiOffLine size={20} style={{ marginRight: '10px' }} />
           Play Offline

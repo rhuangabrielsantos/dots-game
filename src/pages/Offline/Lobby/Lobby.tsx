@@ -77,12 +77,18 @@ export function Lobby() {
     const errors = []
 
     if (!firstPlayerName) {
-      toast.error('Enter the name of the first player', errorToastOptions)
+      toast.error('Enter the name of the first player', {
+        ...errorToastOptions,
+        toastId: 'name-error-first-player',
+      })
       errors.push('name')
     }
 
     if (selectedColorForFirstPlayer === 'empty') {
-      toast.error('Choose a color for the first player', errorToastOptions)
+      toast.error('Choose a color for the first player', {
+        ...errorToastOptions,
+        toastId: 'color-error-first-player',
+      })
       errors.push('color')
     }
 
@@ -103,12 +109,18 @@ export function Lobby() {
     const errors = []
 
     if (!secondPlayerName) {
-      toast.error('Enter the name of the second player', errorToastOptions)
+      toast.error('Enter the name of the second player', {
+        ...errorToastOptions,
+        toastId: 'name-error-second-player',
+      })
       errors.push('name')
     }
 
     if (selectedColorForSecondPlayer === 'empty') {
-      toast.error('Choose a color for the second player', errorToastOptions)
+      toast.error('Choose a color for the second player', {
+        ...errorToastOptions,
+        toastId: 'color-error-second-player',
+      })
       errors.push('color')
     }
 

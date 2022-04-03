@@ -3,7 +3,7 @@ import { logEvent } from 'firebase/analytics'
 import { analytics } from '../../services/firebase'
 
 export function registerLog(name: string) {
-  if (process.env.NODE_ENV === 'production') {
+  if (typeof analytics !== 'undefined') {
     logEvent(analytics, name)
   }
 }

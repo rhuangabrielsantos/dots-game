@@ -13,11 +13,12 @@ export function ColorOptions(props: ColorOptionsProps) {
   const colors: Colors[] = ['#e02130', '#429867', '#482344', '#fab243']
 
   return (
-    <Container>
+    <Container id={props.id}>
       {colors.map((color, index) => (
         <ColorButton
           key={index}
           color={color}
+          data-color={color}
           disabled={props.unavailableColors?.includes(color)}
           onClick={() => {
             props.onChange(color)

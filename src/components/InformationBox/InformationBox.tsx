@@ -23,6 +23,7 @@ export function InformationBox(props: InformationBoxProps) {
 
   return (
     <InformationBoxStyle
+      id="information-game-container"
       mobileenabled={props.mobileScreen}
       initial="initial"
       variants={variantsInformationBox}
@@ -72,7 +73,11 @@ export function InformationBox(props: InformationBoxProps) {
         </PlayerDetails>
       </PlayerInfoContainer>
 
-      <Button onClick={props.onStartGame} onMouseEnter={() => tickSfx()}>
+      <Button
+        id="play-button"
+        onClick={props.onStartGame}
+        onMouseEnter={() => tickSfx()}
+      >
         PLAY
       </Button>
     </InformationBoxStyle>

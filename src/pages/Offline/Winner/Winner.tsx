@@ -37,7 +37,7 @@ export function Winner() {
             avatarConfig={game.firstPlayer.avatar}
             isMyTurn
           />
-          <Title>It&apos;s a draw!</Title>
+          <Title id="title">It&apos;s a draw!</Title>
           <NiceAvatar
             player={game.secondPlayer}
             avatarConfig={game.secondPlayer.avatar}
@@ -53,7 +53,7 @@ export function Winner() {
             myColor={game.winner?.color}
             avatarConfig={game.winner?.avatar}
           />
-          <Title>{firstName} wins!</Title>
+          <Title id="title">{firstName} wins!</Title>
         </Box>
       )}
 

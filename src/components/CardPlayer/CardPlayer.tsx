@@ -47,6 +47,11 @@ export function CardPlayer(props: CardPlayerProps) {
         backfacevisibility="visible"
       >
         <EditButton
+          id={
+            props.title === 'First Player'
+              ? 'first-player-edit-button'
+              : 'second-player-edit-button'
+          }
           onMouseEnter={() => tickSfx()}
           onClick={() => {
             clickSfx()
@@ -77,6 +82,11 @@ export function CardPlayer(props: CardPlayerProps) {
       </FormContainer>
 
       <FormContainer
+        id={
+          props.title === 'First Player'
+            ? 'first-player-ready-container'
+            : 'second-player-ready-container'
+        }
         initial={{ rotateY: 0 }}
         variants={variantsFlip}
         animate={props.playerIsReady ? 'closed' : 'open'}
@@ -100,6 +110,11 @@ export function CardPlayer(props: CardPlayerProps) {
           <PlayerName>{props.playerName}</PlayerName>
         ) : (
           <Field
+            id={
+              props.title === 'First Player'
+                ? 'name-input-first-player'
+                : 'name-input-second-player'
+            }
             type="text"
             name="firstPlayer"
             placeholder="NAME"
@@ -113,6 +128,11 @@ export function CardPlayer(props: CardPlayerProps) {
           unavailableColors={props.unavailableColors}
           selectedColor={props.selectedColor}
           onChange={props.onColorSelected}
+          id={
+            props.title === 'First Player'
+              ? 'color-select-first-player'
+              : 'color-select-second-player'
+          }
         />
 
         <Button
@@ -121,6 +141,11 @@ export function CardPlayer(props: CardPlayerProps) {
             props.onPlayerReady(true)
           }}
           onMouseEnter={() => tickSfx()}
+          id={
+            props.title === 'First Player'
+              ? 'ready-button-first-player'
+              : 'ready-button-second-player'
+          }
         >
           READY
         </Button>

@@ -27,7 +27,15 @@ export function PlayerProfile(props: PlayerProfileProps) {
 
       <PlayerName>{firstName}</PlayerName>
 
-      <PlayerName>{props.player?.pontuation}</PlayerName>
+      <PlayerName
+        id={
+          props.isSecondPlayer
+            ? 'second-player-pontuation'
+            : 'first-player-pontuation'
+        }
+      >
+        {props.player?.pontuation}
+      </PlayerName>
     </Container>
   )
 }
