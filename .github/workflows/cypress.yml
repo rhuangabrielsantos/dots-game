@@ -5,6 +5,15 @@ on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    strategy:
+      # when one test fails, DO NOT cancel the other
+      # containers, because this will kill Cypress processes
+      # leaving the Dashboard hanging ...
+      # https://github.com/cypress-io/github-action/issues/48
+      fail-fast: false
+      matrix:
+        # run 4 copies of the current job in parallel
+        containers: [1, 2, 3, 4]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -17,6 +26,8 @@ jobs:
           start: npm start
           wait-on: 'http://localhost:3000'
           record: true
+          parallel: true
+          group: 'Github actions'
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
