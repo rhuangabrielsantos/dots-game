@@ -17,6 +17,6 @@ serviceWorkerRegistration.register({
     if (registration && registration.waiting) {
       registration.waiting.postMessage({ type: 'SKIP_WAITING' })
     }
-    window.location.reload()
+    window.location.href = location.origin
   },
 })
