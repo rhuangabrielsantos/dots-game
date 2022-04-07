@@ -33,7 +33,7 @@ export const BoxButton = styled(motion.div)`
 `
 
 export const RestartIcon = styled(VscDebugRestart)`
-  color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.text};
   font-size: 27px;
 
   margin-right: 10px;
