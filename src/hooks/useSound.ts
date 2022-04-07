@@ -19,8 +19,12 @@ export function useSound(soundUrl: string, options: SoundOptions) {
   }, [])
 
   return () => {
-    if (sound) {
+    if (sound && process.env.NODE_ENV === 'production') {
       sound.play()
+      setTimeout(() => {
+        sound.pause()
+        sound.currentTime = 0
+      }, options.timeout)
     }
   }
 }
