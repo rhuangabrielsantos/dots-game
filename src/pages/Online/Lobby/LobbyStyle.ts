@@ -36,7 +36,7 @@ export const ContainerCopy = styled.div`
 
   position: fixed;
   bottom: 2rem;
-  right: 5.5rem;
+  right: 10.5rem;
 
   width: 3rem;
   height: 3rem;

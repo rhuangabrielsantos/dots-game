@@ -11,6 +11,7 @@ import {
   Description,
   ModalStyle,
   Title,
+  Text,
 } from './HowToPlayStyle'
 import { Scenario } from './Scenario'
 import { ScenarioEnum } from './Scenario/ScenarioProps'
@@ -78,6 +79,7 @@ export function HowToPlay() {
         title="How To Play"
       >
         <HelpIcon />
+        <Text>How to Play</Text>
       </Button>
 
       <ModalStyle

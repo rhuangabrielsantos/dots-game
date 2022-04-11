@@ -27,6 +27,13 @@ export const Button = styled.button`
   }
 `
 
+export const Text = styled.p`
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+
+  margin-left: 0.5rem;
+`
+
 export const HelpIcon = styled(IoMdHelpCircle)`
   font-size: 2rem;
   color: ${(props) => props.theme.colors.primary};
@@ -65,6 +72,13 @@ export const CloseButton = styled(AiOutlineCloseCircle)`
   color: ${(props) => props.theme.colors.secondary};
 
   cursor: pointer;
+
+  ${(props) => props.theme.size.mobile} {
+    top: 1rem;
+    right: 1rem;
+
+    font-size: 1.5rem;
+  }
 `
 
 export const Title = styled.h1`
@@ -81,4 +95,7 @@ export const Description = styled(motion.p)`
   font-size: 1rem;
   color: ${(props) => props.theme.colors.secondary};
   margin-bottom: 2rem;
+
+  padding: 0 1.5rem;
+  text-align: center;
 `
