@@ -24,7 +24,7 @@ export const SignInContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  position: fixed;
+  position: absolute;
   top: 2rem;
   left: 2rem;
 
