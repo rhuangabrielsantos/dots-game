@@ -5,18 +5,36 @@ import { Button } from '../../../components/Button'
 import { NiceAvatar } from '../../../components/NiceAvatar'
 import { GameContext } from '../../../contexts/GameContext'
 import { SfxContext } from '../../../contexts/SfxContext'
+import { generateGameBySize } from '../../../utils/GameUtils'
 
 import { Box, BoxButton, Container, RestartIcon, Title } from './WinnerStyle'
 
 export function Winner() {
   const navigate = useNavigate()
 
-  const { game } = useContext(GameContext)
+  const { game, updateGame } = useContext(GameContext)
   const { completedSfx } = useContext(SfxContext)
   const [firstName, setFirstName] = useState<string>()
 
   function handlePlayAgain() {
-    navigate('/')
+    const { board, marks } = generateGameBySize(4, 4)
+
+    updateGame({
+      firstPlayer: {
+        ...game.firstPlayer,
+        pontuation: 0,
+      },
+      secondPlayer: {
+        ...game.secondPlayer,
+        pontuation: 0,
+      },
+      board: board,
+      marks: marks,
+      winner: undefined,
+      isDraw: false,
+      turn: 1,
+    })
+    navigate('/game')
   }
 
   useEffect(() => {
@@ -58,7 +76,7 @@ export function Winner() {
       )}
 
       <BoxButton>
-        <Button color="black" onClick={handlePlayAgain}>
+        <Button id="play-again-button" color="black" onClick={handlePlayAgain}>
           <RestartIcon />
           Play again
         </Button>
