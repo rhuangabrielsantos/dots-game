@@ -8,10 +8,6 @@ export const ContainerLeft = styled.div`
   align-items: center;
   justify-content: center;
 
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-
   cursor: pointer;
 
   ${(props) => props.theme.media.mobile} {
@@ -23,10 +19,6 @@ export const SignInContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
 
   cursor: pointer;
 `

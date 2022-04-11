@@ -10,7 +10,7 @@ export function useDarkMode() {
     setTheme(mode)
   }
 
-  function themeToggler(): void {
+  function toggleTheme(): void {
     theme === 'light' ? setMode('dark') : setMode('light')
   }
 
@@ -19,5 +19,5 @@ export function useDarkMode() {
     localTheme && setTheme(localTheme)
   }, [])
 
-  return [theme, themeToggler] as const
+  return [theme, toggleTheme] as const
 }

@@ -10,7 +10,7 @@ export const Container = styled(motion.div)`
   gap: 5rem;
 
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
 
   background-color: ${(props) => props.theme.colors.primary};
 

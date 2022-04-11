@@ -1,6 +1,7 @@
 import { AuthContextProvider } from './AuthContext'
 import { GameContextProvider } from './GameContext'
 import { SfxContextProvider } from './SfxContext'
+import { ThemeContextProvider } from './ThemeContext'
 
 interface ProviderProps {
   children: React.ReactNode
@@ -9,9 +10,11 @@ interface ProviderProps {
 export function Provider(props: ProviderProps) {
   return (
     <AuthContextProvider>
-      <GameContextProvider>
-        <SfxContextProvider>{props.children}</SfxContextProvider>
-      </GameContextProvider>
+      <ThemeContextProvider>
+        <GameContextProvider>
+          <SfxContextProvider>{props.children}</SfxContextProvider>
+        </GameContextProvider>
+      </ThemeContextProvider>
     </AuthContextProvider>
   )
 }

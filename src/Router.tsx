@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
+import { Header } from './components/Header'
 import { Menu } from './components/Menu'
 import { HomeLogged } from './pages/HomeLogged'
 import { HomeNotLogged } from './pages/HomeNotLogged'
@@ -15,7 +16,9 @@ import { Profile } from './pages/Profile'
 export default function Router() {
   return (
     <BrowserRouter>
-      <Menu />
+      <Header>
+        <Menu />
+      </Header>
 
       <Routes>
         <Route path="/" element={<HomeNotLogged />} />

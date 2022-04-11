@@ -8,9 +8,7 @@ export const Container = styled.div`
   justify-content: center;
 
   width: 100vw;
-  height: 94vh;
-
-  margin-top: 2rem;
+  height: 80vh;
 `
 
 export const EnterButton = styled(BsPlusSquare)`

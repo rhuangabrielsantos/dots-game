@@ -8,7 +8,7 @@ export const Container = styled(motion.div)`
   justify-content: center;
 
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
 `
 
 export const Title = styled.h1`
