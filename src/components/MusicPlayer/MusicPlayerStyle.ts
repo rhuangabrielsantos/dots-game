@@ -66,3 +66,10 @@ export const ControlsBox = styled.div`
     }
   }
 `
+
+export const Box = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+`

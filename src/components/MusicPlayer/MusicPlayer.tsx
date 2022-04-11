@@ -138,6 +138,14 @@ export function MusicPlayer() {
         {musics[currentMusic].title} by {musics[currentMusic].artist}
       </Title>
 
+      <Title
+        variants={variantsTitle}
+        initial="visible"
+        animate={hover || isPlaying ? 'hidden' : 'visible'}
+      >
+        Click to listen a nice music
+      </Title>
+
       <audio
         ref={playerRef}
         src={musics[currentMusic].source}
