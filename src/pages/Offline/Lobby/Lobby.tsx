@@ -94,12 +94,12 @@ export function Lobby() {
 
     if (errors.length === 0) {
       setIsFirstPlayerReady(status)
-    }
 
-    if (isSecondPlayerReady) {
-      setMobileScreen('information')
-    } else {
-      setMobileScreen('second')
+      if (isSecondPlayerReady) {
+        setMobileScreen('information')
+      } else {
+        setMobileScreen('second')
+      }
     }
   }
 
