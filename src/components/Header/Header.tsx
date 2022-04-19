@@ -3,16 +3,17 @@ import { useContext } from 'react'
 
 import { ThemeContext } from '../../contexts/ThemeContext'
 import { DarkModeSwitch } from '../DarkModeSwitch'
+import { Menu } from '../Menu'
 
-import { HeaderProps } from './HeaderProps'
 import { HeaderStyle } from './HeaderStyle'
 
-export function Header({ children }: HeaderProps) {
+export function Header() {
   const { theme, toggleTheme } = useContext(ThemeContext)
 
   return (
     <HeaderStyle>
-      {children}
+      <Menu />
+
       <DarkModeSwitch
         onClick={toggleTheme}
         checked={theme === 'dark'}

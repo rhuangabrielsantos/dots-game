@@ -7,6 +7,12 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+
+  ${(props) => props.theme.media.mobile} {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+  }
 `
 
 export const Box = styled.div`

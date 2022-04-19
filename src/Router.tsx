@@ -2,7 +2,6 @@ import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { Header } from './components/Header'
-import { Menu } from './components/Menu'
 import { HomeLogged } from './pages/HomeLogged'
 import { HomeNotLogged } from './pages/HomeNotLogged'
 import { Lobby as LobbyOffline } from './pages/Offline/Lobby'
@@ -16,9 +15,7 @@ import { Profile } from './pages/Profile'
 export default function Router() {
   return (
     <BrowserRouter>
-      <Header>
-        <Menu />
-      </Header>
+      <Header />
 
       <Routes>
         <Route path="/" element={<HomeNotLogged />} />
