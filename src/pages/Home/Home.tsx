@@ -35,7 +35,12 @@ export function Home() {
       await signInWithGoogle()
     }
 
-    navigate('/')
+    setTextAnimation('initial')
+    setButtonAnimation('initial')
+
+    setTimeout(() => {
+      navigate('/create-game')
+    }, 900)
   }
 
   return (

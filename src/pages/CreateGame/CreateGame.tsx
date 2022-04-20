@@ -1,18 +1,24 @@
+import { motion } from 'framer-motion'
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { Button } from '../../components/Button'
 import { SfxContext } from '../../contexts/SfxContext'
+import { useAnimation } from '../../hooks/useAnimation'
 import { useAuth } from '../../hooks/useAuth'
 import { database } from '../../services/firebase'
 import { generateGameBySize } from '../../utils/GameUtils'
 import { registerLog } from '../../utils/LogUtils'
 
+import { buttonVariants, containerVariants } from './CreateGameAnimation'
 import { BoxSize, Container, ContainerBox } from './CreateGameStyle'
 
 export function CreateGame() {
   const { user } = useAuth()
   const navigate = useNavigate()
+
+  const [containerAnimation, setContainerAnimation] = useAnimation(300)
+  const [buttonAnimation, setButtonAnimation] = useAnimation(300)
 
   const { clickSfx, tickSfx } = useContext(SfxContext)
   const [gameSize, setGameSize] = useState('4x4')
@@ -48,12 +54,22 @@ export function CreateGame() {
     const firebaseGame = await gameRef.push(game)
 
     registerLog('create_online_game')
-    navigate(`/${firebaseGame.key}/lobby`)
+
+    setContainerAnimation('initial')
+    setButtonAnimation('initial')
+
+    setTimeout(() => {
+      navigate(`/${firebaseGame.key}/lobby`)
+    }, 900)
   }
 
   return (
     <Container>
-      <ContainerBox>
+      <ContainerBox
+        initial="initial"
+        variants={containerVariants}
+        animate={containerAnimation}
+      >
         <BoxSize
           enabled={gameSize === '4x4'}
           onClick={() => handleClick('4x4')}
@@ -84,9 +100,15 @@ export function CreateGame() {
         </BoxSize>
       </ContainerBox>
 
-      <Button color="red" onClick={handleCreateGame}>
-        Create Online Game
-      </Button>
+      <motion.div
+        initial="initial"
+        variants={buttonVariants}
+        animate={buttonAnimation}
+      >
+        <Button color="red" onClick={handleCreateGame}>
+          Create Online Game
+        </Button>
+      </motion.div>
     </Container>
   )
 }
