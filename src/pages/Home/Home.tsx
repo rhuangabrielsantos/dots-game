@@ -8,10 +8,10 @@ import { SfxContext } from '../../contexts/SfxContext'
 import { useAnimation } from '../../hooks/useAnimation'
 import { useAuth } from '../../hooks/useAuth'
 
-import { buttonsVariants, textVariants } from './HomeNotLoggedAnimation'
-import { Container, Title, Description, BoxButton } from './HomeNotLoggedStyle'
+import { buttonsVariants, textVariants } from './HomeAnimation'
+import { Container, Title, Description, BoxButton } from './HomeStyle'
 
-export function HomeNotLogged() {
+export function Home() {
   const { user, signInWithGoogle } = useAuth()
   const { tickSfx, clickSfx } = useContext(SfxContext)
   const navigate = useNavigate()
@@ -35,7 +35,7 @@ export function HomeNotLogged() {
       await signInWithGoogle()
     }
 
-    navigate('/home')
+    navigate('/')
   }
 
   return (

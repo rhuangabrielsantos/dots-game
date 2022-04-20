@@ -9,6 +9,7 @@ import {
   ContainerLeft,
   GoogleIcon,
   HomeIcon,
+  GameIcon,
   LoggOffIcon,
   MenuContainer,
   MenuItem,
@@ -20,7 +21,7 @@ import {
 export function Menu() {
   const { user, signOut, signInWithGoogle } = useContext(AuthContext)
   const navigate = useNavigate()
-  const [path, setPath] = useState('/home')
+  const [path, setPath] = useState('/')
 
   async function handleLogOff() {
     await signOut()
@@ -44,13 +45,18 @@ export function Menu() {
       </ContainerLeft>
 
       <MenuContainer>
-        <MenuItem onClick={() => navigate('/home')}>
-          <HomeIcon selected={path === '/home' || path === '/'} />
+        <MenuItem onClick={() => navigate('/')}>
+          <HomeIcon selected={path === '/'} />
+        </MenuItem>
+
+        <MenuItem onClick={() => navigate('/create-game')}>
+          <GameIcon selected={path === '/create-game'} />
         </MenuItem>
 
         <MenuItem onClick={() => navigate('/profile')}>
           <ProfileIcon selected={path === '/profile'} />
         </MenuItem>
+
         <MenuItem onClick={handleLogOff}>
           <LoggOffIcon />
         </MenuItem>

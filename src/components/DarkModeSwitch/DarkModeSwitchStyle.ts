@@ -7,12 +7,31 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+`
+
+export const WebContainer = styled(Container)`
+  ${(props) => props.theme.media.mobile} {
+    display: none;
+  }
+`
+
+export const MobileContainer = styled(Container)`
+  display: none;
 
   ${(props) => props.theme.media.mobile} {
+    display: flex;
     position: fixed;
-    top: 2rem;
-    right: 2rem;
+    top: 1rem;
+    right: 1rem;
   }
+`
+
+export const MobileButton = styled.button`
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
 `
 
 export const Box = styled.div`

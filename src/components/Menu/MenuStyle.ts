@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { CgHome, CgProfile, CgLogOff, CgLogIn } from 'react-icons/cg'
 import { ImGoogle } from 'react-icons/im'
+import { IoGameControllerOutline } from 'react-icons/io5'
 import styled from 'styled-components'
 
 export const ContainerLeft = styled.div`
@@ -47,11 +48,6 @@ export const MenuContainer = styled.div`
   transform: translateX(50%);
 
   margin-top: 2rem;
-
-  ${(props) => props.theme.media.mobile} {
-    left: -5rem;
-    right: unset;
-  }
 `
 
 export const MenuItem = styled.div`
@@ -72,6 +68,13 @@ export const Title = styled(motion.h3)`
 `
 
 export const HomeIcon = styled(CgHome)<{ selected: boolean }>`
+  font-size: ${(props) => (props.selected ? '2rem' : '1.5rem')};
+  color: ${(props) => props.theme.colors.text};
+
+  margin: 0 1rem;
+`
+
+export const GameIcon = styled(IoGameControllerOutline)<{ selected: boolean }>`
   font-size: ${(props) => (props.selected ? '2rem' : '1.5rem')};
   color: ${(props) => props.theme.colors.text};
 

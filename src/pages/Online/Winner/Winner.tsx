@@ -18,7 +18,7 @@ export function Winner() {
   const [firstName, setFirstName] = useState<string>()
 
   function handlePlayAgain() {
-    navigate('/home')
+    navigate('/')
   }
 
   useEffect(() => {

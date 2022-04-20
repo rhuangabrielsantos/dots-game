@@ -2,8 +2,8 @@ import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { Header } from './components/Header'
-import { HomeLogged } from './pages/HomeLogged'
-import { HomeNotLogged } from './pages/HomeNotLogged'
+import { CreateGame } from './pages/CreateGame'
+import { Home } from './pages/Home'
 import { Lobby as LobbyOffline } from './pages/Offline/Lobby'
 import { Play as PlayOffline } from './pages/Offline/Play'
 import { Winner as WinnerOffline } from './pages/Offline/Winner'
@@ -18,13 +18,13 @@ export default function Router() {
       <Header />
 
       <Routes>
-        <Route path="/" element={<HomeNotLogged />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/create-game" element={<CreateGame />} />
+        <Route path="/profile" element={<Profile />} />
+
         <Route path="/lobby" element={<LobbyOffline />} />
         <Route path="/game" element={<PlayOffline />} />
         <Route path="/winner" element={<WinnerOffline />} />
-
-        <Route path="/home" element={<HomeLogged />} />
-        <Route path="/profile" element={<Profile />} />
 
         <Route path="/:id/lobby" element={<LobbyOnline />} />
         <Route path="/:id/game" element={<PlayOnline />} />

@@ -1,10 +1,13 @@
 import * as RadixSwitch from '@radix-ui/react-switch'
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 
 import { SfxContext } from '../../contexts/SfxContext'
 
 import {
   Container,
+  WebContainer,
+  MobileContainer,
+  MobileButton,
   Box,
   DarkModeIcon,
   LightModeIcon,
@@ -17,15 +20,23 @@ export function DarkModeSwitch(props: RadixSwitch.SwitchProps) {
 
   return (
     <Container>
-      <LightModeIcon />
+      <WebContainer>
+        <LightModeIcon />
 
-      <Box onMouseEnter={() => tickSfx()} onClick={() => clickSfx()}>
-        <SwitchRoot {...props}>
-          <SwitchThumb {...props} />
-        </SwitchRoot>
-      </Box>
+        <Box onMouseEnter={() => tickSfx()} onClick={() => clickSfx()}>
+          <SwitchRoot {...props}>
+            <SwitchThumb {...props} />
+          </SwitchRoot>
+        </Box>
 
-      <DarkModeIcon />
+        <DarkModeIcon />
+      </WebContainer>
+
+      <MobileContainer>
+        <MobileButton onClick={props.onClick}>
+          {props.checked ? <DarkModeIcon /> : <LightModeIcon />}
+        </MobileButton>
+      </MobileContainer>
     </Container>
   )
 }

@@ -8,9 +8,9 @@ import { database } from '../../services/firebase'
 import { generateGameBySize } from '../../utils/GameUtils'
 import { registerLog } from '../../utils/LogUtils'
 
-import { BoxSize, Container, ContainerBox } from './HomeLoggedStyle'
+import { BoxSize, Container, ContainerBox } from './CreateGameStyle'
 
-export function HomeLogged() {
+export function CreateGame() {
   const { user } = useAuth()
   const navigate = useNavigate()
 
