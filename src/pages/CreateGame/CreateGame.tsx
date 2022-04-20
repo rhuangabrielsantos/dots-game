@@ -85,7 +85,7 @@ export function CreateGame() {
       </ContainerBox>
 
       <Button color="red" onClick={handleCreateGame}>
-        CREATE GAME
+        Create Online Game
       </Button>
     </Container>
   )
