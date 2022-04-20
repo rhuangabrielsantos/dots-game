@@ -75,7 +75,7 @@ export const HomeIcon = styled(CgHome)<{ selected: boolean }>`
 `
 
 export const GameIcon = styled(IoGameControllerOutline)<{ selected: boolean }>`
-  font-size: ${(props) => (props.selected ? '2rem' : '1.5rem')};
+  font-size: ${(props) => (props.selected ? '2.2rem' : '1.7rem')};
   color: ${(props) => props.theme.colors.text};
 
   margin: 0 1rem;
