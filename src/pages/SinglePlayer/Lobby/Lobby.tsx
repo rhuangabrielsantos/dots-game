@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import { AvatarFullConfig, genConfig } from 'react-nice-avatar'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 import { CardPlayer } from '../../../components/CardPlayer'
 import { AuthContext } from '../../../contexts/AuthContext'
@@ -9,6 +10,7 @@ import { SfxContext } from '../../../contexts/SfxContext'
 import { Colors } from '../../../interfaces/Player'
 import { generateGameBySize } from '../../../utils/GameUtils'
 import { registerLog } from '../../../utils/LogUtils'
+import { errorToastOptions } from '../../../utils/ToastUtils'
 
 import { variantsContainer } from './LobbyAnimation'
 import { Container } from './LobbyStyle'
@@ -41,6 +43,28 @@ export function Lobby() {
 
   function handleStartGame() {
     clickSfx()
+
+    const errors = []
+
+    if (!firstPlayerName) {
+      toast.error('Enter the name of the first player', {
+        ...errorToastOptions,
+        toastId: 'name-error-first-player',
+      })
+      errors.push('name')
+    }
+
+    if (selectedColorForFirstPlayer === 'empty') {
+      toast.error('Choose a color for the first player', {
+        ...errorToastOptions,
+        toastId: 'color-error-first-player',
+      })
+      errors.push('color')
+    }
+
+    if (errors.length !== 0) {
+      return
+    }
 
     const { board, marks } = generateGameBySize(4, 4)
 
