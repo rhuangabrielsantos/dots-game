@@ -151,7 +151,11 @@ export function CreateGame() {
         variants={buttonVariants}
         animate={buttonAnimation}
       >
-        <Button color="black" onClick={handleCreateOfflineGame}>
+        <Button
+          id="offline-game-create"
+          color="black"
+          onClick={handleCreateOfflineGame}
+        >
           <RiWifiOffLine size="20" style={{ marginRight: '10px' }} />
           Offline Game
         </Button>
