@@ -125,6 +125,7 @@ export function Lobby() {
     <Container initial="initial" animate="animate" variants={variantsContainer}>
       <CardPlayer
         title="First Player"
+        mobileScreen
         playerName={firstPlayerName}
         setPlayerName={setFirstPlayerName}
         playerAvatar={firstPlayerAvatar}
