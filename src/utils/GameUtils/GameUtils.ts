@@ -3,6 +3,7 @@ import { GameMarks, GameProps } from '../../interfaces/Game'
 import { Colors } from '../../interfaces/Player'
 
 import {
+  ClickProps,
   HandlePlayerClickProps,
   HandleSquareWinnerCheck,
   LinesMarkeds,
@@ -286,4 +287,148 @@ function markSquareWithTheColorOfTheWinner(
     board: newBoard,
     marks: newMarks,
   }
+}
+
+export async function handleBotAction(game: Game): Promise<Game> {
+  await sleep(1000)
+
+  const winnerMarks = thereIsAPossibilityOfWinningTheSquare(game.board)
+
+  console.log(winnerMarks[0])
+
+  const botClick = winnerMarks[0] ? winnerMarks[0] : generateRandomClick(game)
+
+  game.board[botClick.collumn][botClick.row] = game.secondPlayer.color
+
+  const { newGameState, thereIsAWinnerOfTheSquare } = handleSquareWinnerCheck({
+    clickCoords: botClick,
+    game,
+    isTopOrBottom: botClick.collumn % 2 === 0,
+    lastPlayer: game.secondPlayer,
+  })
+
+  const turn = thereIsAWinnerOfTheSquare ? game.turn : game.turn + 1
+
+  return {
+    ...newGameState,
+    turn,
+  }
+}
+
+function generateRandomClick(game: Game): ClickProps {
+  const collumns: number[] = []
+  const rows: number[] = []
+
+  game.board
+    .map((collumn) => {
+      return collumn.includes('empty')
+    })
+    .map((isValid, index) => {
+      if (isValid) {
+        collumns.push(index)
+      }
+    })
+
+  const randomCollumn = collumns[Math.floor(Math.random() * collumns.length)]
+
+  game.board[randomCollumn]
+    .map((collumn) => {
+      return collumn.includes('empty')
+    })
+    .map((isValid, index) => {
+      if (isValid) {
+        rows.push(index)
+      }
+    })
+
+  return {
+    collumn: randomCollumn,
+    row: rows[Math.floor(Math.random() * rows.length)],
+  }
+}
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+
+function thereIsAPossibilityOfWinningTheSquare(board: GameBoard): ClickProps[] {
+  const colorsOptions: Colors[] = [
+    '#429867',
+    '#482344',
+    '#e02130',
+    '#fab243',
+    'tertiary',
+  ]
+
+  const marks: ClickProps[] = []
+  let isTopOrBottom: boolean
+
+  board.forEach((collumn, collumnIndex) => {
+    collumn.forEach((row, rowIndex) => {
+      isTopOrBottom = collumnIndex % 2 === 0
+      if (
+        isTopOrBottom &&
+        board[collumnIndex][rowIndex] === 'empty' &&
+        board[collumnIndex + 1] &&
+        colorsOptions.includes(board[collumnIndex + 1][rowIndex]) &&
+        board[collumnIndex + 2] &&
+        colorsOptions.includes(board[collumnIndex + 2][rowIndex]) &&
+        board[collumnIndex + 1] &&
+        colorsOptions.includes(board[collumnIndex + 1][rowIndex + 1])
+      ) {
+        marks.push({
+          collumn: collumnIndex,
+          row: rowIndex,
+        })
+      }
+
+      if (
+        !isTopOrBottom &&
+        board[collumnIndex][rowIndex] === 'empty' &&
+        board[collumnIndex - 1] &&
+        colorsOptions.includes(board[collumnIndex - 1][rowIndex]) &&
+        board[collumnIndex] &&
+        colorsOptions.includes(board[collumnIndex][rowIndex + 1]) &&
+        board[collumnIndex + 1] &&
+        colorsOptions.includes(board[collumnIndex + 1][rowIndex])
+      ) {
+        marks.push({
+          collumn: collumnIndex,
+          row: rowIndex,
+        })
+      }
+
+      if (
+        !isTopOrBottom &&
+        board[collumnIndex][rowIndex] === 'empty' &&
+        board[collumnIndex - 1] &&
+        colorsOptions.includes(board[collumnIndex - 1][rowIndex - 1]) &&
+        board[collumnIndex] &&
+        colorsOptions.includes(board[collumnIndex][rowIndex - 1]) &&
+        board[collumnIndex + 1] &&
+        colorsOptions.includes(board[collumnIndex + 1][rowIndex - 1])
+      ) {
+        marks.push({
+          collumn: collumnIndex,
+          row: rowIndex,
+        })
+      }
+
+      if (
+        isTopOrBottom &&
+        board[collumnIndex][rowIndex] === 'empty' &&
+        board[collumnIndex - 1] &&
+        colorsOptions.includes(board[collumnIndex - 1][rowIndex]) &&
+        board[collumnIndex - 2] &&
+        colorsOptions.includes(board[collumnIndex - 2][rowIndex]) &&
+        board[collumnIndex - 1] &&
+        colorsOptions.includes(board[collumnIndex - 1][rowIndex + 1])
+      ) {
+        marks.push({
+          collumn: collumnIndex,
+          row: rowIndex,
+        })
+      }
+    })
+  })
+
+  return marks
 }

@@ -31,17 +31,14 @@ export const Description = styled(motion.p)`
 export const BoxButton = styled(motion.div)`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 100px;
 
-  width: 100%;
-  max-width: 460px;
+  gap: 1rem;
 
   ${(props) => props.theme.media.mobile} {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    gap: 20px;
   }
 `

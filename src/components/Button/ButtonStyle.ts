@@ -11,6 +11,8 @@ export const ButtonStyle = styled.button<{ color?: string }>`
   padding: 20px 30px;
   cursor: pointer;
 
+  min-width: 300px;
+
   transition: shadow 0.3s;
 
   display: flex;

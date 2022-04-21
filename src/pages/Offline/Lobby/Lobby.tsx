@@ -8,7 +8,6 @@ import { InformationBox } from '../../../components/InformationBox'
 import { GameContext } from '../../../contexts/GameContext'
 import { SfxContext } from '../../../contexts/SfxContext'
 import { Colors } from '../../../interfaces/Player'
-import { generateGameBySize } from '../../../utils/GameUtils'
 import { registerLog } from '../../../utils/LogUtils'
 import { errorToastOptions } from '../../../utils/ToastUtils'
 
@@ -17,7 +16,7 @@ import { Container } from './LobbyStyle'
 
 export function Lobby() {
   const { clickSfx } = useContext(SfxContext)
-  const { createNewGame } = useContext(GameContext)
+  const { game, createNewGame } = useContext(GameContext)
   const navigate = useNavigate()
 
   const [firstPlayerAvatar, setFirstPlayerAvatar] = useState<AvatarFullConfig>(
@@ -146,7 +145,7 @@ export function Lobby() {
   function handleStartGame() {
     clickSfx()
 
-    const { board, marks } = generateGameBySize(4, 4)
+    const { board, marks } = game
 
     createNewGame({
       firstPlayer: {

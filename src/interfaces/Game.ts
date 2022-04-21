@@ -11,6 +11,8 @@ export interface Game {
   turn: number
 
   isStarted?: boolean
+
+  isSinglePlayer?: boolean
 }
 
 export type GameBoard = Colors[][]

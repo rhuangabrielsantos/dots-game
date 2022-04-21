@@ -1,8 +1,10 @@
-import { motion } from 'framer-motion'
 import { useContext, useState } from 'react'
+import { ImGoogle } from 'react-icons/im'
+import { RiWifiOffLine } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
 
 import { Button } from '../../components/Button'
+import { GameContext } from '../../contexts/GameContext'
 import { SfxContext } from '../../contexts/SfxContext'
 import { useAnimation } from '../../hooks/useAnimation'
 import { useAuth } from '../../hooks/useAuth'
@@ -11,11 +13,12 @@ import { generateGameBySize } from '../../utils/GameUtils'
 import { registerLog } from '../../utils/LogUtils'
 
 import { buttonVariants, containerVariants } from './CreateGameAnimation'
-import { BoxSize, Container, ContainerBox } from './CreateGameStyle'
+import { BoxButton, BoxSize, Container, ContainerBox } from './CreateGameStyle'
 
 export function CreateGame() {
-  const { user } = useAuth()
+  const { user, signInWithGoogle } = useAuth()
   const navigate = useNavigate()
+  const { createNewGame } = useContext(GameContext)
 
   const [containerAnimation, setContainerAnimation] = useAnimation(300)
   const [buttonAnimation, setButtonAnimation] = useAnimation(300)
@@ -28,7 +31,50 @@ export function CreateGame() {
     setGameSize(size)
   }
 
-  async function handleCreateGame() {
+  function handleCreateOfflineGame() {
+    clickSfx()
+
+    const number = Number(gameSize.split('x')[0])
+    const { board, marks } = generateGameBySize(number, number)
+
+    createNewGame({
+      firstPlayer: {
+        name: user?.name || '',
+        id: user?.id || '',
+        avatar: user?.avatar || {},
+        color: '#429867',
+        pontuation: 0,
+        isReady: false,
+        unavailableColors: [],
+      },
+      secondPlayer: {
+        name: user?.name || '',
+        id: user?.id || '',
+        avatar: user?.avatar || {},
+        color: '#429867',
+        pontuation: 0,
+        isReady: false,
+        unavailableColors: [],
+      },
+      board,
+      marks,
+      turn: 1,
+    })
+
+    setContainerAnimation('initial')
+    setButtonAnimation('initial')
+
+    setTimeout(() => {
+      navigate('/lobby')
+    }, 900)
+  }
+
+  async function handleCreateMultiplayerGame() {
+    if (!user) {
+      await signInWithGoogle()
+      return
+    }
+
     clickSfx()
     const number = Number(gameSize.split('x')[0])
     const { board, marks } = generateGameBySize(number, number)
@@ -100,15 +146,24 @@ export function CreateGame() {
         </BoxSize>
       </ContainerBox>
 
-      <motion.div
+      <BoxButton
         initial="initial"
         variants={buttonVariants}
         animate={buttonAnimation}
       >
-        <Button color="red" onClick={handleCreateGame}>
-          Create Online Game
+        <Button
+          id="offline-game-create"
+          color="black"
+          onClick={handleCreateOfflineGame}
+        >
+          <RiWifiOffLine size="20" style={{ marginRight: '10px' }} />
+          Offline Game
         </Button>
-      </motion.div>
+        <Button color="red" onClick={handleCreateMultiplayerGame}>
+          <ImGoogle size="20" style={{ marginRight: '10px' }} />
+          Online Game
+        </Button>
+      </BoxButton>
     </Container>
   )
 }
