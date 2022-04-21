@@ -26,3 +26,8 @@ export interface LinesMarkeds {
   left: number[]
   right: number[]
 }
+
+export interface ClickProps {
+  collumn: number
+  row: number
+}

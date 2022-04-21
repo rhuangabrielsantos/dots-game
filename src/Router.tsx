@@ -11,6 +11,9 @@ import { Lobby as LobbyOnline } from './pages/Online/Lobby'
 import { Play as PlayOnline } from './pages/Online/Play'
 import { Winner as WinnerOnline } from './pages/Online/Winner'
 import { Profile } from './pages/Profile'
+import { Lobby as LobbySinglePlayer } from './pages/SinglePlayer/Lobby'
+import { Play as PlaySinglePlayer } from './pages/SinglePlayer/Play'
+import { Winner as WinnerSinglePlayer } from './pages/SinglePlayer/Winner'
 
 export default function Router() {
   return (
@@ -21,6 +24,10 @@ export default function Router() {
         <Route path="/" element={<Home />} />
         <Route path="/create-game" element={<CreateGame />} />
         <Route path="/profile" element={<Profile />} />
+
+        <Route path="/single-player/lobby" element={<LobbySinglePlayer />} />
+        <Route path="/single-player/game" element={<PlaySinglePlayer />} />
+        <Route path="/single-player/winner" element={<WinnerSinglePlayer />} />
 
         <Route path="/lobby" element={<LobbyOffline />} />
         <Route path="/game" element={<PlayOffline />} />

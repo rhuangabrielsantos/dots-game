@@ -76,7 +76,8 @@ export function Line(props: LineProps) {
       disabled={
         props.game.board[props.collumn][props.row] !== 'empty' ||
         (user?.id === props.game.firstPlayer.id && !turnIsFirstPlayer) ||
-        (user?.id === props.game.secondPlayer.id && turnIsFirstPlayer)
+        (user?.id === props.game.secondPlayer.id && turnIsFirstPlayer) ||
+        (props.game.isSinglePlayer && !turnIsFirstPlayer)
       }
       onMouseEnter={() => tickSfx()}
     />

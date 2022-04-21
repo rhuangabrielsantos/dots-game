@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { FaRobot } from 'react-icons/fa'
 import { ImGoogle } from 'react-icons/im'
 import { RiWifiOffLine } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
@@ -27,6 +28,17 @@ export function Home() {
 
     setTimeout(() => {
       navigate('/lobby')
+    }, 900)
+  }
+
+  function handleSinglePlayer() {
+    clickSfx()
+
+    setTextAnimation('initial')
+    setButtonAnimation('initial')
+
+    setTimeout(() => {
+      navigate('/single-player/lobby')
     }, 900)
   }
 
@@ -70,6 +82,16 @@ export function Home() {
           <RiWifiOffLine size={20} style={{ marginRight: '10px' }} />
           Play Offline
         </Button>
+
+        <Button
+          color="#533535"
+          onClick={handleSinglePlayer}
+          onMouseEnter={() => tickSfx()}
+        >
+          <FaRobot size={20} style={{ marginRight: '10px' }} />
+          Single Player
+        </Button>
+
         <Button
           color="red"
           onMouseEnter={() => tickSfx()}

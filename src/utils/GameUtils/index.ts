@@ -1,1 +1,1 @@
-export { generateGameBySize } from './GameUtils'
+export { generateGameBySize, handleBotAction } from './GameUtils'
