@@ -87,10 +87,12 @@ export function Lobby() {
   }
 
   useEffect(() => {
-    setFirstPlayerAvatar({
-      ...user?.avatar,
-      bgColor: 'transparent',
-    })
+    setFirstPlayerAvatar(
+      genConfig({
+        ...user?.avatar,
+        bgColor: 'transparent',
+      }) ?? genConfig({})
+    )
 
     setFirstPlayerName(user?.name ?? '')
   }, [user])
