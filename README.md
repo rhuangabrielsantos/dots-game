@@ -33,6 +33,7 @@ yarn start
 ## Next steps
 
 - [x] Multiplayer game
+- [x] Single player game
 - [ ] Profile Editor
 - [ ] Friendship invites
 
