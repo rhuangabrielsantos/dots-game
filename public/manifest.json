@@ -6,7 +6,7 @@
   "theme_color": "#000000",
   "background_color": "#ffffff",
   "prefer_related_applications": false,
-  "display": "minimal-ui",
+  "display": "standalone",
   "icons": [
     {
       "src": "favicon-192.svg",
