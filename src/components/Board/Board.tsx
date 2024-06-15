@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { Line } from '../../components/Line'
 import { Square } from '../../components/Square'
 
@@ -42,7 +40,7 @@ export function Board({ game, updateGame }: BoardProps) {
       ))}
 
       {game.marks.map((colluns, collunIndex) => {
-        return colluns.map((rows, rowIndex) => (
+        return colluns.map((_, rowIndex) => (
           <Square
             key={rowIndex}
             color={game.marks[collunIndex][rowIndex]}

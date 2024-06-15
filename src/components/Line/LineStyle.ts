@@ -32,7 +32,7 @@ export const Line = styled.button<{
         height: ${props.theme.size.mobile.thickness};
       }
 
-      ::after {
+      &::after {
         content: '';
         display: block;
         width: ${props.theme.size.web.circle};
@@ -48,7 +48,7 @@ export const Line = styled.button<{
           margin-left: calc(${props.theme.size.mobile.thickness} - ${props.theme.size.mobile.breadth});
         }
       }
-      ::before {
+      &::before {
         content: '';
         display: block;
         width: ${props.theme.size.web.circle};

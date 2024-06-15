@@ -1,11 +1,13 @@
-export const variantsDescription = {
+import { Variants } from 'framer-motion'
+
+export const variantsDescription: Variants = {
   initial: {
     opacity: 0,
     y: -10,
     display: 'none',
     transition: {
-      duration: 0.5,
-      ease: [0.6, 0.05, -0.01, 0.9],
+      duration: 0,
+      ease: 'easeIn',
     },
   },
   animate: {
@@ -14,7 +16,7 @@ export const variantsDescription = {
     display: 'block',
     transition: {
       duration: 0.5,
-      ease: [0.6, 0.05, -0.01, 0.9],
+      ease: 'easeIn',
     },
   },
 }

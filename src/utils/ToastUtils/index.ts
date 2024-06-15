@@ -8,5 +8,4 @@ export const errorToastOptions: ToastOptions = {
   pauseOnHover: true,
   draggable: true,
   progress: undefined,
-  icon: '🤡',
 }

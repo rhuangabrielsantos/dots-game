@@ -22,10 +22,10 @@ export function SfxContextProvider(props: SfxContextProviderType) {
     timeout: 300,
   }
 
-  const clickPath = process.env.PUBLIC_URL + '/sfx/click.wav'
-  const completedPath = process.env.PUBLIC_URL + '/sfx/completed.wav'
-  const tickPath = process.env.PUBLIC_URL + '/sfx/tick.mp3'
-  const winnerPath = process.env.PUBLIC_URL + '/sfx/winner.wav'
+  const clickPath = '/sfx/click.wav'
+  const completedPath = '/sfx/completed.wav'
+  const tickPath = '/sfx/tick.mp3'
+  const winnerPath = '/sfx/winner.wav'
 
   const clickSfx = useSound(clickPath, options)
   const completedSfx = useSound(completedPath, { ...options, timeout: 4000 })

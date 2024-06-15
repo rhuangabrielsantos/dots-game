@@ -7,9 +7,9 @@ import 'react-toastify/dist/ReactToastify.css'
 import { HowToPlay } from './components/HowToPlay'
 import { MusicPlayer } from './components/MusicPlayer'
 import { ThemeContext } from './contexts/ThemeContext'
-import Router from './Router'
 import GlobalStyle from './styles/globalStyle'
 import { darkTheme, lightTheme } from './styles/theme'
+import Router from './Router'
 
 function App() {
   const { theme } = useContext(ThemeContext)
@@ -23,7 +23,7 @@ function App() {
 
   return (
     <ThemeProvider theme={themeMode}>
-      <GlobalStyle />
+      <GlobalStyle theme={themeMode} />
 
       <MusicPlayer />
       <HowToPlay />

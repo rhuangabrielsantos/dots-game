@@ -91,6 +91,7 @@ export function HowToPlay() {
 
         <Title>How To Play</Title>
         <Description
+          initial="initial"
           variants={variantsDescription}
           animate={initialScenario ? 'animate' : 'initial'}
         >
@@ -98,6 +99,7 @@ export function HowToPlay() {
         </Description>
 
         <Description
+          initial="initial"
           variants={variantsDescription}
           animate={firstScenario ? 'animate' : 'initial'}
         >
@@ -105,6 +107,7 @@ export function HowToPlay() {
         </Description>
 
         <Description
+          initial="initial"
           variants={variantsDescription}
           animate={secondScenario ? 'animate' : 'initial'}
         >
@@ -112,6 +115,7 @@ export function HowToPlay() {
         </Description>
 
         <Description
+          initial="initial"
           variants={variantsDescription}
           animate={thirdScenario ? 'animate' : 'initial'}
         >

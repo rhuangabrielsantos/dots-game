@@ -4,7 +4,7 @@ export const containerVariants = {
     y: -270,
     transition: {
       duration: 1,
-      ease: [0.6, 0.05, -0.01, 0.9],
+      ease: 'easeInOut',
     },
   },
   animate: {
@@ -12,7 +12,7 @@ export const containerVariants = {
     y: 0,
     transition: {
       duration: 1,
-      ease: [0.6, 0.05, -0.01, 0.9],
+      ease: 'easeInOut',
     },
   },
 }
@@ -23,7 +23,7 @@ export const buttonVariants = {
     y: +130,
     transition: {
       duration: 1,
-      ease: [0.6, 0.05, -0.01, 0.9],
+      ease: 'easeInOut',
     },
   },
   animate: {
@@ -31,7 +31,7 @@ export const buttonVariants = {
     y: 0,
     transition: {
       duration: 1,
-      ease: [0.6, 0.05, -0.01, 0.9],
+      ease: 'easeInOut',
     },
   },
 }
