@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     sentryVitePlugin({
       org: 'db1-group',
-      project: 'javascript-react',
+      project: 'dots-game',
     }),
   ],
 
