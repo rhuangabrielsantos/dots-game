@@ -8,12 +8,11 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open --config-file=cypress.config.ts"
   },
   "dependencies": {
     "@radix-ui/react-switch": "^1.0.3",
     "@sentry/react": "^8.9.2",
-    "cypress": "^13.11.0",
     "firebase": "^10.12.2",
     "framer-motion": "^11.2.10",
     "nth-check": "^2.1.1",
@@ -38,6 +37,7 @@
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
+    "cypress": "^13.11.0",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
