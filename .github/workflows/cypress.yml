@@ -23,7 +23,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           build: npm run build
-          start: npm run dev
+          start: npx vite --host
           wait-on: 'http://localhost:5173'
           record: true
           parallel: true
