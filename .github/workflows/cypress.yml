@@ -28,6 +28,7 @@ jobs:
           record: true
           parallel: true
           group: 'Github actions'
+          config-file: cypress.config.ts
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
