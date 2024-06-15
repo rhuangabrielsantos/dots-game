@@ -13,6 +13,7 @@
   "dependencies": {
     "@radix-ui/react-switch": "^1.0.3",
     "@sentry/react": "^8.9.2",
+    "@sentry/vite-plugin": "^2.18.0",
     "firebase": "^10.12.2",
     "framer-motion": "^11.2.10",
     "nth-check": "^2.1.1",
