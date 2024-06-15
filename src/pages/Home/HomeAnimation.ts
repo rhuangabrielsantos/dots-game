@@ -1,10 +1,12 @@
-export const textVariants = {
+import { Variants } from 'framer-motion'
+
+export const textVariants: Variants = {
   initial: {
     opacity: 0,
     y: -270,
     transition: {
       duration: 1,
-      ease: [0.6, 0.05, -0.01, 0.9],
+      ease: 'easeInOut',
     },
   },
   animate: {
@@ -12,18 +14,18 @@ export const textVariants = {
     y: 0,
     transition: {
       duration: 1,
-      ease: [0.6, 0.05, -0.01, 0.9],
+      ease: 'easeInOut',
     },
   },
 }
 
-export const buttonsVariants = {
+export const buttonsVariants: Variants = {
   initial: {
     opacity: 0,
     y: +130,
     transition: {
       duration: 1,
-      ease: [0.6, 0.05, -0.01, 0.9],
+      ease: 'easeInOut',
     },
   },
   animate: {
@@ -31,7 +33,7 @@ export const buttonsVariants = {
     y: 0,
     transition: {
       duration: 1,
-      ease: [0.6, 0.05, -0.01, 0.9],
+      ease: 'easeInOut',
     },
   },
 }

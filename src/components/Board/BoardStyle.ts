@@ -37,7 +37,7 @@ export const Row = styled.div<{ horizontalLine: boolean }>`
         ? props.theme.size.web.thickness
         : props.theme.size.web.breadth};
 
-    :last-child {
+    &:last-child {
       margin-right: 0;
     }
 

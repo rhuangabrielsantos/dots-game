@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import { useEffect } from 'react'
 
 import { SfxContext } from '../../contexts/SfxContext'

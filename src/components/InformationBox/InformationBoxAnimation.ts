@@ -7,7 +7,7 @@ export const variantsInformationBox = {
     display: 'none',
     transition: {
       duration: 1,
-      ease: [0.6, 0.05, -0.01, 0.9],
+      ease: 'easeInOut',
     },
   },
   animate: {
@@ -18,7 +18,7 @@ export const variantsInformationBox = {
     display: 'flex',
     transition: {
       duration: 1,
-      ease: [0.6, 0.05, -0.01, 0.9],
+      ease: 'easeInOut',
     },
   },
 }

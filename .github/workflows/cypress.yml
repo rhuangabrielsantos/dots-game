@@ -23,19 +23,20 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           build: npm run build
-          start: npm start
-          wait-on: 'http://localhost:3000'
+          start: npx vite --host
+          wait-on: 'http://localhost:5173'
           record: true
           parallel: true
           group: 'Github actions'
+          config-file: cypress.config.ts
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
-          REACT_APP_APP_ID: ${{ secrets.REACT_APP_APP_ID }}
-          REACT_APP_AUTH_DOMAIN: ${{ secrets.REACT_APP_AUTH_DOMAIN }}
-          REACT_APP_DATABASE_URL: ${{ secrets.REACT_APP_DATABASE_URL }}
-          REACT_APP_MEASUREMENT_ID: ${{ secrets.REACT_APP_MEASUREMENT_ID }}
-          REACT_APP_MESSAGING_SENDER_ID: ${{ secrets.REACT_APP_MESSAGING_SENDER_ID }}
-          REACT_APP_PROJECT_ID: ${{ secrets.REACT_APP_PROJECT_ID }}
-          REACT_APP_STORAGE_BUCKET: ${{ secrets.REACT_APP_STORAGE_BUCKET }}
+          VITE_APP_API_KEY: ${{ secrets.VITE_APP_API_KEY }}
+          VITE_APP_APP_ID: ${{ secrets.VITE_APP_APP_ID }}
+          VITE_APP_AUTH_DOMAIN: ${{ secrets.VITE_APP_AUTH_DOMAIN }}
+          VITE_APP_DATABASE_URL: ${{ secrets.VITE_APP_DATABASE_URL }}
+          VITE_APP_MEASUREMENT_ID: ${{ secrets.VITE_APP_MEASUREMENT_ID }}
+          VITE_APP_MESSAGING_SENDER_ID: ${{ secrets.VITE_APP_MESSAGING_SENDER_ID }}
+          VITE_APP_PROJECT_ID: ${{ secrets.VITE_APP_PROJECT_ID }}
+          VITE_APP_STORAGE_BUCKET: ${{ secrets.VITE_APP_STORAGE_BUCKET }}

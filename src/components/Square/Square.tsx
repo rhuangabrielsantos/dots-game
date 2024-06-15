@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { SquareProps } from './SquareProps'
 import { Square as SquareStyle } from './SquareStyle'
 

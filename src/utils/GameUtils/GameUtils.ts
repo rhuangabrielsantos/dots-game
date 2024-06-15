@@ -294,8 +294,6 @@ export async function handleBotAction(game: Game): Promise<Game> {
 
   const winnerMarks = thereIsAPossibilityOfWinningTheSquare(game.board)
 
-  console.log(winnerMarks[0])
-
   const botClick = winnerMarks[0] ? winnerMarks[0] : generateRandomClick(game)
 
   game.board[botClick.collumn][botClick.row] = game.secondPlayer.color
@@ -362,7 +360,7 @@ function thereIsAPossibilityOfWinningTheSquare(board: GameBoard): ClickProps[] {
   let isTopOrBottom: boolean
 
   board.forEach((collumn, collumnIndex) => {
-    collumn.forEach((row, rowIndex) => {
+    collumn.forEach((_, rowIndex) => {
       isTopOrBottom = collumnIndex % 2 === 0
       if (
         isTopOrBottom &&
